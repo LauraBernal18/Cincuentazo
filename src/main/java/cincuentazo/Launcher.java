@@ -1,4 +1,4 @@
-package com.example.cincuentazo;
+package cincuentazo;
 
 import javafx.application.Application;
 
