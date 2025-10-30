@@ -1,10 +1,12 @@
-module com.example.cincuentazo {
+module cincuentazo {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
-    opens com.example.cincuentazo to javafx.fxml;
-    exports com.example.cincuentazo;
-    exports cincuentazo;
     opens cincuentazo to javafx.fxml;
+    exports cincuentazo.models to javafx.fxml;
+    exports cincuentazo.controllers to javafx.fxml;
+
+    exports cincuentazo;
 }
