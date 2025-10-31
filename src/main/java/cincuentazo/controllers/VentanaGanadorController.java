@@ -1,7 +1,6 @@
 package cincuentazo.controllers;
 
 import cincuentazo.views.InicioView;
-import cincuentazo.views.JuegoView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
