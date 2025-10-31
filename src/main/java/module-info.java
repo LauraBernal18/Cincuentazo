@@ -5,6 +5,7 @@ module cincuentazo {
 
 
     opens cincuentazo to javafx.fxml;
+    opens cincuentazo.controllers to javafx.fxml;
     exports cincuentazo.models to javafx.fxml;
     exports cincuentazo.controllers to javafx.fxml;
 

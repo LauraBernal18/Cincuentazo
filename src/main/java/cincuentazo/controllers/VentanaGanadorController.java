@@ -57,7 +57,7 @@ public class VentanaGanadorController {
 
         // If the user presses ACCEPT, generate a new game
         if (respuesta == ButtonType.OK) {
-            InicioView inicioView = JuegoView.getInstance();
+            InicioView inicioView = InicioView.getInstance();
             inicioView.show();
 
             //Close stage
