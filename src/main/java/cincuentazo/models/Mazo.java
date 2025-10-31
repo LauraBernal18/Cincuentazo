@@ -57,19 +57,15 @@ public class Mazo {
         }
 
         // Guardar la carta superior de la pila (la que se sigue mostrando en la mesa)
-        Carta ultimaCarta = cartasMesa.pop();
+        Carta ultimaCarta = cartasMesa.peek();
 
-        // Mover todas las demás cartas al mazo
-        while (!cartasMesa.isEmpty()) {
-            cartasMazo.add(cartasMesa.pop()); //agrga las cartas de la mesa al mazo (limpia la mesa)
+        // Pasar todas las demás al mazo
+        while (cartasMesa.size() > 1) {
+            cartasMazo.add(cartasMesa.pop());
         }
 
-        // Mezclar el mazo recién recargado
+        // Barajar el mazo y dejar la mesa limpia con su última carta
         barajar();
-
         mesa.reiniciarMesaDejandoUltima();
-
-        // Volver a dejar la última carta en la mesa
-        mesa.colocarCarta(ultimaCarta);
     }
 }

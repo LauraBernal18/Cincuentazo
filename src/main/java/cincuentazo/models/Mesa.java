@@ -31,7 +31,11 @@ public class Mesa {
         return cartasEnMesa;
     }
 
-    // 🔹 Reinicia la mesa dejando solo la última carta (usada cuando se reinicia el mazo)
+    //Si más adelante en el juego algún bug deja 2 o 3 cartas en la mesa.
+    //O si más de un jugador juega cartas seguidas sin limpiar correctamente.
+    //O si la mesa se reinicia al empezar una nueva ronda.
+    
+    // Reinicia la mesa dejando solo la última carta (usada cuando se reinicia el mazo)
     public void reiniciarMesaDejandoUltima() {
         if (cartasEnMesa.size() <= 1) {
             return; // si no hay suficientes cartas, no hace nada

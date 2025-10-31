@@ -35,8 +35,11 @@ public class Carta {
         return Integer.parseInt(valor);
     }
 
+    /*
     @Override
     public String toString() {
         return valor + " de " + palo;
     }
+
+     */
 }
