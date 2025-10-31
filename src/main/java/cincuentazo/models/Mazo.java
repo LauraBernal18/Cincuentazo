@@ -6,10 +6,10 @@ import java.util.Stack;
 
 public class Mazo {
     private ArrayList<Carta> cartasMazo;
-    private Stack<Carta> cartasMesa;
+    private Mesa mesa;
 
-    public Mazo(Stack<Carta> cartasMesa) {
-        this.cartasMesa = cartasMesa;
+    public Mazo(Mesa mesa) {
+        this.mesa = mesa;
         cartasMazo = new ArrayList<>();
         crearMazo();
         barajar();
@@ -31,10 +31,15 @@ public class Mazo {
     }
 
     public Carta tomarCarta() {
-        if (!cartasMazo.isEmpty()) {
-            return cartasMazo.remove(0);
-        }
-        return null;
+            if (cartasMazo.isEmpty()) {
+                reiniciarConCartasDeMesa();
+            }
+
+            if (!cartasMazo.isEmpty()) {
+                return cartasMazo.remove(0); // toma la primera carta
+            }
+
+            return null; // si sigue vacío, no hay cartas
     }
 
     /*
@@ -44,6 +49,8 @@ public class Mazo {
      */
 
     private void reiniciarConCartasDeMesa() {
+        Stack<Carta> cartasMesa = mesa.getCartasEnMesa();
+
         if (cartasMesa == null || cartasMesa.size() <= 1) {
             return;
             //Si en la mesa no hay cartas para tomar paila
@@ -54,13 +61,15 @@ public class Mazo {
 
         // Mover todas las demás cartas al mazo
         while (!cartasMesa.isEmpty()) {
-            cartasMazo.add(cartasMesa.pop());
+            cartasMazo.add(cartasMesa.pop()); //agrga las cartas de la mesa al mazo (limpia la mesa)
         }
 
         // Mezclar el mazo recién recargado
         barajar();
 
+        mesa.reiniciarMesaDejandoUltima();
+
         // Volver a dejar la última carta en la mesa
-        cartasMesa.push(ultimaCarta);
+        mesa.colocarCarta(ultimaCarta);
     }
 }
