@@ -1,13 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="819.0" prefWidth="1239.0" style="-fx-background-color: fcd8d4; -fx-border-width: 3; -fx-border-color: black;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+      <ColumnConstraints />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="0.0" prefWidth="41.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1133.0" minWidth="10.0" prefWidth="1091.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="3.0" prefWidth="45.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="185.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="701.0" minHeight="10.0" prefHeight="701.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane prefHeight="661.0" prefWidth="1133.0" style="-fx-background-color: #ab1830; -fx-background-radius: 50; -fx-border-width: 3; -fx-border-color: black; -fx-border-radius: 50;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="321.0" minWidth="0.0" prefWidth="14.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1071.0" minWidth="10.0" prefWidth="1060.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="5.0" prefWidth="14.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="201.0" minHeight="0.0" prefHeight="2.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="672.0" minHeight="10.0" prefHeight="672.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="34.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane prefHeight="656.0" prefWidth="1059.0" style="-fx-background-color: #e64e4e; -fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: black; -fx-border-width: 3;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="0.0" prefWidth="9.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1044.0" minWidth="10.0" prefWidth="1043.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="6.0" prefWidth="7.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="192.0" minHeight="0.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="652.0" minHeight="10.0" prefHeight="648.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="31.0" minHeight="2.0" prefHeight="9.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane prefHeight="652.0" prefWidth="1043.0" style="-fx-background-color: #cc6262; -fx-border-radius: 50; -fx-border-width: 3; -fx-border-color: BLACK; -fx-background-radius: 50;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="204.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="875.0" minWidth="10.0" prefWidth="622.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="875.0" minWidth="10.0" prefWidth="205.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="167.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="331.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="219.0" minHeight="10.0" prefHeight="160.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <GridPane GridPane.rowIndex="1">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.0" minWidth="10.0" prefWidth="27.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="163.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="22.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ImageView fx:id="carta04" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <ImageView fx:id="carta03" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta02" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <ImageView fx:id="carta01" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="149.0" prefWidth="624.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="78.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="116.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="114.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="117.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.0" minWidth="10.0" prefWidth="77.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ImageView fx:id="cartaJugador1" fitHeight="145.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <ImageView fx:id="cartaJugador2" fitHeight="145.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                              <ImageView fx:id="cartaJugador3" fitHeight="145.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                              <ImageView fx:id="cartaJugador4" fitHeight="145.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.columnIndex="1">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="78.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="116.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="114.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="118.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.0" minWidth="10.0" prefWidth="76.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="44.0" minHeight="7.0" prefHeight="7.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="126.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="33.0" minHeight="9.0" prefHeight="9.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <ImageView fx:id="carta11" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" rotate="-180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta12" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta13" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta14" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="63.0" minWidth="10.0" prefWidth="33.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="159.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="19.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <ImageView fx:id="carta21" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <ImageView fx:id="carta22" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta23" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <ImageView fx:id="carta24" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="218.0" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <GridPane GridPane.rowIndex="2">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="MazoBocaAbajo" fitHeight="196.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" />
+                                    <ImageView fx:id="MazoConteoMesa" fitHeight="197.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                 </children>
+                              </GridPane>
+                              <Label fx:id="labelConteoActualMesa" alignment="CENTER" prefHeight="40.0" prefWidth="292.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 2;" text="label conteo actual" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <effect>
+                        <InnerShadow choke="0.03" height="142.57" radius="50.03" width="59.55">
+                           <color>
+                              <Color opacity="0.9272030591964722" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </children>
+         <effect>
+            <InnerShadow height="154.43" radius="43.3575">
+               <color>
+                  <Color red="0.8157894611358643" green="0.06420565396547318" blue="0.06420565396547318" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </GridPane>
+      <GridPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="929.0" minWidth="10.0" prefWidth="866.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="226.0" minWidth="10.0" prefWidth="104.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="LabelNombreJugador" alignment="CENTER" prefHeight="46.0" prefWidth="505.0" style="-fx-background-color: WHITE; -fx-background-radius: 20; -fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: BLACK;" text="LABEL NOMBRE DEL JUGADOR" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="DejaVu Sans Condensed Bold" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+</GridPane>
