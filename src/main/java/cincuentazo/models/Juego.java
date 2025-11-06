@@ -45,13 +45,14 @@ public class Juego {
     // Controla el turno de cada jugador
     public void siguienteTurno() {
         if (terminado) {
-            return;
+            return; //si ya hay ganador no hace nada
         }
 
         Jugador jugadorActual = jugadores.get(turnoActual);
 
         if (jugadorActual.esEliminado()) {
             pasarAlSiguienteJugador();
+            cambiarTurnoConHilo(); // cambia el turno con retardo visual
             return;
         }
 
@@ -68,19 +69,58 @@ public class Juego {
                 System.out.println(jugadorActual.getNombre() + " se pasó de 50 y fue eliminado.");
             }
 
-        } else {
-            jugadorActual.setEliminado(true);
-            System.out.println(jugadorActual.getNombre() + " no puede jugar más.");
         }
-
         pasarAlSiguienteJugador();
+        cambiarTurnoConHilo();
     }
+
+    // Cambia de turno usando un hilo para que la transición sea más natural
+    public void cambiarTurnoConHilo() {
+        Thread hiloCambioTurno = new Thread(() -> {
+            try {
+                // Espera 1.5 segundos (puedes ajustar el tiempo si quieres)
+                Thread.sleep(1500);
+
+                javafx.application.Platform.runLater(() -> {
+                    // Avanzar al siguiente jugador
+                    turnoActual++;
+
+                    // Si ya pasó el último jugador, volver al primero
+                    if (turnoActual >= jugadores.size()) {
+                        turnoActual = 0;
+                    }
+
+                    Jugador jugadorActual = jugadores.get(turnoActual);
+                    System.out.println("Turno de: " + jugadorActual.getNombre());
+
+                    // Si es una máquina, esperar y jugar automáticamente
+                    if (jugadorActual instanceof JugadorMaquina maquina) {
+                        maquina.esperarJugador(); // hilo interno que simula pensar
+                        // después puedes hacer que elija y juegue su carta:
+                        siguienteTurno();
+                    }
+                });
+
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        hiloCambioTurno.start(); // Inicia el hilo de cambio de turno
+    }
+
+
 
     // Cambia el turno al siguiente jugador
     private void pasarAlSiguienteJugador() {
-        turnoActual = turnoActual + 1;
+        turnoActual++;
 
-        // Si todos están eliminados menos uno, termina el juego
+        // Si pasa del último jugador, volver al primero
+        if (turnoActual >= jugadores.size()) {
+            turnoActual = 0;
+        }
+
+            // Si todos están eliminados menos uno, termina el juego
         int jugadoresActivos = 0;
         Jugador posibleGanador = null;
         for (Jugador jugadorX : jugadores) {
@@ -95,6 +135,7 @@ public class Juego {
             System.out.println("¡Ganó " + posibleGanador.getNombre() + " por eliminación!");
         }
     }
+
 
     // Verifica si el juego terminó
     public boolean hayGanador() {
@@ -135,7 +176,7 @@ public class Juego {
         return jugadores.get(turnoActual);
     }
 
-    public boolean isTerminado() {
+    public boolean esTerminado() {
         return terminado;
     }
 }
