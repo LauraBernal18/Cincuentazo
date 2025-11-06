@@ -22,7 +22,7 @@ public class JugadorMaquina extends Jugador {
     @Override
     public Carta seleccionarCarta(int sumaMesa) {
 
-        //esperarJugador();
+        esperarJugador();
 
         // Recorremos todas las cartas
         for (int i = 0; i < mano.size(); i++) {
