@@ -37,12 +37,12 @@ public class Jugador {
     }
 
     public boolean puedeJugar(int sumaMesa) {
-       /* for (int i = 0; i < mano.size(); i++) {
+       for (int i = 0; i < mano.size(); i++) {
             Carta carta = mano.get(i);
-            if (sumaMesa + carta.getValorNumerico(sumaMesa) <= 50) {
+            if (sumaMesa + carta.getValorSegunReglas(sumaMesa) <= 50) {
                 return true;
             }
-        }*/
+        }
         return false;
     }
 
