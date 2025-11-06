@@ -17,7 +17,7 @@ public class Mesa {
     public void colocarCarta(Carta carta) {
         if (carta != null) {
             cartasEnMesa.push(carta);
-            sumaActual += carta.getValorNumerico();
+            sumaActual += carta.getValorSegunReglas(sumaActual);
         }
     }
 
@@ -57,4 +57,11 @@ public class Mesa {
     public boolean estaVacia() {
         return cartasEnMesa.isEmpty();
     }
+
+    // Reinicia completamente la mesa (para comenzar un nuevo juego)
+    public void reiniciarMesaCompleta() {
+        cartasEnMesa.clear(); // limpia toda la pila
+        sumaActual = 0;
+    }
+
 }

@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 
 public class Carta {
     private String valor;  // "A", "2", "3", ..., "K"
-    private String palo;   // "bombón", "burbuja", "bellota", "falta este"
+    private String palo;   // "pica", "trebol", "diamante", "corazón"
     private ImageView imagen; //imagen asociada a cada carta
 
     public Carta(String valor, String palo) {
@@ -15,7 +15,7 @@ public class Carta {
     }
 
     private ImageView crearImagenCarta() {
-        String ruta = "/cincuentazo/images/cartas/" + valor + "_de_" + palo + ".png";
+        String ruta = "/cincuentazo/images/cartas/" + valor + "-" + palo + ".png";
         ImageView imagen = new ImageView(new Image(getClass().getResourceAsStream(ruta)));
         imagen.setFitWidth(90);
         imagen.setFitHeight(120);
@@ -43,7 +43,7 @@ public class Carta {
         this.palo = palo;
     }
 
-    public int getValorNumerico() {
+    /*public int getValorNumerico() {
         if (valor.equals("A"))
             return 1;
 
@@ -53,11 +53,31 @@ public class Carta {
         return Integer.parseInt(valor);
     }
 
-    /*
+
     @Override
     public String toString() {
         return valor + " de " + palo;
     }
 
      */
+
+    public int getValorSegunReglas(int sumaMesa) {
+        if (valor.equals("A")) {
+            // Si el As como 10 no pasa de 50, cuenta como 10; si no, vale 1
+            if (sumaMesa + 10 <= 50)
+                return 10;
+            else
+                return 1;
+        }
+
+        if (valor.equals("J") || valor.equals("Q") || valor.equals("K"))
+            return -10;
+
+        if (valor.equals("9")){
+            return 0;
+        }
+        // Valor numérico normal
+        return Integer.parseInt(valor);
+    }
+
 }
