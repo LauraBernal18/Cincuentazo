@@ -9,14 +9,14 @@ public class JugadorMaquina extends Jugador {
         contador++;
     }
 
-    /*public void esperarJugador() {
+    public void esperarJugador() {
         try {
             int tiempo = (int) (Math.random() * 2000) + 2000; // 2000 - 4000 ms
             Thread.sleep(tiempo);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-    }*/
+    }
 
 
     @Override
@@ -30,7 +30,7 @@ public class JugadorMaquina extends Jugador {
             Carta carta = mano.get(i);
 
             // Calculamos la suma si se jugara esta carta
-            int nuevaSuma = sumaMesa + carta.getValorSegunReglas(sumaMesa);
+            int nuevaSuma = sumaMesa + carta.getValorNumerico(sumaMesa);
 
             // Si no se pasa de 50 la carta sirve
             if (nuevaSuma <= 50) {
