@@ -21,7 +21,7 @@ public class Jugador {
     public String getNombre() {
         return nombre;
     }
-    public boolean isEliminado() {
+    public boolean esEliminado() {
         return eliminado;
     }
 
