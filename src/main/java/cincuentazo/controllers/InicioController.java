@@ -1,9 +1,12 @@
 package cincuentazo.controllers;
 
+import cincuentazo.views.JuegoView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class InicioController {
 
@@ -27,7 +30,14 @@ public class InicioController {
 
     @FXML
     void onActionJugar(ActionEvent event) {
+        try {
+            JuegoView juegoView = JuegoView.getInstance();
 
+            juegoView.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
