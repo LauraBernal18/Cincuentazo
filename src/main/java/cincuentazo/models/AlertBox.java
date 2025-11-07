@@ -31,14 +31,11 @@ public class AlertBox implements IAlertBox {
             4. Si no puedes jugar → ¡ELIMINADO! ❌
             
             ⚡ REGLAS ESPECIALES:
-            • Mazo vacío: Barajar cartas de la mesa (excepto última)
             • Jugador eliminado: Sus cartas van al final del mazo
             
             🎊 FIN DEL JUEGO:
             Cuando solo quede UN JUGADOR → ¡GANADOR! 🏅
-            
-            💡 CONSEJO:
-            ¡Planifica tus jugadas y controla la suma! ⚖️
+
             """;
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
