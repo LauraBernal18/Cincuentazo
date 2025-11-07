@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="697.0" style="-fx-background-color: #D6E8FF; -fx-border-color: blue; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cincuentazo.controllers.InicioController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -45,42 +55,48 @@
          <image>
             <Image url="@../images/inicio/burbujas.png" />
          </image>
+         <GridPane.margin>
+            <Insets left="70.0" />
+         </GridPane.margin>
          <effect>
-            <DropShadow height="53.75" radius="27.545" width="58.43">
+            <DropShadow height="56.09" radius="28.130000000000003" width="58.43">
                <color>
                   <Color red="0.2235294133424759" green="0.32549020648002625" blue="0.929411768913269" />
                </color>
             </DropShadow>
          </effect>
-         <GridPane.margin>
-            <Insets left="70.0" />
-         </GridPane.margin>
       </ImageView>
       <ImageView fitHeight="144.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <image>
             <Image url="@../images/inicio/burbuja.png" />
          </image>
+         <GridPane.margin>
+            <Insets right="50.0" />
+         </GridPane.margin>
          <effect>
-            <DropShadow height="51.41" radius="24.619999999999997" width="49.07">
+            <DropShadow height="50.239999999999995" radius="24.3275" width="49.07">
                <color>
                   <Color red="0.2235294133424759" green="0.32549020648002625" blue="0.929411768913269" />
                </color>
             </DropShadow>
          </effect>
-         <GridPane.margin>
-            <Insets right="50.0" />
-         </GridPane.margin>
       </ImageView>
       <Button fx:id="btnJugar" contentDisplay="TEXT_ONLY" graphicTextGap="2.0" mnemonicParsing="false" onAction="#onActionJugar" prefHeight="44.0" prefWidth="156.0" style="-fx-background-color: #000993; -fx-background-radius: 50%;" text="JUGAR" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Comic Sans MS" size="20.0" />
          </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
          <effect>
-            <DropShadow height="97.61" radius="47.8675" width="95.86">
+            <DropShadow height="96.2975" radius="47.539375" width="95.86">
+               <color>
+                  <Color red="0.17407406866550446" green="0.2566666603088379" blue="1.0" />
+               </color>
                <input>
                   <Lighting diffuseConstant="1.39" specularConstant="1.03" specularExponent="18.17" surfaceScale="2.78">
                      <bumpInput>
-                        <Shadow height="24.509999999999998" radius="12.6325" width="28.02" />
+                        <Shadow height="27.1425" radius="13.290624999999999" width="28.02" />
                      </bumpInput>
                      <light>
                         <Light.Distant>
@@ -91,14 +107,8 @@
                      </light>
                   </Lighting>
                </input>
-               <color>
-                  <Color red="0.17407406866550446" green="0.2566666603088379" blue="1.0" />
-               </color>
             </DropShadow>
          </effect>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
       </Button>
       <Button fx:id="btnReglas" alignment="CENTER" mnemonicParsing="false" onAction="#onActionMostrarReglas" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #000993;" text="?" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="BASELINE">
          <GridPane.margin>
@@ -108,7 +118,10 @@
             <Font size="19.0" />
          </font>
          <effect>
-            <DropShadow radius="21.8575" width="68.43">
+            <DropShadow height="44.715" radius="27.786250000000003" width="68.43">
+               <color>
+                  <Color red="0.007407407276332378" green="0.1397530883550644" blue="1.0" />
+               </color>
                <input>
                   <Lighting diffuseConstant="1.39" specularConstant="0.5">
                      <bumpInput>
@@ -119,9 +132,6 @@
                      </light>
                   </Lighting>
                </input>
-               <color>
-                  <Color red="0.007407407276332378" green="0.1397530883550644" blue="1.0" />
-               </color>
             </DropShadow>
          </effect>
       </Button>
@@ -130,7 +140,7 @@
             <Image url="@../images/inicio/estrella.png" />
          </image>
          <effect>
-            <DropShadow height="79.48" radius="45.675" width="105.22">
+            <DropShadow height="92.35" radius="48.8925" width="105.22">
                <color>
                   <Color red="0.9666666388511658" green="1.0" />
                </color>
@@ -141,25 +151,11 @@
          <image>
             <Image url="@../images/inicio/estrella.png" />
          </image>
-         <effect>
-            <DropShadow height="49.71" radius="24.939999999999998" width="52.05">
-               <color>
-                  <Color red="0.9666666388511658" green="1.0" />
-               </color>
-            </DropShadow>
-         </effect>
       </ImageView>
       <ImageView fitHeight="70.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <image>
             <Image url="@../images/inicio/estrella.png" />
          </image>
-         <effect>
-            <DropShadow height="57.26" radius="29.0075" width="60.77">
-               <color>
-                  <Color red="0.9666666388511658" green="1.0" />
-               </color>
-            </DropShadow>
-         </effect>
       </ImageView>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <children>
@@ -171,12 +167,18 @@
                   <Font name="Comic Sans MS" size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldNombre" alignment="CENTER" prefHeight="14.0" prefWidth="150.0" style="-fx-background-color: #EEEBFF;" promptText="escribe aquí">
+            <TextField fx:id="textFieldNombre" alignment="CENTER" prefHeight="14.0" prefWidth="150.0" promptText="escribe aquí" style="-fx-background-color: #EEEBFF;">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font>
                <effect>
-                  <DropShadow height="51.41" radius="26.96" width="58.43">
+                  <DropShadow height="54.92" radius="27.8375" width="58.43">
+                     <color>
+                        <Color red="0.08180896937847137" green="0.05532163754105568" blue="0.4526315927505493" />
+                     </color>
                      <input>
                         <Lighting diffuseConstant="1.35" specularConstant="0.69" surfaceScale="2.6">
                            <bumpInput>
@@ -191,14 +193,8 @@
                            </light>
                         </Lighting>
                      </input>
-                     <color>
-                        <Color red="0.08180896937847137" green="0.05532163754105568" blue="0.4526315927505493" />
-                     </color>
                   </DropShadow>
                </effect>
-               <font>
-                  <Font name="Comic Sans MS" size="13.0" />
-               </font>
             </TextField>
          </children>
          <GridPane.margin>
@@ -229,7 +225,10 @@
                   <Font name="Comic Sans MS" size="17.0" />
                </font>
                <effect>
-                  <DropShadow height="25.68" radius="13.51" width="30.36">
+                  <DropShadow height="28.02" radius="14.094999999999999" width="30.36">
+                     <color>
+                        <Color green="0.4166666567325592" blue="1.0" />
+                     </color>
                      <input>
                         <Lighting diffuseConstant="1.28" specularConstant="0.52" surfaceScale="2.05">
                            <bumpInput>
@@ -240,9 +239,6 @@
                            </light>
                         </Lighting>
                      </input>
-                     <color>
-                        <Color green="0.4166666567325592" blue="1.0" />
-                     </color>
                   </DropShadow>
                </effect>
             </Button>
@@ -251,7 +247,10 @@
                   <Font name="Comic Sans MS" size="17.0" />
                </font>
                <effect>
-                  <DropShadow height="25.68" radius="13.51" width="30.36">
+                  <DropShadow height="28.02" radius="14.094999999999999" width="30.36">
+                     <color>
+                        <Color green="0.4166666567325592" blue="1.0" />
+                     </color>
                      <input>
                         <Lighting diffuseConstant="1.28" specularConstant="0.52" surfaceScale="2.05">
                            <bumpInput>
@@ -262,9 +261,6 @@
                            </light>
                         </Lighting>
                      </input>
-                     <color>
-                        <Color green="0.4166666567325592" blue="1.0" />
-                     </color>
                   </DropShadow>
                </effect>
             </Button>
@@ -272,8 +268,14 @@
                <font>
                   <Font name="Comic Sans MS" size="17.0" />
                </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
                <effect>
-                  <DropShadow height="25.68" radius="13.51" width="30.36">
+                  <DropShadow height="28.02" radius="14.094999999999999" width="30.36">
+                     <color>
+                        <Color green="0.4166666567325592" blue="1.0" />
+                     </color>
                      <input>
                         <Lighting diffuseConstant="1.28" specularConstant="0.52" surfaceScale="2.05">
                            <bumpInput>
@@ -284,14 +286,8 @@
                            </light>
                         </Lighting>
                      </input>
-                     <color>
-                        <Color green="0.4166666567325592" blue="1.0" />
-                     </color>
                   </DropShadow>
                </effect>
-               <GridPane.margin>
-                  <Insets right="20.0" />
-               </GridPane.margin>
             </Button>
          </children>
       </GridPane>
