@@ -13,7 +13,7 @@ public class JuegoView extends Stage {
 
     private JuegoController juegoController;
 
-    public JuegoView() throws IOException{
+    public JuegoView(String nombreJugador, int cantidadMaquinas) throws IOException{
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(
@@ -22,6 +22,8 @@ public class JuegoView extends Stage {
 
         Parent root = fxmlLoader.load();
         this.juegoController = fxmlLoader.getController();
+        juegoController.initialize(nombreJugador,cantidadMaquinas);
+
         Scene scene = new Scene(root);
         this.setScene(scene);
         this.setTitle(" >> C I N C U E N T A Z O << ");
@@ -31,9 +33,9 @@ public class JuegoView extends Stage {
         return this.juegoController;
     }
 
-    public static JuegoView getInstance() throws IOException{
+    /*public static JuegoView getInstance() throws IOException{
         if(JuegoViewHolder.INSTANCE == null){
-            JuegoViewHolder.INSTANCE = new JuegoView();
+            JuegoViewHolder.INSTANCE = new JuegoView(nombreJugador, cantidadMaquinas);
         }
         return JuegoViewHolder.INSTANCE;
     }
@@ -41,4 +43,6 @@ public class JuegoView extends Stage {
     private static class JuegoViewHolder{
         private static JuegoView INSTANCE = null;
     }
+
+     */
 }

@@ -179,4 +179,9 @@ public class Juego {
     public boolean esTerminado() {
         return terminado;
     }
+
+    public Mazo getMazo() {
+        return mazo;
+    }
+
 }
