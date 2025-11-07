@@ -21,27 +21,18 @@ public class JugadorMaquina extends Jugador {
 
     @Override
     public Carta seleccionarCarta(int sumaMesa) {
-
-        esperarJugador();
-
-        // Recorremos todas las cartas
+        // Recorremos las cartas de la mano con for de índice para principiantes
         for (int i = 0; i < mano.size(); i++) {
-
             Carta carta = mano.get(i);
-
-            // Calculamos la suma si se jugara esta carta
+            // Calculamos la nueva suma si se jugara esta carta
             int nuevaSuma = sumaMesa + carta.getValorSegunReglas(sumaMesa);
-
-            // Si no se pasa de 50 la carta sirve
+            // Si la nueva suma no pasa de 50, se puede jugar esa carta
             if (nuevaSuma <= 50) {
-                return carta; // devolvemos directamente la carta
+                return carta; // Retornamos la carta válida para jugar
             }
         }
-
-            // Si el ciclo termina y no se encontró ninguna carta válida
-            this.eliminado = true;
-            return null;
-
-        }
-
+        // Si no se encontró ninguna carta válida, se elimina el jugador
+        this.setEliminado(true);
+        return null; // No hay carta para jugar
+    }
 }

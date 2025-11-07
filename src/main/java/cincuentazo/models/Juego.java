@@ -34,42 +34,61 @@ public class Juego {
 
     // Reparte 4 cartas iniciales a cada jugador
     private void repartirCartasIniciales() {
-        for (Jugador jugador : jugadores) {
-            for (int i = 0; i < 4; i++) {
-                Carta carta = mazo.tomarCarta();
-                jugador.recibirCarta(carta);
+    // Repartir 4 cartas a cada jugador
+        for (int i = 0; i < jugadores.size(); i++) {
+            Jugador jugador = jugadores.get(i); // Obtener el jugador actual
+
+            // Dar 4 cartas al jugador
+            for (int j = 0; j < 4; j++) {
+                Carta carta = mazo.tomarCarta(); // Tomar una carta del mazo
+                jugador.recibirCarta(carta);     // Añadir la carta a la mano del jugador
             }
         }
     }
 
     // Controla el turno de cada jugador
     public void siguienteTurno() {
+
         if (terminado) {
-            return; //si ya hay ganador no hace nada
+            return; // El juego terminó, no hacer nada
         }
 
         Jugador jugadorActual = jugadores.get(turnoActual);
 
+        // Si el jugador está eliminado, pasar al siguiente
         if (jugadorActual.esEliminado()) {
             pasarAlSiguienteJugador();
-            cambiarTurnoConHilo(); // cambia el turno con retardo visual
+            cambiarTurnoConHilo();
             return;
         }
 
         int sumaMesa = mesa.getSumaActual();
-        Carta cartaSeleccionada = jugadorActual.seleccionarCarta(sumaMesa); // esta por defecto en lo de Dana
+
+        // El jugador intenta seleccionar carta según la regla del juego
+        Carta cartaSeleccionada = jugadorActual.seleccionarCarta(sumaMesa);
 
         if (cartaSeleccionada != null) {
+            // Juega la carta y la coloca en la mesa
             jugadorActual.jugarCarta(cartaSeleccionada);
             mesa.colocarCarta(cartaSeleccionada);
 
-            // Si pasa de 50 → se elimina
+            // Si la suma pasó de 50, jugador eliminado y sus cartas pasan al mazo
             if (mesa.getSumaActual() > 50) {
                 jugadorActual.setEliminado(true);
-                System.out.println(jugadorActual.getNombre() + " se pasó de 50 y fue eliminado.");
-            }
 
+                // PASAR LAS CARTAS DEL JUGADOR ELIMINADO AL FINAL DEL MAZO
+                // utilizando el metodo para agregar varias cartas a la vez
+                mazo.agregarCartasAlFinal(jugadorActual.getMano());
+
+                jugadorActual.limpiarMano(); // limpia las cartas y marca eliminado
+            }
+        } else {
+            // Si no hay carta válida para jugar, eliminar jugador y pasar cartas al mazo
+            jugadorActual.setEliminado(true);
+            mazo.agregarCartasAlFinal(jugadorActual.getMano());
+            jugadorActual.limpiarMano();
         }
+
         pasarAlSiguienteJugador();
         cambiarTurnoConHilo();
     }
@@ -178,10 +197,6 @@ public class Juego {
 
     public boolean esTerminado() {
         return terminado;
-    }
-
-    public Mazo getMazo() {
-        return mazo;
     }
 
 }
