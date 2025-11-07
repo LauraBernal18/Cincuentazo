@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -71,10 +72,10 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ImageView fx:id="carta04" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                              <ImageView fx:id="carta03" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <ImageView fx:id="carta02" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                              <ImageView fx:id="carta01" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                              <ImageView fx:id="carta04" fitHeight="132.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <ImageView fx:id="carta03" fitHeight="132.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta02" fitHeight="132.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <ImageView fx:id="carta01" fitHeight="132.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <GridPane prefHeight="149.0" prefWidth="624.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -111,10 +112,10 @@
                               <RowConstraints maxHeight="33.0" minHeight="9.0" prefHeight="9.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <ImageView fx:id="carta11" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" rotate="-180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <ImageView fx:id="carta12" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <ImageView fx:id="carta13" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <ImageView fx:id="carta14" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta11" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta12" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta13" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta14" fitHeight="123.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -130,10 +131,10 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <ImageView fx:id="carta21" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                              <ImageView fx:id="carta22" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <ImageView fx:id="carta23" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                              <ImageView fx:id="carta24" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                              <ImageView fx:id="carta21" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <ImageView fx:id="carta22" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta23" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <ImageView fx:id="carta24" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -160,10 +161,17 @@
                                     <ImageView fx:id="MazoConteoMesa" fitHeight="197.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                                  </children>
                               </GridPane>
-                              <Label fx:id="labelConteoActualMesa" alignment="CENTER" prefHeight="40.0" prefWidth="292.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 2;" text="label conteo actual" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <Label fx:id="labelConteoActualMesa" alignment="CENTER" prefHeight="40.0" prefWidth="292.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 16; -fx-border-width: 2;" text="label conteo actual" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="DejaVu Sans Bold" size="18.0" />
                                  </font>
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="0.8600000143051147" green="0.8600000143051147" blue="0.8600000143051147" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
                               </Label>
                            </children>
                         </GridPane>
@@ -197,10 +205,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="LabelNombreJugador" alignment="CENTER" prefHeight="46.0" prefWidth="505.0" style="-fx-background-color: WHITE; -fx-background-radius: 20; -fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: BLACK;" text="LABEL NOMBRE DEL JUGADOR" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label fx:id="LabelNombreJugador" alignment="CENTER" prefHeight="46.0" prefWidth="505.0" style="-fx-background-color: WHITE; -fx-background-radius: 15; -fx-border-width: 2; -fx-border-radius: 17; -fx-border-color: BLACK;" text="LABEL NOMBRE DEL JUGADOR" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font name="DejaVu Sans Condensed Bold" size="32.0" />
                </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.3815789520740509" green="0.07596247643232346" blue="0.24405153095722198" opacity="0.949999988079071" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Label>
          </children>
       </GridPane>
