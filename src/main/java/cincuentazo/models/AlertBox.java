@@ -57,4 +57,21 @@ public class AlertBox implements IAlertBox {
         alert.setHeight(800);
         alert.showAndWait();
     }
+
+    @Override
+    public void mostrarAdvertencia(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.getContentText();
+        alert.setContentText(mensaje);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle(
+                "-fx-background-color: #FFF3CD;" +
+                "-fx-font-size: 14px;"
+        );
+
+        alert.showAndWait();
+    }
 }
