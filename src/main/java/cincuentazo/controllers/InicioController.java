@@ -1,5 +1,6 @@
 package cincuentazo.controllers;
 
+import cincuentazo.models.AlertBox;
 import cincuentazo.models.Juego;
 import cincuentazo.views.JuegoView;
 import javafx.event.ActionEvent;
@@ -37,15 +38,14 @@ public class InicioController {
     void onActionJugar(ActionEvent event) {
         nombreJugador = textFieldNombre.getText();
 
+        AlertBox alertBox = new AlertBox();
 
         if (nombreJugador.isEmpty()){
-            //mostrarAlerta("Por favor ingresa tu nombre :)");
-            //return;
+            alertBox.mostrarAdvertencia("ESPERA!!" ,"Debes rellenar el campo de nombre!!");
         }
 
         if (cantidadMaquinas == 0){
-            //mostrarAlerta("Debes seleccionar la cantidad de jugadores maquina (1,2,3)");
-            //return;
+            alertBox.mostrarAdvertencia("ESPERA!!", "Debes seleccionar la cantidad de jugadores maquina");
         }
 
         //creación de modelo de juego y asignar nombre ingresado al jugador humano
