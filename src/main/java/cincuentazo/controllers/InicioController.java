@@ -46,7 +46,7 @@ public class InicioController {
                     "el juego no empieza hasta que lo hagas :(");
             return;
         }
-        
+
         if (nombreJugador.isEmpty()){
             alertBox.mostrarAdvertencia("ESPERA!!" ,"Debes rellenar el campo de nombre!!");
             return;
