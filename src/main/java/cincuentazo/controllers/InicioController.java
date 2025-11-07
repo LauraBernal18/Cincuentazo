@@ -43,10 +43,12 @@ public class InicioController {
 
         if (nombreJugador.isEmpty()){
             alertBox.mostrarAdvertencia("ESPERA!!" ,"Debes rellenar el campo de nombre!!");
+            return;
         }
 
         if (cantidadMaquinas == 0){
             alertBox.mostrarAdvertencia("ESPERA!!", "Debes seleccionar la cantidad de jugadores maquina");
+            return;
         }
 
         //creación de modelo de juego y asignar nombre ingresado al jugador humano
