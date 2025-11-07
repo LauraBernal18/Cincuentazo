@@ -41,6 +41,12 @@ public class InicioController {
     void onActionJugar(ActionEvent event) {
         nombreJugador = textFieldNombre.getText();
 
+        if (cantidadMaquinas == 0 && nombreJugador.isEmpty()){
+            alertBox.mostrarAdvertencia("ESPERA!!", "No completaste ninguno de los campos necesarios \n" +
+                    "el juego no empieza hasta que lo hagas :(");
+            return;
+        }
+        
         if (nombreJugador.isEmpty()){
             alertBox.mostrarAdvertencia("ESPERA!!" ,"Debes rellenar el campo de nombre!!");
             return;
@@ -65,8 +71,7 @@ public class InicioController {
             Stage ventanaInicio = (Stage) btnJugar.getScene().getWindow();
             ventanaInicio.close();
         } catch (IOException e){
-            System.out.println("no se pudo cargar la ventana");
-            e.printStackTrace();
+            alertBox.mostrarAdvertencia("ERROR","ocurrio un problema al iniciar el juego");
         }
     }
 

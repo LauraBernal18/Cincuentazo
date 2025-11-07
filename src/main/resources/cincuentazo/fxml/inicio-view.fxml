@@ -171,7 +171,7 @@
                   <Font name="Comic Sans MS" size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldNombre" alignment="CENTER" prefHeight="14.0" prefWidth="150.0" style="-fx-background-color: #EEEBFF;" text="Jugador">
+            <TextField fx:id="textFieldNombre" alignment="CENTER" prefHeight="14.0" prefWidth="150.0" style="-fx-background-color: #EEEBFF;" promptText="escribe aquí">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
