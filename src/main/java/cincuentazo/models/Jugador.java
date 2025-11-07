@@ -47,8 +47,8 @@ public class Jugador {
     }
 
     public void limpiarMano() {
-        mano.clear();
-        eliminado = true; // sin cartas → eliminado del juego
+        mano.clear();    // Elimina todas las cartas de la mano
+        eliminado = true; // Marca al jugador como eliminado
     }
 
  /* selecciona carta or defecto*/
