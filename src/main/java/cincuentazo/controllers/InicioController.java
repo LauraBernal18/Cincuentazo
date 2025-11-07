@@ -5,6 +5,7 @@ import cincuentazo.models.Juego;
 import cincuentazo.views.JuegoView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -33,12 +34,12 @@ public class InicioController {
 
     private String nombreJugador = " ";
     private int cantidadMaquinas = 0;
+    AlertBox alertBox = new AlertBox();
+
 
     @FXML
     void onActionJugar(ActionEvent event) {
         nombreJugador = textFieldNombre.getText();
-
-        AlertBox alertBox = new AlertBox();
 
         if (nombreJugador.isEmpty()){
             alertBox.mostrarAdvertencia("ESPERA!!" ,"Debes rellenar el campo de nombre!!");
@@ -69,7 +70,7 @@ public class InicioController {
 
     @FXML
     void onActionMostrarReglas(ActionEvent event) {
-
+        alertBox.mostrarReglas();
     }
 
     @FXML
