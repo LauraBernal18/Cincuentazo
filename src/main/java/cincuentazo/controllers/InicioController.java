@@ -35,7 +35,36 @@ public class InicioController {
 
     @FXML
     void onActionJugar(ActionEvent event) {
+        nombreJugador = textFieldNombre.getText();
 
+
+        if (nombreJugador.isEmpty()){
+            //mostrarAlerta("Por favor ingresa tu nombre :)");
+            //return;
+        }
+
+        if (cantidadMaquinas == 0){
+            //mostrarAlerta("Debes seleccionar la cantidad de jugadores maquina (1,2,3)");
+            //return;
+        }
+
+        //creación de modelo de juego y asignar nombre ingresado al jugador humano
+        //dentro del arreglo el jugador humano ocuparía la posición 0
+        Juego juego = new Juego(cantidadMaquinas);
+        juego.getJugadores().get(0).setNombre(nombreJugador);
+
+
+        //cargar la ventana principal usando excepciones en caso de errores para encontrar archivo
+        try{
+            JuegoView vistaJuego = new JuegoView();
+            vistaJuego.show();
+
+            Stage ventanaInicio = (Stage) btnJugar.getScene().getWindow();
+            ventanaInicio.close();
+        } catch (IOException e){
+            System.out.println("no se pudo cargar la ventana");
+            e.printStackTrace();
+        }
     }
 
     @FXML
