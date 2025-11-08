@@ -65,7 +65,7 @@ public class InicioController {
 
         //cargar la ventana principal usando excepciones en caso de errores para encontrar archivo
         try{
-            JuegoView vistaJuego = new JuegoView();
+            JuegoView vistaJuego = new JuegoView(nombreJugador, cantidadMaquinas);
             vistaJuego.show();
 
             Stage ventanaInicio = (Stage) btnJugar.getScene().getWindow();

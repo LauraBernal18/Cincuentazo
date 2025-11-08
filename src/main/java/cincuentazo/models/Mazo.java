@@ -2,6 +2,7 @@ package cincuentazo.models;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class Mazo {
@@ -19,8 +20,15 @@ public class Mazo {
         String[] palos = {"T", "P", "D", "C"};
         String[] valores = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
 
-        for (String palo : palos) {
-            for (String valor : valores) {
+        // Recorremos cada palo usando un ciclo for con índice
+        for (int i = 0; i < palos.length; i++) {
+            String palo = palos[i];  // Obtenemos el palo actual
+
+            // Para cada palo, recorremos todos los valores con otro for con índice
+            for (int j = 0; j < valores.length; j++) {
+                String valor = valores[j];  // Obtenemos el valor actual
+
+                // Creamos una nueva carta con valor y palo y la añadimos al mazo
                 cartasMazo.add(new Carta(valor, palo));
             }
         }
@@ -68,4 +76,9 @@ public class Mazo {
         barajar();
         mesa.reiniciarMesaDejandoUltima();
     }
+
+    public void agregarCartasAlFinal(List<Carta> cartas) {
+        cartasMazo.addAll(cartas);
+    }
+
 }

@@ -11,17 +11,16 @@ public class Carta {
     public Carta(String valor, String palo) {
         this.valor = valor;
         this.palo = palo;
-        this.imagen = crearImagenCarta();
     }
 
-    private ImageView crearImagenCarta() {
+    /*private ImageView crearImagenCarta() {
         String ruta = "/cincuentazo/images/cartas/" + valor + "-" + palo + ".png";
         ImageView imagen = new ImageView(new Image(getClass().getResourceAsStream(ruta)));
         imagen.setFitWidth(90);
         imagen.setFitHeight(120);
         return imagen;
     }
-
+    */
     //la usamos luego en el controlador para obtener la imagen de cada carta en el fxml y asociarle el evento de mouseclicked
     public ImageView getImagen() {
         return imagen;
