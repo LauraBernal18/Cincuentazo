@@ -72,7 +72,7 @@ public class JuegoController {
         // Poner una carta inicial en la mesa
         Carta cartaInicial = juego.getMesa().getUltimaCarta();
         if (cartaInicial == null) {
-            Carta carta = juego.getJugadores().get(0).getMano().remove(0);
+            Carta carta = juego.getMazo().tomarCarta();
             juego.getMesa().colocarCarta(carta);
         }
 

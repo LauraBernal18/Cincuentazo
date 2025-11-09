@@ -199,4 +199,8 @@ public class Juego {
         return terminado;
     }
 
+    public Mazo getMazo(){
+        return mazo;
+    }
+
 }
