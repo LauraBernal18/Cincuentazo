@@ -3,13 +3,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="819.0" prefWidth="1239.0" style="-fx-background-color: #fcd8d4; -fx-border-width: 3; -fx-border-color: black;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cincuentazo.controllers.JuegoController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1296.0" style="-fx-background-color: #fcd8d4; -fx-border-width: 3; -fx-border-color: black;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cincuentazo.controllers.JuegoController">
   <columnConstraints>
       <ColumnConstraints />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="0.0" prefWidth="41.0" />
@@ -18,8 +19,8 @@
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="185.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="701.0" minHeight="10.0" prefHeight="701.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="758.0" minHeight="10.0" prefHeight="758.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <GridPane prefHeight="661.0" prefWidth="1133.0" style="-fx-background-color: #ab1830; -fx-background-radius: 50; -fx-border-width: 3; -fx-border-color: black; -fx-border-radius: 50;" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -30,8 +31,8 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="201.0" minHeight="0.0" prefHeight="2.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="672.0" minHeight="10.0" prefHeight="672.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="34.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="722.0" minHeight="10.0" prefHeight="722.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="34.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <GridPane prefHeight="656.0" prefWidth="1059.0" style="-fx-background-color: #e64e4e; -fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: black; -fx-border-width: 3;" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -42,8 +43,8 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="192.0" minHeight="0.0" prefHeight="5.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="652.0" minHeight="10.0" prefHeight="648.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="31.0" minHeight="2.0" prefHeight="9.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="693.0" minHeight="10.0" prefHeight="693.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="31.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <GridPane prefHeight="652.0" prefWidth="1043.0" style="-fx-background-color: #cc6262; -fx-border-radius: 50; -fx-border-width: 3; -fx-border-color: BLACK; -fx-background-radius: 50;" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -141,10 +142,10 @@
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="218.0" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="218.0" minHeight="10.0" prefHeight="176.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <GridPane GridPane.rowIndex="2">
@@ -156,11 +157,16 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="MazoBocaAbajo" fitHeight="196.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" />
-                                    <ImageView fx:id="MazoConteoMesa" fitHeight="197.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                    <ImageView fx:id="MazoBocaAbajo" fitHeight="175.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" />
+                                    <ImageView fx:id="MazoConteoMesa" fitHeight="175.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                                  </children>
                               </GridPane>
-                              <Label fx:id="labelConteoActualMesa" alignment="CENTER" prefHeight="40.0" prefWidth="292.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 2;" text="label conteo actual" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <Label fx:id="labelConteoActualMesa" alignment="CENTER" prefHeight="40.0" prefWidth="292.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 2;" text="label conteo actual" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelEstadoJuego" alignment="CENTER" prefHeight="26.0" prefWidth="301.0" style="-fx-background-color: white;" text="label actualizar estado" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="DejaVu Sans Bold" size="18.0" />
                                  </font>
@@ -187,7 +193,7 @@
             </InnerShadow>
          </effect>
       </GridPane>
-      <GridPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <GridPane prefHeight="68.0" prefWidth="1110.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="929.0" minWidth="10.0" prefWidth="866.0" />
@@ -204,5 +210,20 @@
             </Label>
          </children>
       </GridPane>
+      <AnchorPane layoutY="6.5" maxWidth="-Infinity" prefHeight="758.0" prefWidth="34.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <children>
+            <Label fx:id="labelTurnomaquina1" alignment="CENTER" layoutY="359.0" prefHeight="40.0" prefWidth="315.0" rotate="-270.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2;" text="nombre de maquina 1" />
+         </children>
+      </AnchorPane>
+      <AnchorPane maxWidth="-Infinity" prefHeight="55.0" prefWidth="1132.0" GridPane.columnIndex="2">
+         <children>
+            <Label fx:id="labelTurnoMaquina2" alignment="CENTER" layoutX="407.0" layoutY="8.0" prefHeight="40.0" prefWidth="315.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2;" text="nombre de maquina 2" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="758.0" prefWidth="59.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="labelTurnoMaquina3" alignment="CENTER" layoutX="-116.0" layoutY="359.0" prefHeight="40.0" prefWidth="315.0" rotate="270.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2;" text="nombre de maquina 3" />
+         </children>
+      </AnchorPane>
    </children>
 </GridPane>

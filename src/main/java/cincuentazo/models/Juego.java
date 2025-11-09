@@ -178,6 +178,8 @@ public class Juego {
         this.jugadores.clear();
         this.turnoActual = 0;
         this.terminado = false;
+        //reiniciar contador de maquinas para evitar fallas de tipo "maquina 4,5,6 ha ganado"
+        JugadorMaquina.reiniciarContador();
         inicializarJugadores(cantidadMaquinas);
         repartirCartasIniciales();
     }

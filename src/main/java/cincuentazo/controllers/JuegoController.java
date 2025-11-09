@@ -1,8 +1,5 @@
 package cincuentazo.controllers;
-import cincuentazo.models.Carta;
-import cincuentazo.models.Juego;
-import cincuentazo.models.Jugador;
-import cincuentazo.models.JugadorHumano;
+import cincuentazo.models.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,6 +11,15 @@ import java.io.IOException;
 import java.util.List;
 
 public class JuegoController {
+
+    /*label de notificación sobre los procesos dentro del juego "maquina pensando, maquina colocando carta, jugador
+    //colocó una carta"... etc*/
+    @FXML
+    private Label labelEstadoJuego;
+
+    //labels de actualización en turnos
+    @FXML
+    private Label labelTurnomaquina1, labelTurnoMaquina2,labelTurnoMaquina3;
 
 
     //Image view del mazo de comer cartas
@@ -105,6 +111,7 @@ public class JuegoController {
                 Carta carta = manoJugador.get(i);
                 String ruta = "/cincuentazo/images/cartas/" + carta.getValor() + "-" + carta.getPalo() + ".png";
                 vistas[i].setImage(new Image(getClass().getResourceAsStream(ruta)));
+                vistas[i].setVisible(true); //asegurar que sea visible
             } else {
                 vistas[i].setImage(null);
                 vistas[i].setVisible(false);
@@ -136,15 +143,15 @@ public class JuegoController {
                 if (jugadorHumano.getMano().size() > posicion) {
                     Carta carta = jugadorHumano.getMano().get(posicion);
                     jugadorHumano.seleccionarCartaManual(carta);
-                    jugarCartaHumano();
+                    jugarCartaHumano(carta);
                 }
             });
         }
     }
 
 
-    private void jugarCartaHumano() {
-        Carta carta = jugadorHumano.seleccionarCarta(juego.getMesa().getSumaActual());
+    private void jugarCartaHumano(Carta carta) {
+        //Carta carta = jugadorHumano.seleccionarCarta(juego.getMesa().getSumaActual());
 
         if (carta != null) {
             jugadorHumano.jugarCarta(carta);
@@ -203,11 +210,4 @@ public class JuegoController {
             System.out.println("No hay más cartas en el mazo.");
         }
     }
-
-
-
-
-
-
-
 }

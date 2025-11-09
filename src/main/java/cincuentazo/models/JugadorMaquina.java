@@ -9,6 +9,10 @@ public class JugadorMaquina extends Jugador {
         contador++;
     }
 
+    public static void reiniciarContador(){
+        contador = 1;
+    }
+
     public void esperarJugador() {
         try {
             int tiempo = (int) (Math.random() * 2000) + 2000; // 2000 - 4000 ms
