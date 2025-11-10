@@ -29,20 +29,4 @@ public class JuegoView extends Stage {
         this.setTitle(" >> C I N C U E N T A Z O << ");
     }
 
-    public JuegoController getJuegoController(){
-        return this.juegoController;
-    }
-
-    /*public static JuegoView getInstance() throws IOException{
-        if(JuegoViewHolder.INSTANCE == null){
-            JuegoViewHolder.INSTANCE = new JuegoView(nombreJugador, cantidadMaquinas);
-        }
-        return JuegoViewHolder.INSTANCE;
-    }
-
-    private static class JuegoViewHolder{
-        private static JuegoView INSTANCE = null;
-    }
-
-     */
 }

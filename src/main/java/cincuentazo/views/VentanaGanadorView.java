@@ -27,7 +27,7 @@ public class VentanaGanadorView extends Stage {
         this.show();
     }
 
-    public VentanaGanadorController getController() {
+    /*public VentanaGanadorController getController() {
         return this.controller;
     }
 
@@ -40,5 +40,5 @@ public class VentanaGanadorView extends Stage {
 
     private static class VentanaGanadorHolder {
         private static VentanaGanadorView INSTANCE = null;
-    }
+    }*/
 }

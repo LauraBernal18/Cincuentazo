@@ -50,12 +50,6 @@ public class Mazo {
             return null; // si sigue vacío, no hay cartas
     }
 
-    /*
-    public boolean estaVacio() {
-        return cartas.isEmpty();
-    }
-     */
-
     private void reiniciarConCartasDeMesa() {
         Stack<Carta> cartasMesa = mesa.getCartasEnMesa();
 
@@ -64,8 +58,6 @@ public class Mazo {
             //Si en la mesa no hay cartas para tomar paila
         }
 
-        // Guardar la carta superior de la pila (la que se sigue mostrando en la mesa)
-        Carta ultimaCarta = cartasMesa.peek();
 
         // Pasar todas las demás al mazo
         while (cartasMesa.size() > 1) {

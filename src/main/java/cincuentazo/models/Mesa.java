@@ -47,14 +47,5 @@ public class Mesa {
         //  No reiniciamos sumaActual: se mantiene igual
     }
 
-    // Indica si la mesa está vacía
-    public boolean estaVacia() {
-        return cartasEnMesa.isEmpty();
-    }
 
-    // Reinicia completamente la mesa (para un nuevo juego)
-    public void reiniciarMesaCompleta() {
-        cartasEnMesa.clear();
-        sumaActual = 0;
-    }
 }

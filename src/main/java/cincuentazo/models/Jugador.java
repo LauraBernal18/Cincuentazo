@@ -3,7 +3,8 @@ package cincuentazo.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jugador {
+// Cambiar la declaración de la clase a abstract
+public abstract class Jugador {
 
     protected String nombre;
     protected List<Carta> mano;
@@ -36,31 +37,15 @@ public class Jugador {
         mano.add(carta);
     }
 
-    public boolean puedeJugar(int sumaMesa) {
-       for (int i = 0; i < mano.size(); i++) {
-            Carta carta = mano.get(i);
-            if (sumaMesa + carta.getValorSegunReglas(sumaMesa) <= 50) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void limpiarMano() {
         mano.clear();    // Elimina todas las cartas de la mano
         eliminado = true; // Marca al jugador como eliminado
     }
 
- /* selecciona carta or defecto*/
-    public Carta seleccionarCarta(int sumaMesa) {
-        if (!mano.isEmpty()) {
-            return mano.get(0);
-        }
-        return null;
-    }
+    public abstract Carta seleccionarCarta(int sumaMesa);
 
     public Carta jugarCarta(Carta carta) {
-
         if (carta != null && mano.remove(carta)) {
             if (mano.isEmpty()) { // actualiza el estado si se queda sin cartas
                 setEliminado(true);

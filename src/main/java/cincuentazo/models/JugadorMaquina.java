@@ -11,9 +11,6 @@ public class JugadorMaquina extends Jugador {
         contador++;
     }
 
-    public static void reiniciarContador(){
-        contador = 1;
-    }
 
     public void esperarJugador() {
         try {
