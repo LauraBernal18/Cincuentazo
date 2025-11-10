@@ -13,13 +13,16 @@ public class Mesa {
         sumaActual = 0;
     }
 
-    //Coloca una carta en la mesa (la pone encima de la pila)
     public void colocarCarta(Carta carta) {
-        if (carta != null) {
-            cartasEnMesa.push(carta);
-            sumaActual += carta.getValorSegunReglas(sumaActual);
+        cartasEnMesa.add(carta);
+        // La suma actual debe ser el total acumulado de TODAS las cartas en mesa
+        int nuevaSuma = 0;
+        for (Carta c : cartasEnMesa) {
+            nuevaSuma = c.getValorSegunReglas(nuevaSuma);
         }
+        sumaActual = nuevaSuma;
     }
+
 
     public int getSumaActual() {
         return sumaActual;
@@ -42,16 +45,23 @@ public class Mesa {
     //O si más de un jugador juega cartas seguidas sin limpiar correctamente.
     //O si la mesa se reinicia al empezar una nueva ronda.
 
-    // Reinicia la mesa dejando solo la última carta (usada cuando se reinicia el mazo)
+    // Deja solo la última carta visible, pero conserva la suma total
     public void reiniciarMesaDejandoUltima() {
         if (cartasEnMesa.size() <= 1) {
-            return; // si no hay suficientes cartas, no hace nada
+            return; // Si no hay suficientes cartas, no hace nada
         }
 
-        Carta ultima = cartasEnMesa.pop(); // guarda la carta visible
-        cartasEnMesa.clear();              // limpia la mesa
-        cartasEnMesa.push(ultima);         // deja solo la última
+        // Guardamos la última carta (visible)
+        Carta ultima = cartasEnMesa.peek();
+
+        // Quitamos todas las cartas menos la última, sin tocar la suma
+        while (cartasEnMesa.size() > 1) {
+            cartasEnMesa.remove(0); // elimina desde el fondo
+        }
+
+        // No tocamos sumaActual, se mantiene igual
     }
+
 
     // Verifica si la mesa está vacía -> un poco innecesario
     public boolean estaVacia() {

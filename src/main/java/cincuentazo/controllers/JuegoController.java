@@ -95,6 +95,13 @@ public class JuegoController {
 
         // Cargar interfaz inicial
         actualizarVistaInicial();
+
+        // Avisar cuando se cambie el turno o juegue alguien
+        juego.setOnCambioDeTurno(() -> Platform.runLater(() -> {
+            actualizarVistaInicial(); // refresca mesa y manos
+            labelConteoActualMesa.setText(String.valueOf(juego.getMesa().getSumaActual()));
+        }));
+
         configurarEventosCartasJugador();
         MazoBocaAbajo.setOnMouseClicked(e -> onClickTomarCarta());
 
@@ -316,21 +323,18 @@ public class JuegoController {
     // ==== Evento: jugador toma carta (click en el mazo) ====
     @FXML
     private void onClickTomarCarta() {
-        if (juego.esTerminado()) {
-            return;
-        }
+        if (juego.esTerminado()) return;
+
+        JugadorHumano jugador = (JugadorHumano) juego.getJugadores().get(0);
         Carta carta = juego.getMazo().tomarCarta();
 
         if (carta != null) {
-            jugadorHumano.recibirCarta(carta);
-            //System.out.println("El jugador tomó una carta del mazo.");
+            jugador.recibirCarta(carta);
+            System.out.println("Estado Tomaste una carta");
             actualizarVistaInicial();
-            actualizarEstadoJuego("Tomaste una carta");
-            //vuelve a su valor inicial
-            esperarMovimientoJugador = false;
         } else {
-            //System.out.println("No hay más cartas en el mazo.");
-            actualizarEstadoJuego("mazo vacío");
+            System.out.println("No hay más cartas en el mazo.");
         }
     }
+
 }

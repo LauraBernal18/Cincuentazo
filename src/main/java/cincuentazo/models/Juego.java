@@ -58,7 +58,7 @@ public class Juego {
         // Si el jugador está eliminado, pasar al siguiente
         if (jugadorActual.esEliminado()) {
             pasarAlSiguienteJugador();
-            cambiarTurnoConHilo();
+            if (!terminado) cambiarTurnoConHilo();
             return;
         }
 
@@ -90,43 +90,51 @@ public class Juego {
         }
 
         pasarAlSiguienteJugador();
-        cambiarTurnoConHilo();
+        if (!terminado) cambiarTurnoConHilo();
     }
 
-    // Cambia de turno usando un hilo para que la transición sea más natural
     public void cambiarTurnoConHilo() {
         Thread hiloCambioTurno = new Thread(() -> {
             try {
-                // Espera 1.5 segundos (puedes ajustar el tiempo si quieres)
+                // Espera un momento antes de pasar al siguiente turno (efecto visual)
                 Thread.sleep(1500);
 
-                javafx.application.Platform.runLater(() -> {
-                    // Avanzar al siguiente jugador
-                    turnoActual++;
+                // Asegurarse de no pasar del último jugador
+                if (turnoActual >= jugadores.size()) {
+                    turnoActual = 0;
+                }
 
-                    // Si ya pasó el último jugador, volver al primero
-                    if (turnoActual >= jugadores.size()) {
-                        turnoActual = 0;
-                    }
+                Jugador jugadorActual = jugadores.get(turnoActual);
 
-                    Jugador jugadorActual = jugadores.get(turnoActual);
-                    System.out.println("Turno de: " + jugadorActual.getNombre());
+                // Si el siguiente es una máquina, hacer que piense y juegue
+                if (jugadorActual instanceof JugadorMaquina) {
+                    JugadorMaquina maquina = (JugadorMaquina) jugadorActual;
 
-                    // Si es una máquina, esperar y jugar automáticamente
-                    if (jugadorActual instanceof JugadorMaquina maquina) {
-                        maquina.esperarJugador(); // hilo interno que simula pensar
-                        // después puedes hacer que elija y juegue su carta:
+                    // Simular que "piensa"
+                    maquina.esperarJugador();
+
+                    // Volver al hilo principal de JavaFX para jugar la carta
+                    javafx.application.Platform.runLater(() -> {
                         siguienteTurno();
-                    }
-                });
+                    });
+
+                } else {
+                    // Si es el jugador humano, solo mostramos turno
+                    javafx.application.Platform.runLater(() -> {
+                        System.out.println("Turno humano: " + jugadorActual.getNombre());
+                    });
+                }
 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         });
 
-        hiloCambioTurno.start(); // Inicia el hilo de cambio de turno
+        hiloCambioTurno.setDaemon(true);
+        hiloCambioTurno.start();
     }
+
+
 
 
 
@@ -178,8 +186,6 @@ public class Juego {
         this.jugadores.clear();
         this.turnoActual = 0;
         this.terminado = false;
-        //reiniciar contador de maquinas para evitar fallas de tipo "maquina 4,5,6 ha ganado"
-        JugadorMaquina.reiniciarContador();
         inicializarJugadores(cantidadMaquinas);
         repartirCartasIniciales();
     }
@@ -201,7 +207,7 @@ public class Juego {
         return terminado;
     }
 
-    public Mazo getMazo(){
+    public Mazo getMazo() {
         return mazo;
     }
 }
