@@ -96,11 +96,7 @@ public class JuegoController {
         // Cargar interfaz inicial
         actualizarVistaInicial();
 
-        // Avisar cuando se cambie el turno o juegue alguien
-        juego.setOnCambioDeTurno(() -> Platform.runLater(() -> {
-            actualizarVistaInicial(); // refresca mesa y manos
-            labelConteoActualMesa.setText(String.valueOf(juego.getMesa().getSumaActual()));
-        }));
+
 
         configurarEventosCartasJugador();
         MazoBocaAbajo.setOnMouseClicked(e -> onClickTomarCarta());
@@ -292,18 +288,30 @@ public class JuegoController {
         }
     }
 
-    //actualizar label para indicar al jugador que está pasando luego de que él realizó su movimiento por completo
     private void continuarLuegoDeTomarCarta() {
         actualizarEstadoJuego("Pasando turno a las máquinas...");
-        juego.siguienteTurno();
+        juego.pasarAlSiguienteJugador(); //  MUY IMPORTANTE: pasar al primer bot
+        deshabilitarInteraccionHumano();
 
-        Platform.runLater(() -> {
+        // Registrar callback para refrescar GUI cada jugada de máquina
+        juego.setOnCambioDeTurno(() -> {
             actualizarVistaInicial();
+            labelConteoActualMesa.setText(String.valueOf(juego.getMesa().getSumaActual()));
+
+            if (juego.getJugadorActual() instanceof JugadorHumano) {
+                habilitarInteraccionHumano();
+                actualizarEstadoJuego("Tu turno nuevamente :)");
+            }
+
             if (juego.hayGanador()) {
                 mostrarVentanaGanador(juego.getGanador().getNombre());
             }
         });
+
+        // Iniciar jugadas automáticas
+        juego.jugarTurnosMaquinas();
     }
+
 
     private void mostrarVentanaGanador(String nombreGanador) {
         try {
@@ -332,9 +340,29 @@ public class JuegoController {
             jugador.recibirCarta(carta);
             System.out.println("Estado Tomaste una carta");
             actualizarVistaInicial();
+            esperarMovimientoJugador = false;
+
         } else {
             System.out.println("No hay más cartas en el mazo.");
         }
     }
+
+
+    private void deshabilitarInteraccionHumano() {
+        cartaJugador1.setDisable(true);
+        cartaJugador2.setDisable(true);
+        cartaJugador3.setDisable(true);
+        cartaJugador4.setDisable(true);
+        MazoBocaAbajo.setDisable(true);
+    }
+
+    private void habilitarInteraccionHumano() {
+        cartaJugador1.setDisable(false);
+        cartaJugador2.setDisable(false);
+        cartaJugador3.setDisable(false);
+        cartaJugador4.setDisable(false);
+        MazoBocaAbajo.setDisable(false);
+    }
+
 
 }
