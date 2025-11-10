@@ -204,5 +204,4 @@ public class Juego {
     public Mazo getMazo(){
         return mazo;
     }
-
 }

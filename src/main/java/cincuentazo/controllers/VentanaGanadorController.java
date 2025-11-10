@@ -71,8 +71,4 @@ public class VentanaGanadorController {
     private void botonSalir(ActionEvent evento) {
         System.exit(0);
     }
-
-
-
-
 }
