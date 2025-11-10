@@ -58,11 +58,15 @@ public class JuegoController {
     private List<Jugador> jugadores;
     private JugadorHumano jugadorHumano;
     private Image imagenReverso;
+    //cantidad de maquinas seleccionadas
+    private int cantidadMaquinas;
 
 
     @FXML
     public void initialize(String nombreJugador, int cantidadMaquinas) {
         // Crear el modelo
+        //guardar el parametro para que se pueda usar sin problema dentro de esta clase
+        this.cantidadMaquinas = cantidadMaquinas;
         juego = new Juego(cantidadMaquinas);
         jugadores = juego.getJugadores();
 
@@ -83,12 +87,57 @@ public class JuegoController {
             juego.getMesa().colocarCarta(carta);
         }
 
+        //nuevo metodo
+        visibilidadDeMaquinas();
+
         // Cargar interfaz inicial
         actualizarVistaInicial();
         configurarEventosCartasJugador();
         MazoBocaAbajo.setOnMouseClicked(e -> onClickTomarCarta());
 
     }
+
+    private void visibilidadDeMaquinas(){
+        //array de elementos visuales
+        Label[] labelsTurno = {labelTurnomaquina1,labelTurnoMaquina2,labelTurnoMaquina3};
+        ImageView[][] cartasMaquina = {
+                {carta01, carta02, carta03, carta04}, //maquina 1
+                {carta11, carta12, carta13, carta14}, //maquina 2
+                {carta21, carta22, carta23, carta24} //maquina 4
+        };
+
+        //ocultar todo al iniciar
+        for (int i = 0; i<3; i++){
+            if (labelsTurno[i] != null){
+                labelsTurno[i].setVisible(false);  //ocultar el label
+                labelsTurno[i].setText(""); //borrar texto por defecto
+            }
+
+            for (ImageView carta : cartasMaquina[i]){
+                if(carta != null){
+                    carta.setVisible(false); //ocultar las cartas
+                }
+            }
+        }
+
+        for (int i = 0; i<this.cantidadMaquinas; i++){
+            if(i + 1 < jugadores.size()){ //i +1 salta la posición 0 es decir al jugador Humano
+                JugadorMaquina maquina = (JugadorMaquina) jugadores.get(i+1); //obtiene la maquina desde el modelo
+
+                if(labelsTurno[i] != null){
+                    labelsTurno[i].setText(maquina.getNombre()); //nombre: maquina 1, maquina 2...
+                    labelsTurno[i].setVisible(true); //ahora el label se muestra
+                }
+
+                for (ImageView carta : cartasMaquina[i]){
+                    if(carta != null){
+                        carta.setVisible(true); //muestra las cartas de la maquina
+                    }
+                }
+            }
+        }
+    }
+
 
     //informar sobre el proceso de ejecución de turnos
     private void actualizarEstadoJuego(String mensaje){
@@ -134,9 +183,15 @@ public class JuegoController {
                 {carta21, carta22, carta23, carta24}
         };
 
-        for (int i = 0; i < bots.length; i++) {
-            for (int j = 0; j < bots[i].length; j++) {
-                bots[i][j].setImage(imagenReverso);
+        for (int i = 0; i < bots.length; i++){
+            boolean maquinaExiste = i < juego.getJugadores().size() - 1; //porque el jugador 0 es humano
+
+            for (int j = 0; j< bots[i].length; j++){
+                //verificación, solo se pone la imagen si la maquina existe y la carta está visible en pantalla
+                //para evitar el acceso a elementos que están ocultos
+                if(maquinaExiste && bots[i][j].isVisible()){
+                    bots[i][j].setImage(imagenReverso);
+                }
             }
         }
     }
