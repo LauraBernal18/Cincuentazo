@@ -55,10 +55,7 @@ public class InicioController {
             return;
         }
 
-        //creación de modelo de juego y asignar nombre ingresado al jugador humano
-        //dentro del arreglo el jugador humano ocuparía la posición 0
-        //Juego juego = new Juego(cantidadMaquinas);
-        //juego.getJugadores().get(0).setNombre(nombreJugador);
+
 
 
         //cargar la ventana principal usando excepciones en caso de errores para encontrar archivo

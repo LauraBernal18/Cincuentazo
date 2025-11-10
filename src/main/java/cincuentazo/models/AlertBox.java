@@ -109,6 +109,6 @@ public class AlertBox implements IAlertBox {
         }
         //retorna 0 si el usuario presiona cancelar
         return 0;
-        //alert.getContentText();
+
     }
 }

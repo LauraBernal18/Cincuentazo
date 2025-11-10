@@ -163,13 +163,4 @@ public class Juego {
         return null;
     }
 
-    public void reiniciarJuego(int cantidadMaquinas) {
-        this.mesa.reiniciarMesaCompleta();
-        this.mazo = new Mazo(mesa);
-        this.jugadores.clear();
-        this.turnoActual = 0;
-        this.terminado = false;
-        inicializarJugadores(cantidadMaquinas);
-        repartirCartasIniciales();
-    }
 }

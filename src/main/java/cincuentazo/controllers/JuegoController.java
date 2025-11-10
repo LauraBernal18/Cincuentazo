@@ -274,17 +274,6 @@ public class JuegoController {
 
             }) .start();
 
-            // Llamar directamente al método del modelo (ya maneja su propio hilo)
-            /*actualizarEstadoJuego("Pasando turno a maquinas...");
-            juego.siguienteTurno();
-
-            // Esperar a que el hilo del modelo actualice el estado y luego refrescar la vista
-            Platform.runLater(() -> {
-                actualizarVistaInicial();
-                if (juego.hayGanador()) {
-                    mostrarVentanaGanador(juego.getGanador().getNombre());
-                }
-            });*/
         }
     }
 
