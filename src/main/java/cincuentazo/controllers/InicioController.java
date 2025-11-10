@@ -34,7 +34,6 @@ public class InicioController {
     private int cantidadMaquinas = 0;
     AlertBox alertBox = new AlertBox();
 
-
     @FXML
     void onActionJugar(ActionEvent event) {
         nombreJugador = textFieldNombre.getText();
@@ -78,17 +77,40 @@ public class InicioController {
     @FXML
     void onActionSeleccionarDosJugadores(ActionEvent event) {
         cantidadMaquinas = 2;
+        actualizarBotonesSeleccion(btnDosJugadores);
     }
 
     @FXML
     void onActionSeleccionarTresJugadores(ActionEvent event) {
         cantidadMaquinas = 3;
+        actualizarBotonesSeleccion(btnTresJugadores);
     }
 
     @FXML
     void onActionSeleccionarUnJugador(ActionEvent event) {
         cantidadMaquinas = 1;
+        actualizarBotonesSeleccion(btnUnJugador);    }
 
+    private void actualizarBotonesSeleccion(Button botonSeleccionado) {
+        // normal
+        String estiloNormal = "-fx-background-color: #000993; -fx-text-fill: white;"
+                + "-fx-background-radius: 5;"
+                + "-fx-font-family: 'Comic Sans MS'; -fx-font-size: 17;"
+                + "-fx-border-color: transparent;";
+
+        // seleccionado
+        String estiloSeleccionado = "-fx-background-color: #787fe7; -fx-text-fill: white;"
+                + "-fx-background-radius: 5;"
+                + "-fx-font-family: 'Comic Sans MS'; -fx-font-size: 17;"
+                + "-fx-border-color: transparent;";
+
+        // restablecer estilos de los botones
+        btnUnJugador.setStyle(estiloNormal);
+        btnDosJugadores.setStyle(estiloNormal);
+        btnTresJugadores.setStyle(estiloNormal);
+
+        //Aplicar solo al botón seleccionado
+        botonSeleccionado.setStyle(estiloSeleccionado);
     }
 }
 
