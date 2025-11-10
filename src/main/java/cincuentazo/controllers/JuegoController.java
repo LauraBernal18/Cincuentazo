@@ -90,10 +90,11 @@ public class JuegoController {
 
     }
 
+    //informar sobre el proceso de ejecución de turnos
     private void actualizarEstadoJuego(String mensaje){
         Platform.runLater(()->{
           labelEstadoJuego.setText(mensaje);
-          System.out.println("Estado" + mensaje);
+          System.out.println("Estado " + mensaje); //Solo para verificar en terminal
         });
     }
 
@@ -157,7 +158,7 @@ public class JuegoController {
         }
     }
 
-
+    //los bots no van a jugar si el humano no termina sus movimientos
     private boolean esperarMovimientoJugador = false;
 
     private void jugarCartaHumano (Carta carta){
@@ -182,7 +183,7 @@ public class JuegoController {
             esperarMovimientoJugador = true;
             actualizarEstadoJuego("Ahora toma una carta del mazo");
 
-
+            //hilo para vigilar cada medio segundo si el humano ya realizó su movimiento
             new Thread(()->{
                 while(esperarMovimientoJugador){
                     try{
@@ -209,6 +210,7 @@ public class JuegoController {
         }
     }
 
+    //actualizar label para indicar al jugador que está pasando luego de que él realizó su movimiento por completo
     private void continuarLuegoDeTomarCarta() {
         actualizarEstadoJuego("Pasando turno a las máquinas...");
         juego.siguienteTurno();
@@ -249,6 +251,7 @@ public class JuegoController {
             //System.out.println("El jugador tomó una carta del mazo.");
             actualizarVistaInicial();
             actualizarEstadoJuego("Tomaste una carta");
+            //vuelve a su valor inicial
             esperarMovimientoJugador = false;
         } else {
             //System.out.println("No hay más cartas en el mazo.");
