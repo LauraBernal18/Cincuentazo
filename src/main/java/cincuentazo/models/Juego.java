@@ -172,4 +172,8 @@ public class Juego {
         inicializarJugadores(cantidadMaquinas);
         repartirCartasIniciales();
     }
+
+    public int getTurnoActual() {
+        return turnoActual;
+    }
 }
