@@ -145,13 +145,34 @@ public class JuegoController {
     }
 
 
-    //informar sobre el proceso de ejecución de turnos
-    private void actualizarEstadoJuego(String mensaje){
-        Platform.runLater(()->{
-          labelEstadoJuego.setText(mensaje);
-          System.out.println("Estado " + mensaje); //Solo para verificar en terminal
+    // Metodo para actualizar el texto del label estado juego con un mensaje temporal que desaparece luego de un tiempo
+    private void actualizarEstadoJuego(String mensaje) {
+        // Usamos Platform.runLater para asegurarnos que la actualización del label se haga en el hilo de interfaz gráfica
+        // Esto es obligatorio porque solo este hilo puede modificar elementos gráficos.
+        Platform.runLater(() -> labelEstadoJuego.setText(mensaje));
+
+        // Creamos un nuevo hilo independiente para no bloquear el hilo principal.
+        // Este hilo tendrá como función esperar un tiempo y luego borrar el mensaje del label.
+        Thread hilo = new Thread(() -> {
+            try {
+                // Aquí hacemos que el hilo "duerma" 2 segs
+                // Esto es para que el mensaje se muestre al usuario durante ese periodo antes de desaparecer.
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                // Si el hilo es interrumpido, marcaremos el estado de la interrupción para respetar la cancelación.
+                Thread.currentThread().interrupt();
+            }
+            // Una vez pasado el tiempo, volvemos a usar Platform.runLater porque vamos a borrar texto del label
+            Platform.runLater(() -> labelEstadoJuego.setText(""));
         });
+
+        // Marcamos el hilo como daemon para que no impida que la aplicación JavaFX cierre si todavía está esperando.
+        hilo.setDaemon(true);
+
+        // Iniciamos la ejecución del hilo, que correrá paralelamente al hilo UI.
+        hilo.start();
     }
+
 
     private void actualizarVistaInicial() {
         // Mostrar mazo boca abajo
@@ -315,11 +336,26 @@ public class JuegoController {
             System.out.println("Error al mostrar la ventana del ganador.");
         }
     }
-
+    private boolean esTurnoJugadorHumano() {
+        return juego.getJugadores().get(juego.getTurnoActual()) == jugadorHumano;
+    }
 
     // ==== Evento: jugador toma carta (click en el mazo) ====
     @FXML
     private void onClickTomarCarta() {
+        if (juego.esTerminado()) return;
+
+
+        if (!esTurnoJugadorHumano()) {
+            actualizarEstadoJuego("No es tu turno para tomar carta.");
+            return;
+        }
+
+
+        if (jugadorHumano.getMano().size() >= 4) {
+            actualizarEstadoJuego("No puedes tomar más cartas.");
+            return;
+        }
         if (juego.esTerminado()) return;
 
         JugadorHumano jugador = (JugadorHumano) juego.getJugadores().get(0);
