@@ -72,6 +72,7 @@ public class JuegoController {
 
         // Mostrar nombre en etiqueta
         LabelNombreJugador.setText(nombreJugador);
+        labelEstadoJuego.setText("Tú empiezas :)");
 
         imagenReverso = new Image(getClass().getResourceAsStream("/cincuentazo/images/cartas/0-C.png"));
 
@@ -87,6 +88,13 @@ public class JuegoController {
         configurarEventosCartasJugador();
         MazoBocaAbajo.setOnMouseClicked(e -> onClickTomarCarta());
 
+    }
+
+    private void actualizarEstadoJuego(String mensaje){
+        Platform.runLater(()->{
+          labelEstadoJuego.setText(mensaje);
+          System.out.println("Estado" + mensaje);
+        });
     }
 
     private void actualizarVistaInicial() {
@@ -150,12 +158,19 @@ public class JuegoController {
     }
 
 
-    private void jugarCartaHumano(Carta carta) {
-        //Carta carta = jugadorHumano.seleccionarCarta(juego.getMesa().getSumaActual());
+    private boolean esperarMovimientoJugador = false;
+
+    private void jugarCartaHumano (Carta carta){
+
+        carta = jugadorHumano.seleccionarCarta(juego.getMesa().getSumaActual());
+
+        actualizarEstadoJuego("turno de: " + jugadorHumano.getNombre());
 
         if (carta != null) {
             jugadorHumano.jugarCarta(carta);
             juego.getMesa().colocarCarta(carta);
+            actualizarEstadoJuego((jugadorHumano.getNombre()) + "colocó "
+                    + carta.getValor() + "de " + carta.getPalo());
             actualizarVistaInicial();
 
             // Verificar si hay ganador
@@ -164,7 +179,24 @@ public class JuegoController {
                 return;
             }
 
+            esperarMovimientoJugador = true;
+            actualizarEstadoJuego("Ahora toma una carta del mazo");
+
+
+            new Thread(()->{
+                while(esperarMovimientoJugador){
+                    try{
+                        Thread.sleep(500);
+                    } catch (InterruptedException e){
+                        Thread.currentThread().interrupt();
+                    }
+                }
+                Platform.runLater(()-> continuarLuegoDeTomarCarta());
+
+            }) .start();
+
             // Llamar directamente al método del modelo (ya maneja su propio hilo)
+            /*actualizarEstadoJuego("Pasando turno a maquinas...");
             juego.siguienteTurno();
 
             // Esperar a que el hilo del modelo actualice el estado y luego refrescar la vista
@@ -173,8 +205,20 @@ public class JuegoController {
                 if (juego.hayGanador()) {
                     mostrarVentanaGanador(juego.getGanador().getNombre());
                 }
-            });
+            });*/
         }
+    }
+
+    private void continuarLuegoDeTomarCarta() {
+        actualizarEstadoJuego("Pasando turno a las máquinas...");
+        juego.siguienteTurno();
+
+        Platform.runLater(() -> {
+            actualizarVistaInicial();
+            if (juego.hayGanador()) {
+                mostrarVentanaGanador(juego.getGanador().getNombre());
+            }
+        });
     }
 
     private void mostrarVentanaGanador(String nombreGanador) {
@@ -198,16 +242,17 @@ public class JuegoController {
         if (juego.esTerminado()) {
             return;
         }
-
-        JugadorHumano jugadorHumano = (JugadorHumano) juego.getJugadores().get(0);
         Carta carta = juego.getMazo().tomarCarta();
 
         if (carta != null) {
             jugadorHumano.recibirCarta(carta);
-            System.out.println("El jugador tomó una carta del mazo.");
+            //System.out.println("El jugador tomó una carta del mazo.");
             actualizarVistaInicial();
+            actualizarEstadoJuego("Tomaste una carta");
+            esperarMovimientoJugador = false;
         } else {
-            System.out.println("No hay más cartas en el mazo.");
+            //System.out.println("No hay más cartas en el mazo.");
+            actualizarEstadoJuego("mazo vacío");
         }
     }
 }
