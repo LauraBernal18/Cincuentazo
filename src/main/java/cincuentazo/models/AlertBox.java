@@ -1,7 +1,11 @@
 package cincuentazo.models;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
+
+import java.util.Optional;
 
 public class AlertBox implements IAlertBox {
 
@@ -70,5 +74,41 @@ public class AlertBox implements IAlertBox {
         );
 
         alert.showAndWait();
+    }
+
+    @Override
+    public int mostrarEleccionAS(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Elegir el valor del AS");
+        alert.setHeaderText("En tu mano hay un AS");
+        alert.setContentText("¿Cómo deseas jugar tu AS?");
+
+        ButtonType botonUno = new ButtonType("Jugar AS como 1");
+        ButtonType botonDiez = new ButtonType("Jugar AS como 10");
+        ButtonType botonCancelar = new ButtonType("No jugar AS ahora");
+
+        alert.getButtonTypes().setAll(botonUno,botonDiez,botonCancelar);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle(
+                "-fx-background-color:  #f5e8f5;" +
+                        "-fx-font-size: 14px;"
+        );
+
+        //mostrar la alerta y esperar respuesta del usuario
+        Optional<ButtonType> resultado = alert.showAndWait();
+
+        //verifica que el usuario presionó el botón y no solo cerro la  pestaña
+        if(resultado.isPresent()){
+            if(resultado.get() == botonUno){
+                return 1;
+            } else if (resultado.get() == botonDiez){
+                return 10;
+            }
+
+        }
+        //retorna 0 si el usuario presiona cancelar
+        return 0;
+        //alert.getContentText();
     }
 }

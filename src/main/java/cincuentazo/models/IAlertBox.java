@@ -12,4 +12,6 @@ public interface IAlertBox {
      * antes de iniciar el juego (nombre y cantidad de maquinas)
      */
     void mostrarAdvertencia(String titulo, String mensaje);
+
+    int mostrarEleccionAS();
 }
