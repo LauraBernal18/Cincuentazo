@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import cincuentazo.models.AlertBox;
 
 import java.io.IOException;
 import java.util.List;
@@ -60,6 +61,8 @@ public class JuegoController {
     private Image imagenReverso;
     //cantidad de maquinas seleccionadas
     private int cantidadMaquinas;
+
+    private AlertBox alertBox = new AlertBox();
 
 
     @FXML
@@ -217,6 +220,23 @@ public class JuegoController {
     private boolean esperarMovimientoJugador = false;
 
     private void jugarCartaHumano (Carta carta){
+        //verificar que la carta a jugar sea un AS
+        if (carta.identificarAS()) {
+            //mostar alerta para que el jugador haga la elección de valor
+            int valorElegido = alertBox.mostrarEleccionAS();
+
+            //devuelve 0 cuando el usuario cancela
+            if (valorElegido == 0) {
+                // El usuario canceló, no jugar la carta
+                actualizarEstadoJuego("Cancelaste jugar el AS");
+                return;
+            }
+
+            // Establecer el valor elegido para el AS
+            jugadorHumano.elegirValorAs(valorElegido);
+            //informar al usuario como jugó su AS
+            actualizarEstadoJuego("Jugando AS como " + valorElegido);
+        }
 
         carta = jugadorHumano.seleccionarCarta(juego.getMesa().getSumaActual());
 
