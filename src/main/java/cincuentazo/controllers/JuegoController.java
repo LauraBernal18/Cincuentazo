@@ -81,7 +81,11 @@ public class JuegoController {
         LabelNombreJugador.setText(nombreJugador);
         labelEstadoJuego.setText("Tú empiezas :)");
 
-        imagenReverso = new Image(getClass().getResourceAsStream("/cincuentazo/images/cartas/0-C.png"));
+        //imagen de reverso nueva en cada juego iniciado
+        String[] palos = Mazo.getPalos(); // Acceder a los palos del Mazo
+        String paloAleatorio = palos[(int)(Math.random() * palos.length)];
+        imagenReverso = new Image(getClass().getResourceAsStream("/cincuentazo/images/cartas/0-" + paloAleatorio
+                + ".png"));
 
         // Poner una carta inicial en la mesa
         Carta cartaInicial = juego.getMesa().getUltimaCarta();

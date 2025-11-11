@@ -69,6 +69,11 @@ public class Mazo {
         mesa.reiniciarMesaDejandoUltima();
     }
 
+    //acceder a los palos de las cartas
+    public static String[] getPalos() {
+        return new String[]{"T", "P", "D", "C"};
+    }
+
     public void agregarCartasAlFinal(List<Carta> cartas) {
         cartasMazo.addAll(cartas);
     }
