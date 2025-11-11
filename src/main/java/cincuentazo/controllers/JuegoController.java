@@ -245,6 +245,13 @@ public class JuegoController {
 
     private void jugarCartaHumano (Carta carta){
         //verificar que la carta a jugar sea un AS
+
+        //si ya se jugó una carta en el turno no permitir que se juegue otra
+        if (esperarMovimientoJugador) {
+            actualizarEstadoJuego("Ya jugaste. Toma carta del mazo");
+            return;
+        }
+
         if (carta.identificarAS()) {
             //mostar alerta para que el jugador haga la elección de valor
             int valorElegido = alertBox.mostrarEleccionAS();
@@ -356,6 +363,12 @@ public class JuegoController {
             actualizarEstadoJuego("No puedes tomar más cartas.");
             return;
         }
+
+        if (!esperarMovimientoJugador) {
+            actualizarEstadoJuego("Primero juega una carta!!.");
+            return;
+        }
+
         if (juego.esTerminado()) return;
 
         JugadorHumano jugador = (JugadorHumano) juego.getJugadores().get(0);
