@@ -324,9 +324,9 @@ public class JuegoController {
                 actualizarEstadoJuego("Tu turno nuevamente :)");
             }
 
-            if (juego.hayGanador()) {
+            /*if (juego.hayGanador()) {
                 mostrarVentanaGanador(juego.getGanador().getNombre());
-            }
+            }*/
         });
 
         // Iniciar jugadas automáticas
