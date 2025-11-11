@@ -159,15 +159,15 @@ public class JuegoController {
         // Este hilo tendrá como función esperar un tiempo y luego borrar el mensaje del label.
         Thread hilo = new Thread(() -> {
             try {
-                // Aquí hacemos que el hilo "duerma" 2 segs
+                // Aquí hacemos que el hilo "duerma" 3 segs
                 // Esto es para que el mensaje se muestre al usuario durante ese periodo antes de desaparecer.
-                Thread.sleep(2000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 // Si el hilo es interrumpido, marcaremos el estado de la interrupción para respetar la cancelación.
                 Thread.currentThread().interrupt();
             }
             // Una vez pasado el tiempo, volvemos a usar Platform.runLater porque vamos a borrar texto del label
-            Platform.runLater(() -> labelEstadoJuego.setText(""));
+            //Platform.runLater(() -> labelEstadoJuego.setText(""));
         });
 
         // Marcamos el hilo como daemon para que no impida que la aplicación JavaFX cierre si todavía está esperando.

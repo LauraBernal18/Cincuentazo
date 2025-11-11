@@ -72,10 +72,10 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ImageView fx:id="carta04" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                              <ImageView fx:id="carta03" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <ImageView fx:id="carta02" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                              <ImageView fx:id="carta01" fitHeight="82.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                              <ImageView fx:id="carta04" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <ImageView fx:id="carta03" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <ImageView fx:id="carta02" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <ImageView fx:id="carta01" fitHeight="138.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <GridPane prefHeight="149.0" prefWidth="624.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -168,7 +168,7 @@
                               </Label>
                               <Label fx:id="labelEstadoJuego" alignment="CENTER" prefHeight="26.0" prefWidth="301.0" style="-fx-background-color: white;" text="label actualizar estado" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="DejaVu Sans Bold" size="18.0" />
+                                    <Font name="DejaVu Sans Mono Bold" size="11.0" />
                                  </font>
                               </Label>
                            </children>
@@ -203,7 +203,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="LabelNombreJugador" alignment="CENTER" prefHeight="46.0" prefWidth="505.0" style="-fx-background-color: WHITE; -fx-background-radius: 20; -fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: BLACK;" text="LABEL NOMBRE DEL JUGADOR" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label fx:id="LabelNombreJugador" alignment="CENTER" prefHeight="46.0" prefWidth="505.0" style="-fx-background-color: WHITE; -fx-background-radius: 20; -fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: #90374c;" text="LABEL NOMBRE DEL JUGADOR" textFill="#2c2426" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font name="DejaVu Sans Condensed Bold" size="32.0" />
                </font>
