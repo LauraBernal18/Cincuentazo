@@ -153,9 +153,8 @@ public class JuegoController {
         }
     }
 
-
     // Metodo para actualizar el texto del label estado juego con un mensaje temporal que desaparece luego de un tiempo
-    private void actualizarEstadoJuego(String mensaje) {
+    private void actualizarLabelEstadoJuego(String mensaje) {
         // Usamos Platform.runLater para asegurarnos que la actualización del label se haga en el hilo de interfaz gráfica
         // Esto es obligatorio porque solo este hilo puede modificar elementos gráficos.
         Platform.runLater(() -> labelEstadoJuego.setText(mensaje));
@@ -164,15 +163,15 @@ public class JuegoController {
         // Este hilo tendrá como función esperar un tiempo y luego borrar el mensaje del label.
         Thread hilo = new Thread(() -> {
             try {
-                // Aquí hacemos que el hilo "duerma" 3 segs
+                // Aquí hacemos que el hilo "duerma" 10 segs
                 // Esto es para que el mensaje se muestre al usuario durante ese periodo antes de desaparecer.
-                Thread.sleep(3000);
+                Thread.sleep(30000);
             } catch (InterruptedException e) {
                 // Si el hilo es interrumpido, marcaremos el estado de la interrupción para respetar la cancelación.
                 Thread.currentThread().interrupt();
             }
             // Una vez pasado el tiempo, volvemos a usar Platform.runLater porque vamos a borrar texto del label
-            //Platform.runLater(() -> labelEstadoJuego.setText(""));
+            Platform.runLater(() -> labelEstadoJuego.setText(""));
         });
 
         // Marcamos el hilo como daemon para que no impida que la aplicación JavaFX cierre si todavía está esperando.
@@ -253,29 +252,62 @@ public class JuegoController {
     }
 
     private void jugarCartaHumano (Carta carta){
-        //verificar que la carta a jugar sea un AS
-
-        //si ya se jugó una carta en el turno no permitir que se juegue otra
+        // Si ya jugó una carta en este turno
         if (esperarMovimientoJugador) {
-            actualizarEstadoJuego("Ya jugaste. Toma carta del mazo");
+            actualizarLabelEstadoJuego("Ya jugaste. Toma carta del mazo");
             return;
         }
 
+        if (carta == null) {
+            actualizarLabelEstadoJuego("Selecciona una carta válida.");
+            return;
+        }
+
+        int sumaActual = juego.getMesa().getSumaActual();
+
+        // Si es un AS, pedir valor antes de validar
         if (carta.identificarAS()) {
-            //mostar alerta para que el jugador haga la elección de valor
             int valorElegido = alertBox.mostrarEleccionAS();
 
-            //devuelve 0 cuando el usuario cancela
             if (valorElegido == 0) {
-                // El usuario canceló, no jugar la carta
-                actualizarEstadoJuego("Cancelaste jugar el AS");
+                actualizarLabelEstadoJuego("Cancelaste jugar el AS.");
                 return;
             }
 
-            // Establecer el valor elegido para el AS
+            if (valorElegido == 10 && (sumaActual + 10 > 50)) {
+                valorElegido = 1;
+                actualizarLabelEstadoJuego("No puedes usar el AS como 10. Se jugará como 1.");
+            }
+
             jugadorHumano.elegirValorAs(valorElegido);
-            //informar al usuario como jugó su AS
-            actualizarEstadoJuego("Jugando AS como " + valorElegido);
+        }
+
+        // Calcular nueva suma
+        int nuevaSuma = sumaActual + carta.getValorSegunReglas(sumaActual);
+        boolean cartaValida = nuevaSuma <= 50;
+
+        // Verificar si hay otras cartas válidas
+        boolean hayCartasValidas = false;
+        for (Carta c : jugadorHumano.getMano()) {
+            int posibleSuma = sumaActual + c.getValorSegunReglas(sumaActual);
+            if (posibleSuma <= 50) {
+                hayCartasValidas = true;
+                break;
+            }
+        }
+
+        if (!cartaValida && hayCartasValidas) {
+            alertBox.mostrarAdvertencia("Carta inválida", "Escoge una carta válida.");
+            return;
+        } else if (!cartaValida && !hayCartasValidas) {
+            juego.eliminarJugadorHumano(jugadorHumano, "No tienes cartas válidas para jugar, has sido eliminado.");
+            juego.pasarAlSiguienteJugador();
+            actualizarVistaInicial();
+
+            if (juego.getJugadorActual() instanceof JugadorMaquina && !juego.hayGanador()) {
+                juego.jugarTurnosMaquinas();
+            }
+            return;
         }
 
         carta = jugadorHumano.seleccionarCartaAJugar(juego.getMesa().getSumaActual());
@@ -294,7 +326,7 @@ public class JuegoController {
             }
 
             esperarMovimientoJugador = true;
-            actualizarEstadoJuego("Ahora toma una carta del mazo");
+            actualizarLabelEstadoJuego("Ahora toma una carta del mazo");
 
             //hilo para vigilar cada medio segundo si el humano ya realizó su movimiento
             new Thread(()->{
@@ -313,7 +345,7 @@ public class JuegoController {
     }
 
     private void continuarLuegoDeTomarCarta() {
-        actualizarEstadoJuego("Pasando turno a las máquinas...");
+        actualizarLabelEstadoJuego("Pasando turno a las máquinas...");
         juego.pasarAlSiguienteJugador(); //  MUY IMPORTANTE: pasar al primer bot
         deshabilitarInteraccionHumano();
 
@@ -324,7 +356,7 @@ public class JuegoController {
 
             if (juego.getJugadorActual() instanceof JugadorHumano) {
                 habilitarInteraccionHumano();
-                actualizarEstadoJuego("Tu turno nuevamente :)");
+                actualizarLabelEstadoJuego("Tu turno nuevamente :)");
                 actualizarLabelTurnos("turno de: " + jugadorHumano.getNombre());
             }
 
@@ -338,6 +370,7 @@ public class JuegoController {
     }
 
     private void mostrarVentanaGanador(String nombreGanador) {
+        Platform.runLater(() -> {
         try {
             // Crear y mostrar la ventana del ganador
             new cincuentazo.views.VentanaGanadorView(nombreGanador).show();
@@ -349,6 +382,7 @@ public class JuegoController {
         } catch (IOException e) {
             System.out.println("Error al mostrar la ventana del ganador.");
         }
+        });
     }
 
     private boolean esTurnoJugadorHumano() {
@@ -362,18 +396,18 @@ public class JuegoController {
 
 
         if (!esTurnoJugadorHumano()) {
-            actualizarEstadoJuego("No es tu turno para tomar carta.");
+            actualizarLabelEstadoJuego("No es tu turno para tomar carta.");
             return;
         }
 
 
         if (jugadorHumano.getMano().size() >= 4) {
-            actualizarEstadoJuego("No puedes tomar más cartas.");
+            actualizarLabelEstadoJuego("No puedes tomar más cartas.");
             return;
         }
 
         if (!esperarMovimientoJugador) {
-            actualizarEstadoJuego("Primero juega una carta!!.");
+            actualizarLabelEstadoJuego("Primero juega una carta!!.");
             return;
         }
 
