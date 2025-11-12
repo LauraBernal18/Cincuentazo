@@ -147,49 +147,8 @@ public class Juego {
         humano.setEliminado(true);
         mazo.agregarCartasAlFinal(humano.getMano());
         humano.limpiarMano();
-        actualizarLabelTurnos("El jugador humano " + motivo);
+        actualizarLabelTurnos( motivo);
     }
-/*
-    public void jugarTurnoHumano(Carta cartaSeleccionada) {
-        JugadorHumano humano = (JugadorHumano) jugadores.get(turnoActual);
-
-        // Guardar la carta seleccionada
-        humano.seleccionarCartaManual(cartaSeleccionada);
-
-        // Obtener la carta seleccionada real
-        Carta carta = humano.seleccionarCarta(mesa.getSumaActual());
-
-        if (carta == null) {
-            eliminarJugadorHumano(humano, "no tiene jugadas válidas.");
-            pasarAlSiguienteJugador();
-            return;
-        }
-
-        // Jugar la carta
-        humano.jugarCarta(carta);
-        mesa.colocarCarta(carta);
-
-        // Verificar si se pasó de 50
-        if (mesa.getSumaActual() > 50) {
-            eliminarJugadorHumano(humano, "se pasó de 50 y queda eliminado.");
-            pasarAlSiguienteJugador();
-            return;
-        }
-
-        // nueva carta si hay mazo
-        Carta nueva = mazo.tomarCarta();
-        if (nueva != null) {
-            humano.recibirCarta(nueva);
-        }
-
-        // Pasar turno al siguiente
-        pasarAlSiguienteJugador();
-
-        // Actualizar interfaz
-        if (onCambioDeTurno != null) {
-            onCambioDeTurno.run();
-        }
-    } */
 
 
     // Pasa al siguiente jugador
