@@ -1,11 +1,25 @@
 package cincuentazo.models;
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 
 import java.util.Optional;
+
+/**
+ * The {@code AlertBox} class provides different types of graphical alerts
+ * for displaying information, warnings, and user choices within the Cincuentazo game.
+ * It implements the {@link IAlertBox} interface.
+ *
+ * <p>This class uses JavaFX {@link Alert} dialogs to show customized messages
+ * with specific visual styles for user interaction.</p>
+ *
+ * @author Hilary Herrera, Dana Gómez, Laura Bernal.
+ * @version 1.3
+ * @since 2025
+ * @see javafx.scene.control.Alert
+ * @see IAlertBox
+ */
 
 public class AlertBox implements IAlertBox {
 
@@ -42,61 +56,79 @@ public class AlertBox implements IAlertBox {
 
             """;
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Reglas del Cincuentazo");
-        alert.setHeaderText("📖 CÓMO JUGAR AL CINCUENTAZO");
-        alert.setContentText(reglas);
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Reglas del Cincuentazo");
+        alerta.setHeaderText("📖 CÓMO JUGAR AL CINCUENTAZO");
+        alerta.setContentText(reglas);
 
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.setStyle(
-                "-fx-background-color: #D6E8FF;" +   // fondo rosa
+        DialogPane panel = alerta.getDialogPane();
+        panel.setStyle(
+                "-fx-background-color: #edade1;" +   // fondo rosa
                         "-fx-font-size: 14px;" +
                         "-fx-font-weight: bold;"
         );
 
-        alert.setWidth(600);
-        alert.setHeight(800);
-        alert.showAndWait();
+        alerta.setWidth(600);
+        alerta.setHeight(800);
+        alerta.showAndWait();
     }
 
+
+    /**
+     * Displays a warning alert with a custom title and message.
+     *
+     * @param titulo  the title of the alert window.
+     * @param mensaje the warning message to be displayed to the user.
+     */
     @Override
     public void mostrarAdvertencia(String titulo, String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.getContentText();
-        alert.setContentText(mensaje);
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.getContentText();
+        alerta.setContentText(mensaje);
 
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.setStyle(
+        DialogPane panel = alerta.getDialogPane();
+        panel.setStyle(
                 "-fx-background-color: #FFF3CD;" +
                 "-fx-font-size: 14px;"
         );
 
-        alert.showAndWait();
+        alerta.showAndWait();
     }
 
+    /**
+     * Displays a confirmation dialog allowing the user to choose
+     * the value of the Ace card (AS) when it appears in their hand.
+     *
+     * <p>The user can select between playing the Ace as value {@code 1} or {@code 10},
+     * or cancel the action.</p>
+     *
+     * @return {@code 1} if the player chooses to play the Ace as 1,
+     *         {@code 10} if the player chooses to play it as 10,
+     *         or {@code 0} if the player cancels the action.
+     */
     @Override
     public int mostrarEleccionAS(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Elegir el valor del AS");
-        alert.setHeaderText("En tu mano hay un AS");
-        alert.setContentText("¿Cómo deseas jugar tu AS?");
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle("Elegir el valor del AS");
+        alerta.setHeaderText("En tu mano hay un AS");
+        alerta.setContentText("¿Cómo deseas jugar tu AS?");
 
         ButtonType botonUno = new ButtonType("Jugar AS como 1");
         ButtonType botonDiez = new ButtonType("Jugar AS como 10");
         ButtonType botonCancelar = new ButtonType("No jugar AS ahora");
 
-        alert.getButtonTypes().setAll(botonUno,botonDiez,botonCancelar);
+        alerta.getButtonTypes().setAll(botonUno,botonDiez,botonCancelar);
 
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.setStyle(
+        DialogPane panel = alerta.getDialogPane();
+        panel.setStyle(
                 "-fx-background-color:  #f5e8f5;" +
                         "-fx-font-size: 14px;"
         );
 
         //mostrar la alerta y esperar respuesta del usuario
-        Optional<ButtonType> resultado = alert.showAndWait();
+        Optional<ButtonType> resultado = alerta.showAndWait();
 
         //verifica que el usuario presionó el botón y no solo cerro la  pestaña
         if(resultado.isPresent()){
