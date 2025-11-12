@@ -12,6 +12,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controller class for the winner window of the Cincuentazo game.
+ * <p>
+ * This controller is responsible for displaying the winner’s name,
+ * and managing the actions to either start a new game or exit the application.
+ * </p>
+ *
+ * @author Hilary Herrera, Dana Gómez, Laura Bernal
+ * @version 1.3
+ * @since 2025
+ * @see cincuentazo.views.InicioView
+ */
 public class VentanaGanadorController {
 
     @FXML
@@ -23,11 +35,28 @@ public class VentanaGanadorController {
     @FXML
     private Button btnSalir;
 
+
+    /**
+     * Displays the winner’s name and a congratulatory message on the label.
+     *
+     * @param nombre the name of the player who won the game.
+     */
     public void mostrarGanador(String nombre) {
         lblGanador.setText("¡" + nombre + " ha ganado el Cincuentazo!");
 
     }
 
+
+    /**
+     * Handles the event triggered when the user clicks the "New Game" button.
+     * <p>
+     * Displays a confirmation alert asking whether the user wants to start a new game.
+     * If confirmed, it closes the current stage and opens the {@link InicioView}.
+     * </p>
+     *
+     * @param event the action event triggered by clicking the "New Game" button.
+     * @throws IOException if there is an issue loading the {@link InicioView}.
+     */
     @FXML
     private void botonIniciarNuevoJuego(ActionEvent event) throws IOException {
         // Create the confirmation alert
@@ -39,34 +68,27 @@ public class VentanaGanadorController {
         // Show the alert and save the pressed button
         ButtonType respuesta = confirmacion.showAndWait().orElse(ButtonType.CANCEL);
 
-
-    /*"Displays the confirmation window (showAndWait()),
-    waits for the user to press a button (such as OK or CANCEL),
-    and stores the button that the user chose in the variable response.
-    " The method showAndWait() returns a value of type Optional<ButtonType>.
-    This means that it may or may not contain a value,
-    depending on whether the user pressed something.
-    For example:If the player presses OK,
-    it returns ButtonType.OK.If they press Cancel,
-    it returns ButtonType.CANCEL.If they close the window without clicking,
-    the Optional has no value.
-    That is why .orElse(ButtonType.CANCEL) is used:"If nothing was pressed,
-    assume it was CANCEL.".*/
-
-
         // If the user presses ACCEPT, generate a new game
         if (respuesta == ButtonType.OK) {
             InicioView inicioView = InicioView.getInstance();
             inicioView.show();
 
             //Close stage
-            Node source =(Node)event.getSource();
-            Stage stage = (Stage)source.getScene().getWindow();
+            Node fuente =(Node)event.getSource();
+            Stage stage = (Stage)fuente.getScene().getWindow();
             stage.close();
 
         }
     }
 
+    /**
+     * Handles the event triggered when the user clicks the "Exit" button.
+     * <p>
+     * Terminates the application completely using {@code System.exit(0)}.
+     * </p>
+     *
+     * @param evento the action event triggered by clicking the "Exit" button.
+     */
     @FXML
     private void botonSalir(ActionEvent evento) {
         System.exit(0);
