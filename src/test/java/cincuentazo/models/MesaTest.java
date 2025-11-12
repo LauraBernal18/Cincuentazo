@@ -16,14 +16,14 @@ class MesaTest {
     }
 
     @Test
-    void colocarCarta_deberiaActualizarSumaCorrectamente() {
+    void colocarCarta_EnMesa_deberiaActualizarSumaCorrectamente() {
         Carta c1 = new Carta("5", "C");
         Carta c2 = new Carta("K", "P"); // vale -10
         Carta c3 = new Carta("A", "T"); // vale 10 si no pasa de 50
 
-        mesa.colocarCarta(c1);
-        mesa.colocarCarta(c2);
-        mesa.colocarCarta(c3);
+        mesa.colocarCartaEnMesa(c1);
+        mesa.colocarCartaEnMesa(c2);
+        mesa.colocarCartaEnMesa(c3);
 
         assertEquals(5 - 10 + 10, mesa.getSumaActual());
     }
@@ -33,8 +33,8 @@ class MesaTest {
         Carta c1 = new Carta("3", "D");
         Carta c2 = new Carta("7", "C");
 
-        mesa.colocarCarta(c1);
-        mesa.colocarCarta(c2);
+        mesa.colocarCartaEnMesa(c1);
+        mesa.colocarCartaEnMesa(c2);
 
         assertEquals(c2, mesa.getUltimaCarta());
         assertEquals("7", mesa.getUltimaCarta().getValor());
@@ -46,9 +46,9 @@ class MesaTest {
         Carta c2 = new Carta("8", "C");
         Carta c3 = new Carta("K", "P");
 
-        mesa.colocarCarta(c1);
-        mesa.colocarCarta(c2);
-        mesa.colocarCarta(c3);
+        mesa.colocarCartaEnMesa(c1);
+        mesa.colocarCartaEnMesa(c2);
+        mesa.colocarCartaEnMesa(c3);
 
         int sumaAntes = mesa.getSumaActual();
 
@@ -66,8 +66,8 @@ class MesaTest {
     }
 
     @Test
-    void colocarCarta_conCartaNull_noDebeAfectarMesa() {
-        mesa.colocarCarta(null);
+    void colocarCarta_conCartaEnMesaNull_noDebeAfectarMesa() {
+        mesa.colocarCartaEnMesa(null);
         assertEquals(0, mesa.getSumaActual());
         assertTrue(mesa.getCartasEnMesa().isEmpty());
     }

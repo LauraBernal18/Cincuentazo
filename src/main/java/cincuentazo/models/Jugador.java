@@ -21,7 +21,7 @@ import java.util.List;
 public abstract class Jugador {
 
     protected String nombre;
-    protected List<Carta> mano;
+    protected ArrayList<Carta> mano;
 
     /** Indicates whether the player has been eliminated from the game. */
     protected boolean eliminado;
@@ -44,7 +44,7 @@ public abstract class Jugador {
      *
      * @return a {@link List} containing the cards in hand.
      */
-    public List<Carta> getMano() {
+    public ArrayList<Carta> getMano() {
         return mano;
     }
 
@@ -117,7 +117,7 @@ public abstract class Jugador {
      * @param sumaMesa the current total value of the cards on the table.
      * @return the {@link Carta} selected to be played.
      */
-    public abstract Carta seleccionarCarta(int sumaMesa);
+    public abstract Carta seleccionarCartaAJugar(int sumaMesa);
 
 
     /**

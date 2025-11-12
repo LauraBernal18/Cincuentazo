@@ -60,7 +60,7 @@ public class JugadorHumano extends Jugador {
     /**
      * Returns the card currently selected by the player to play during their turn.
      * <p>
-     * This method overrides {@link Jugador#seleccionarCarta(int)} and simply
+     * This method overrides {@link Jugador#seleccionarCartaAJugar(int)} and simply
      * returns the card that was manually chosen via the interface.
      * </p>
      *
@@ -68,7 +68,7 @@ public class JugadorHumano extends Jugador {
      * @return the {@link Carta} selected by the human player, or {@code null} if no card is selected.
      */
     @Override
-    public Carta seleccionarCarta(int sumaMesa) {
+    public Carta seleccionarCartaAJugar(int sumaMesa) {
         return cartaSeleccionada;
     }
 }

@@ -98,7 +98,7 @@ public class JuegoController {
         Carta cartaInicial = juego.getMesa().getUltimaCarta();
         if (cartaInicial == null) {
             Carta carta = juego.getMazo().tomarCarta();
-            juego.getMesa().colocarCarta(carta);
+            juego.getMesa().colocarCartaEnMesa(carta);
         }
 
         //nuevo metodo
@@ -278,13 +278,13 @@ public class JuegoController {
             actualizarEstadoJuego("Jugando AS como " + valorElegido);
         }
 
-        carta = jugadorHumano.seleccionarCarta(juego.getMesa().getSumaActual());
+        carta = jugadorHumano.seleccionarCartaAJugar(juego.getMesa().getSumaActual());
 
         actualizarLabelTurnos("turno de: " + jugadorHumano.getNombre());
 
         if (carta != null) {
             jugadorHumano.jugarCarta(carta);
-            juego.getMesa().colocarCarta(carta);
+            juego.getMesa().colocarCartaEnMesa(carta);
             actualizarVistaInicial();
 
             // Verificar si hay ganador

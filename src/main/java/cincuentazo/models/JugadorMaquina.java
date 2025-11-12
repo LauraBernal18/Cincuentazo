@@ -63,7 +63,7 @@ public class JugadorMaquina extends Jugador {
      *         or {@code null} if no valid card is found (the machine is eliminated).
      */
     @Override
-    public Carta seleccionarCarta(int sumaMesa) {
+    public Carta seleccionarCartaAJugar(int sumaMesa) {
 
         ArrayList<Carta> cartasJugables = new ArrayList<>();
         // Recorremos las cartas de la mano con for de índice

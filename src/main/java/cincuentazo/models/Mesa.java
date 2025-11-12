@@ -44,8 +44,9 @@ public class Mesa {
      * @see Carta#getValorSegunReglas(int)
      */
     // Coloca una carta sobre la mesa y actualiza la suma acumulada correctamente
-    public void colocarCarta(Carta carta) {
-        if (carta == null) return;
+    public void colocarCartaEnMesa(Carta carta) {
+        if (carta == null)
+            return;
 
         cartasEnMesa.push(carta); // agrega al tope
         int valorCarta = carta.getValorSegunReglas(sumaActual);
@@ -71,7 +72,9 @@ public class Mesa {
      */
     // Devuelve la carta visible (última jugada)
     public Carta getUltimaCarta() {
-        if (cartasEnMesa.isEmpty()) return null;
+        if (cartasEnMesa.isEmpty())
+            return null;
+
         return cartasEnMesa.peek();
     }
 
@@ -100,7 +103,8 @@ public class Mesa {
      */
     // Deja solo la última carta sobre la mesa, manteniendo la suma acumulada
     public void reiniciarMesaDejandoUltima() {
-        if (cartasEnMesa.size() <= 1) return;
+        if (cartasEnMesa.size() <= 1)
+            return;
 
         Carta ultima = cartasEnMesa.peek();
         cartasEnMesa.clear();

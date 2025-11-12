@@ -52,7 +52,7 @@ public class Juego {
 
     private void procesarCartaJugadaMaquina(JugadorMaquina maquina, Carta carta) {
         maquina.jugarCarta(carta);
-        mesa.colocarCarta(carta);
+        mesa.colocarCartaEnMesa(carta);
 
         // Refrescar GUI
         if (onCambioDeTurno != null) {
@@ -106,7 +106,7 @@ public class Juego {
                 actualizarLabelTurnos("Turno de: " + maquina.getNombre());
                 maquina.esperarJugador(); // simula pensar
 
-                Carta carta = maquina.seleccionarCarta(mesa.getSumaActual());
+                Carta carta = maquina.seleccionarCartaAJugar(mesa.getSumaActual());
                 if (carta != null) {
                     procesarCartaJugadaMaquina(maquina, carta);
                 } else {
