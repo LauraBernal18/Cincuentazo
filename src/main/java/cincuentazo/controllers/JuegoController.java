@@ -55,6 +55,9 @@ public class JuegoController {
     @FXML
     private Label LabelNombreJugador;
 
+    @FXML
+    private Label labelTurnoActual;
+
     private Juego juego;
     private List<Jugador> jugadores;
     private JugadorHumano jugadorHumano;
@@ -64,13 +67,16 @@ public class JuegoController {
 
     private AlertBox alertBox = new AlertBox();
 
+    //los bots no van a jugar si el humano no termina sus movimientos
+    private boolean esperarMovimientoJugador = false;
 
     @FXML
     public void initialize(String nombreJugador, int cantidadMaquinas) {
         // Crear el modelo
         //guardar el parametro para que se pueda usar sin problema dentro de esta clase
         this.cantidadMaquinas = cantidadMaquinas;
-        juego = new Juego(cantidadMaquinas);
+        juego = new Juego(nombreJugador, cantidadMaquinas, labelTurnoActual);
+        juego.jugarTurnosMaquinas();
         jugadores = juego.getJugadores();
 
         // Configurar jugador humano
@@ -80,6 +86,7 @@ public class JuegoController {
         // Mostrar nombre en etiqueta
         LabelNombreJugador.setText(nombreJugador);
         labelEstadoJuego.setText("Tú empiezas :)");
+        labelTurnoActual.setText(" ");
 
         //imagen de reverso nueva en cada juego iniciado
         String[] palos = Mazo.getPalos(); // Acceder a los palos del Mazo
@@ -99,8 +106,6 @@ public class JuegoController {
 
         // Cargar interfaz inicial
         actualizarVistaInicial();
-
-
 
         configurarEventosCartasJugador();
         MazoBocaAbajo.setOnMouseClicked(e -> onClickTomarCarta());
@@ -177,6 +182,9 @@ public class JuegoController {
         hilo.start();
     }
 
+    private void actualizarLabelTurnos(String texto) {
+        Platform.runLater(() -> labelTurnoActual.setText(texto));
+    }
 
     private void actualizarVistaInicial() {
         // Mostrar mazo boca abajo
@@ -244,9 +252,6 @@ public class JuegoController {
         }
     }
 
-    //los bots no van a jugar si el humano no termina sus movimientos
-    private boolean esperarMovimientoJugador = false;
-
     private void jugarCartaHumano (Carta carta){
         //verificar que la carta a jugar sea un AS
 
@@ -275,13 +280,11 @@ public class JuegoController {
 
         carta = jugadorHumano.seleccionarCarta(juego.getMesa().getSumaActual());
 
-        actualizarEstadoJuego("turno de: " + jugadorHumano.getNombre());
+        actualizarLabelTurnos("turno de: " + jugadorHumano.getNombre());
 
         if (carta != null) {
             jugadorHumano.jugarCarta(carta);
             juego.getMesa().colocarCarta(carta);
-            actualizarEstadoJuego((jugadorHumano.getNombre()) + "colocó "
-                    + carta.getValor() + "de " + carta.getPalo());
             actualizarVistaInicial();
 
             // Verificar si hay ganador
@@ -322,6 +325,7 @@ public class JuegoController {
             if (juego.getJugadorActual() instanceof JugadorHumano) {
                 habilitarInteraccionHumano();
                 actualizarEstadoJuego("Tu turno nuevamente :)");
+                actualizarLabelTurnos("turno de: " + jugadorHumano.getNombre());
             }
 
             /*if (juego.hayGanador()) {
@@ -332,7 +336,6 @@ public class JuegoController {
         // Iniciar jugadas automáticas
         juego.jugarTurnosMaquinas();
     }
-
 
     private void mostrarVentanaGanador(String nombreGanador) {
         try {
@@ -347,6 +350,7 @@ public class JuegoController {
             System.out.println("Error al mostrar la ventana del ganador.");
         }
     }
+
     private boolean esTurnoJugadorHumano() {
         return juego.getJugadores().get(juego.getTurnoActual()) == jugadorHumano;
     }
@@ -388,7 +392,6 @@ public class JuegoController {
             System.out.println("No hay más cartas en el mazo.");
         }
     }
-
 
     private void deshabilitarInteraccionHumano() {
         cartaJugador1.setDisable(true);
