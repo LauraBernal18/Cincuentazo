@@ -53,6 +53,14 @@ public class Juego {
     private void procesarCartaJugadaMaquina(JugadorMaquina maquina, Carta carta) {
         maquina.jugarCarta(carta);
         mesa.colocarCarta(carta);
+
+        // Refrescar GUI
+        if (onCambioDeTurno != null) {
+            Platform.runLater(onCambioDeTurno);
+        }
+        actualizarLabelTurnos(maquina.getNombre() + " colocó carta en la mesa.");
+        maquina.esperarJugador();
+
         Carta nueva = mazo.tomarCarta();
         if (nueva != null) {
             maquina.recibirCarta(nueva);
@@ -84,8 +92,13 @@ public class Juego {
             while (!terminado) {
                 Jugador jugador = jugadores.get(turnoActual);
 
-                // Si llega el humano → detener el hilo (turno humano)
                 if (!(jugador instanceof JugadorMaquina)) {
+                    // Si el humano está eliminado, avanzar automáticamente
+                    if (jugador.esEliminado()) {
+                        pasarAlSiguienteJugador();
+                        continue; // continuar ciclo para siguiente jugador
+                    }
+                    // Si humano no eliminado, esperar a que él juegue (detener hilo)
                     break;
                 }
 
@@ -96,14 +109,8 @@ public class Juego {
                 Carta carta = maquina.seleccionarCarta(mesa.getSumaActual());
                 if (carta != null) {
                     procesarCartaJugadaMaquina(maquina, carta);
-
                 } else {
                     eliminarMaquina(maquina, "fue eliminado (sin jugadas válidas)."); // 🔹 usa el submétodo
-                }
-
-                // Refrescar GUI
-                if (onCambioDeTurno != null) {
-                    Platform.runLater(onCambioDeTurno);
                 }
 
                 // Si se pasa de 50 → eliminar jugador maquina
@@ -136,17 +143,13 @@ public class Juego {
         hilo.setDaemon(true);
         hilo.start();
     }
-/*
     public void eliminarJugadorHumano(JugadorHumano humano, String motivo) {
         humano.setEliminado(true);
         mazo.agregarCartasAlFinal(humano.getMano());
         humano.limpiarMano();
         actualizarLabelTurnos("El jugador humano " + motivo);
-
-        // No se elimina de la lista (para conservar su posición en el orden)
-        // pero simplemente ya no podrá jugar más.
     }
-
+/*
     public void jugarTurnoHumano(Carta cartaSeleccionada) {
         JugadorHumano humano = (JugadorHumano) jugadores.get(turnoActual);
 
@@ -191,13 +194,31 @@ public class Juego {
 
     // Pasa al siguiente jugador
     public void pasarAlSiguienteJugador() {
-        turnoActual++;
-        if (turnoActual >= jugadores.size()) turnoActual = 0;
+        int totalJugadores = jugadores.size();
+        int intentos = 0; // Para no caer en un bucle infinito
 
-        // Verificar si solo queda un jugador
+        turnoActual++;
+        if (turnoActual >= totalJugadores) {
+            turnoActual = 0; // Vuelve al primer jugador
+        }
+
+        while (jugadores.get(turnoActual).esEliminado()) {
+            turnoActual++;
+            if (turnoActual >= totalJugadores) {
+                turnoActual = 0;
+            }
+            intentos++;
+
+            if (intentos > totalJugadores) {
+                terminado = true;
+                return;
+            }
+        }
+
         int activos = 0;
         Jugador posibleGanador = null;
-        for (Jugador j : jugadores) {
+        for (int i = 0; i < jugadores.size(); i++) {
+            Jugador j = jugadores.get(i);
             if (!j.esEliminado()) {
                 activos++;
                 posibleGanador = j;
