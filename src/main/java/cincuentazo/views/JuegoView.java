@@ -27,6 +27,8 @@ public class JuegoView extends Stage {
         Scene scene = new Scene(root);
         this.setScene(scene);
         this.setTitle(" >> C I N C U E N T A Z O << ");
+
+        this.setMaximized(true);
     }
 
 }
