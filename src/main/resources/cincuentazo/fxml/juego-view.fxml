@@ -23,7 +23,7 @@
     <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <GridPane prefHeight="661.0" prefWidth="1133.0" style="-fx-background-color: #ab1830; -fx-background-radius: 50; -fx-border-width: 3; -fx-border-color: black; -fx-border-radius: 50;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <GridPane prefHeight="747.0" prefWidth="1110.0" style="-fx-background-color: #ab1830; -fx-background-radius: 50; -fx-border-width: 3; -fx-border-color: black; -fx-border-radius: 50;" GridPane.columnIndex="2" GridPane.rowIndex="1">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="321.0" minWidth="0.0" prefWidth="14.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1071.0" minWidth="10.0" prefWidth="1060.0" />
@@ -168,7 +168,12 @@
                               </Label>
                               <Label fx:id="labelEstadoJuego" alignment="CENTER" prefHeight="26.0" prefWidth="301.0" style="-fx-background-color: white;" text="label actualizar estado" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="DejaVu Sans Mono Bold" size="11.0" />
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelTurnoActual" prefHeight="18.0" prefWidth="462.0" text="Turno: " GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="18.0" />
                                  </font>
                               </Label>
                            </children>
@@ -217,10 +222,10 @@
       </AnchorPane>
       <AnchorPane maxWidth="-Infinity" prefHeight="55.0" prefWidth="1132.0" GridPane.columnIndex="2">
          <children>
-            <Label fx:id="labelTurnoMaquina2" alignment="CENTER" layoutX="407.0" layoutY="8.0" prefHeight="40.0" prefWidth="315.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2;" text="nombre de maquina 2" />
+            <Label fx:id="labelTurnoMaquina2" alignment="CENTER" layoutX="407.0" layoutY="8.0" prefHeight="27.0" prefWidth="315.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2;" text="nombre de maquina 2" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="758.0" prefWidth="59.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="758.0" prefWidth="192.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <children>
             <Label fx:id="labelTurnoMaquina3" alignment="CENTER" layoutX="-116.0" layoutY="359.0" prefHeight="40.0" prefWidth="315.0" rotate="270.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2;" text="nombre de maquina 3" />
          </children>
