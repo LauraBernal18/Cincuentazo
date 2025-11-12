@@ -9,26 +9,36 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Clase que muestra la ventana de inicio del juego.
- * Se encarga de cargar el diseño FXML, crear la escena y ajustar las propiedades de la ventana.
- *  @author Laura Valentina Bernal Lozada, Dana Sofia Gomez Manrique, Hilary Herrera Erazo
- *  @version 1.0
+ * Represents the initial window (main menu) of the Cincuentazo game.
+ * <p>
+ * This view loads the FXML layout {@code inicio-view.fxml}, sets up
+ * the stage with a custom icon and title, and prevents window resizing.
+ * It follows a Singleton pattern to ensure only one instance of
+ * {@code InicioView} exists during runtime.
+ * </p>
+ *
+ * @author Hilary Herrera, Dana Gómez, Laura Bernal
+ * @version 1.1
+ * @since 2025
+ * @see javafx.stage.Stage
+ * @see javafx.fxml.FXMLLoader
  */
 public class InicioView extends Stage {
 
+
     /**
-     * Crea la ventana de inicio.
-     * Carga el archivo FXML, configura la escena y define el título, el ícono y otras propiedades.
+     * Creates and initializes the main window of the game by loading
+     * the FXML file and setting the scene properties.
      *
-     * @throws IOException si ocurre un error al cargar el archivo FXML
+     * @throws IOException if the FXML file cannot be loaded or is missing.
      */
     public InicioView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(
                 getClass().getResource("/cincuentazo/fxml/inicio-view.fxml")
         );
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        this.setScene(scene);
+        Scene escena = new Scene(root);
+        this.setScene(escena);
         this.setTitle("Inicio");
         this.getIcons().add(new Image(
                 getClass().getResourceAsStream("/cincuentazo/images/inicio/iconoburbuja.png")
@@ -36,12 +46,17 @@ public class InicioView extends Stage {
         this.setResizable(false);
     }
 
+
     /**
-     * Devuelve la única instancia de esta clase.
-     * Usa el patrón Singleton para asegurar que solo exista una ventana de inicio.
+     * Returns a unique instance of {@code InicioView}, following
+     * the Singleton pattern.
+     * <p>
+     * If no instance exists, it will be created the first time
+     * this method is called.
+     * </p>
      *
-     * @return la instancia única de {@code InicioView}
-     * @throws IOException si ocurre un error al crear la instancia
+     * @return the single instance of {@code InicioView}.
+     * @throws IOException if the FXML file cannot be loaded.
      */
     public static InicioView getInstance() throws IOException {
         if (InicioViewHolder.INSTANCE == null) {
@@ -50,9 +65,14 @@ public class InicioView extends Stage {
         return InicioViewHolder.INSTANCE;
     }
 
+
     /**
-     * Clase interna que guarda la instancia única de {@code InicioView}.
-     * Asegura que la instancia se cree solo cuando se necesite.
+     * Inner static holder class that maintains the unique instance
+     * of {@code InicioView}.
+     * <p>
+     * This approach ensures thread-safe lazy initialization of the
+     * Singleton instance without requiring explicit synchronization.
+     * </p>
      */
     private static class InicioViewHolder {
         private static InicioView INSTANCE = null;
