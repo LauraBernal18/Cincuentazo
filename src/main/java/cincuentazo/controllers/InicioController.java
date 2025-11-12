@@ -1,6 +1,7 @@
 package cincuentazo.controllers;
 
 import cincuentazo.models.AlertBox;
+import cincuentazo.models.MovimientoException;
 import cincuentazo.views.JuegoView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,35 +38,35 @@ public class InicioController {
     @FXML
     void onActionJugar(ActionEvent event) {
         nombreJugador = textFieldNombre.getText();
+        try {
+            validarConfiguracionJuego();
 
-        if (cantidadMaquinas == 0 && nombreJugador.isEmpty()){
-            alertBox.mostrarAdvertencia("ESPERA!!", "No completaste ninguno de los campos necesarios \n" +
-                    "el juego no empieza hasta que lo hagas :(");
-            return;
-        }
-
-        if (nombreJugador.isEmpty()){
-            alertBox.mostrarAdvertencia("ESPERA!!" ,"Debes rellenar el campo de nombre!!");
-            return;
-        }
-
-        if (cantidadMaquinas == 0){
-            alertBox.mostrarAdvertencia("ESPERA!!", "Debes seleccionar la cantidad de jugadores maquina");
-            return;
-        }
-
-
-
-
-        //cargar la ventana principal usando excepciones en caso de errores para encontrar archivo
-        try{
             JuegoView vistaJuego = new JuegoView(nombreJugador, cantidadMaquinas);
             vistaJuego.show();
 
             Stage ventanaInicio = (Stage) btnJugar.getScene().getWindow();
             ventanaInicio.close();
-        } catch (IOException e){
-            alertBox.mostrarAdvertencia("ERROR","ocurrio un problema al iniciar el juego");
+
+        } catch (MovimientoException e) {
+            alertBox.mostrarAdvertencia("ESPERA!!", e.getMessage());
+        } catch (IOException e) {
+            alertBox.mostrarAdvertencia("ERROR", "ocurrio un problema al iniciar el juego");
+        }
+    }
+
+
+    private void validarConfiguracionJuego() throws MovimientoException {
+        if (cantidadMaquinas == 0 && nombreJugador.isEmpty()) {
+            throw new MovimientoException("No completaste los campos necesarios (Nombre y número de máquinas)" +
+                    ", el juego no empieza hasta que lo hagas ");
+        }
+
+        if (nombreJugador.isEmpty()) {
+            throw new MovimientoException("Debes rellenar el campo de nombre!!");
+        }
+
+        if (cantidadMaquinas == 0) {
+            throw new MovimientoException("Debes seleccionar la cantidad de jugadores maquina");
         }
     }
 
