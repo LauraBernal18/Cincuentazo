@@ -25,7 +25,7 @@ public class JugadorMaquina extends Jugador {
     public Carta seleccionarCarta(int sumaMesa) {
 
         ArrayList<Carta> cartasJugables = new ArrayList<>();
-        // Recorremos las cartas de la mano con for de índice para principiantes
+        // Recorremos las cartas de la mano con for de índice
         for (int i = 0; i < mano.size(); i++) {
             Carta carta = mano.get(i);
             // Calculamos la nueva suma si se jugara esta carta
