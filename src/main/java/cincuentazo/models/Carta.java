@@ -94,7 +94,6 @@ public class Carta {
                 return valorParaElAS;
             }
 
-
             //Si el As como 10 no pasa de 50, cuenta como 10; si no, vale 1
             if (sumaMesa + 10 <= 50)
                 return 10;
@@ -108,8 +107,20 @@ public class Carta {
         if (valor.equals("9")){
             return 0;
         }
-        // Valor numérico normal
-        return Integer.parseInt(valor);
+
+        /*si por error o bug se genera una carta con algún valor no esperado como "S"
+        * o cualquier otro, se ejecuta la excepcion no marcada, si no puedo convertir
+        * la carta a valor númerico lo que hago es atrapar el error, imprimo en consola
+        * que el programa falló y luego retorno 0 para que ni el juego ni la suma se vean
+        * afectados*/
+        try {
+            return Integer.parseInt(valor);
+        } catch (NumberFormatException e) {
+            // excepción no marcada
+            System.err.println("valor de carta inválido - '" + valor + "'");
+            //retornar un que no afecta al juego
+            return 0;
+        }
     }
 
 

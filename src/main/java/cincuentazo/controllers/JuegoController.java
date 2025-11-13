@@ -198,20 +198,31 @@ public class JuegoController {
             labelConteoActualMesa.setText(String.valueOf(juego.getMesa().getSumaActual()));
         }
 
-        // Mostrar cartas del jugador humano (sus 4 cartas)
-        List<Carta> manoJugador = jugadorHumano.getMano();
-        ImageView[] vistas = {cartaJugador1, cartaJugador2, cartaJugador3, cartaJugador4};
+        try {
+            // Mostrar cartas del jugador humano (sus 4 cartas)
+            List<Carta> manoJugador = jugadorHumano.getMano();
+            ImageView[] vistas = {cartaJugador1, cartaJugador2, cartaJugador3, cartaJugador4};
 
-        for (int i = 0; i < vistas.length; i++) {
-            if (i < manoJugador.size()) {
-                Carta carta = manoJugador.get(i);
-                String ruta = "/cincuentazo/images/cartas/" + carta.getValor() + "-" + carta.getPalo() + ".png";
-                vistas[i].setImage(new Image(getClass().getResourceAsStream(ruta)));
-                vistas[i].setVisible(true); //asegurar que sea visible
-            } else {
-                vistas[i].setImage(null);
-                vistas[i].setVisible(false);
+            for (int i = 0; i < vistas.length; i++) {
+                if (i < manoJugador.size()) {
+                    Carta carta = manoJugador.get(i);
+                    String ruta = "/cincuentazo/images/cartas/" + carta.getValor() + "-" + carta.getPalo() + ".png";
+                    vistas[i].setImage(new Image(getClass().getResourceAsStream(ruta)));
+                    vistas[i].setVisible(true);
+                } else {
+                    vistas[i].setImage(null);
+                    vistas[i].setVisible(false);
+                }
             }
+
+            /*se usa si el programa intenta acceder a una posición no existente dentro de una lista,
+            * evitando que el juego se detenga*/
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("problema al mostrar cartas del jugador");
+            /*se usa para evitar que el programa se detenga si por ejemplo la ruta de una imagen está mal
+            * o no existe*/
+        } catch (NullPointerException e) {
+            System.err.println("recurso de imagen no encontrado");
         }
 
         // Mostrar cartas de las máquinas boca abajo
