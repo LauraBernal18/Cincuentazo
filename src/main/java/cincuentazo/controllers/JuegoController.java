@@ -258,6 +258,12 @@ public class JuegoController {
             return;
         }
 
+        //verificar si hay ganador antes de ejecutar su turno
+        if (juego.hayGanador()) {
+            mostrarVentanaGanador(juego.getGanador().getNombre());
+            return;
+        }
+
         if (carta == null) {
             actualizarLabelEstadoJuego("Selecciona una carta válida.");
             return;
@@ -311,6 +317,11 @@ public class JuegoController {
             juego.pasarAlSiguienteJugador();
             actualizarVistaInicial();
 
+            if (juego.hayGanador()) {
+                mostrarVentanaGanador(juego.getGanador().getNombre());
+                return;
+            }
+
             if (juego.getJugadorActual() instanceof JugadorMaquina && !juego.hayGanador()) {
                 juego.jugarTurnosMaquinas();
             }
@@ -352,8 +363,20 @@ public class JuegoController {
     }
 
     private void continuarLuegoDeTomarCarta() {
+
+        if (juego.hayGanador()) {
+            mostrarVentanaGanador(juego.getGanador().getNombre());
+            return;
+        }
+
         actualizarLabelEstadoJuego("Pasando turno a las máquinas...");
         juego.pasarAlSiguienteJugador(); //  MUY IMPORTANTE: pasar al primer bot
+
+        if (juego.hayGanador()) {
+            mostrarVentanaGanador(juego.getGanador().getNombre());
+            return;
+        }
+
         deshabilitarInteraccionHumano();
 
         // Registrar callback para refrescar GUI cada jugada de máquina
@@ -361,15 +384,18 @@ public class JuegoController {
             actualizarVistaInicial();
             labelConteoActualMesa.setText(String.valueOf(juego.getMesa().getSumaActual()));
 
+            if (juego.hayGanador()) {
+                mostrarVentanaGanador(juego.getGanador().getNombre());
+                return;
+            }
+
             if (juego.getJugadorActual() instanceof JugadorHumano) {
                 habilitarInteraccionHumano();
                 actualizarLabelEstadoJuego("Tu turno nuevamente :)");
                 actualizarLabelTurnos("turno de: " + jugadorHumano.getNombre());
             }
 
-            /*if (juego.hayGanador()) {
-                mostrarVentanaGanador(juego.getGanador().getNombre());
-            }*/
+
         });
 
         // Iniciar jugadas automáticas
