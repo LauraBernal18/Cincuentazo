@@ -9,7 +9,7 @@ import java.util.List;
 public class Juego {
     private Mazo mazo;
     private Mesa mesa;
-    private List<Jugador> jugadores;
+    private ArrayList<Jugador> jugadores;
     private int turnoActual;
     private boolean terminado;
     private Runnable onCambioDeTurno;
@@ -110,7 +110,7 @@ public class Juego {
                 if (carta != null) {
                     procesarCartaJugadaMaquina(maquina, carta);
                 } else {
-                    eliminarMaquina(maquina, "fue eliminado (sin jugadas válidas)."); // 🔹 usa el submétodo
+                    eliminarMaquina(maquina, "fue eliminado (sin jugadas válidas)."); // usa el submétodo
                 }
 
                 // Si se pasa de 50 → eliminar jugador maquina
@@ -156,11 +156,13 @@ public class Juego {
         int totalJugadores = jugadores.size();
         int intentos = 0; // Para no caer en un bucle infinito
 
+        //pasar de turno cuando no hay jugadores eliminados
         turnoActual++;
         if (turnoActual >= totalJugadores) {
             turnoActual = 0; // Vuelve al primer jugador
         }
 
+        //pasar de turno cuando hay eliminados
         while (jugadores.get(turnoActual).esEliminado()) {
             turnoActual++;
             if (turnoActual >= totalJugadores) {
