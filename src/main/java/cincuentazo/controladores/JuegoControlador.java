@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import cincuentazo.modelos.AlertBox;
+import cincuentazo.modelos.CuadroAlerta;
 
 import java.io.IOException;
 import java.util.List;
@@ -66,7 +66,7 @@ public class JuegoControlador {
     //cantidad de maquinas seleccionadas
     private int cantidadMaquinas;
 
-    private AlertBox alertBox = new AlertBox();
+    private CuadroAlerta alertaCuadro = new CuadroAlerta();
 
     //los bots no van a jugar si el humano no termina sus movimientos
     private boolean esperarMovimientoJugador = false;
@@ -285,7 +285,7 @@ public class JuegoControlador {
 
         // Si es un AS, pedir valor antes de validar
         if (carta.identificarAS()) {
-            int valorElegido = alertBox.mostrarEleccionAS();
+            int valorElegido = alertaCuadro.mostrarEleccionAS();
 
             if (valorElegido == 0) {
                 actualizarLabelEstadoJuego("Cancelaste jugar el AS.");
@@ -321,7 +321,7 @@ public class JuegoControlador {
                                 ".\n\nTienes otras cartas en tu mano que puedes jugar sin pasarte de 50."
                 );
             } catch (MovimientoExcepcion e) {
-                AlertBox.mostrarError("Movimiento Inválido", "No puedes jugar esa carta", e.getMessage());
+                CuadroAlerta.mostrarError("Movimiento Inválido", "No puedes jugar esa carta", e.getMessage());
                 return;
             }
         } else if (!cartaValida && !hayCartasValidas) {

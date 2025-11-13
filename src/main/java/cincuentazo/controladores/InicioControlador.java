@@ -1,6 +1,6 @@
 package cincuentazo.controladores;
 
-import cincuentazo.modelos.AlertBox;
+import cincuentazo.modelos.CuadroAlerta;
 import cincuentazo.modelos.MovimientoExcepcion;
 import cincuentazo.vistas.JuegoVista;
 import javafx.event.ActionEvent;
@@ -24,7 +24,7 @@ import java.io.IOException;
  * @version 2.3
  * @since 2025
  * @see JuegoVista
- * @see cincuentazo.modelos.AlertBox
+ * @see CuadroAlerta
  * @see MovimientoExcepcion
  */
 public class InicioControlador {
@@ -49,7 +49,7 @@ public class InicioControlador {
 
     private String nombreJugador = "";
     private int cantidadMaquinas = 0;
-    AlertBox alerta = new AlertBox();
+    CuadroAlerta alerta = new CuadroAlerta();
 
 
     /**

@@ -21,7 +21,7 @@ import java.io.IOException;
  * @see javafx.application.Application
  * @see InicioVista
  */
-public class Main extends Application {
+public class Principal extends Application {
 
     /**
      * Inicia la aplicación JavaFX y muestra el menú principal del juego.

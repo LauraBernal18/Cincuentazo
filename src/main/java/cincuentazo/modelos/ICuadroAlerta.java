@@ -1,7 +1,7 @@
 package cincuentazo.modelos;
 
 /**
- * La interfaz {@code IAlertBox} define el contrato para mostrar
+ * La interfaz {@code ICuadroAlerta} define el contrato para mostrar
  * diferentes tipos de diálogos de alerta en el juego "Cincuentazo".
  * <p>
  * Las implementaciones de esta interfaz se encargan de mostrar
@@ -14,7 +14,7 @@ package cincuentazo.modelos;
  * @version 1.1
  * @since 2025
  */
-public interface IAlertBox {
+public interface ICuadroAlerta {
 
     /**
      * Muestra las reglas oficiales del juego "Cincuentazo" en un cuadro de diálogo informativo.

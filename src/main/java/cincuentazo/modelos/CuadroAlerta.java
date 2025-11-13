@@ -7,9 +7,9 @@ import javafx.scene.control.DialogPane;
 import java.util.Optional;
 
 /**
- * La clase {@code AlertBox} proporciona diferentes tipos de alertas gráficas
+ * La clase {@code CuadroAlerta} proporciona diferentes tipos de alertas gráficas
  * para mostrar información, advertencias y opciones del usuario dentro del juego Cincuentazo.
- * Implementa la interfaz {@link IAlertBox}.
+ * Implementa la interfaz {@link ICuadroAlerta}.
  *
  * <p>Esta clase utiliza los diálogos {@link Alert} de JavaFX para mostrar mensajes personalizados
  * con estilos visuales específicos para la interacción del usuario.</p>
@@ -18,10 +18,10 @@ import java.util.Optional;
  * @version 1.3
  * @since 2025
  * @see javafx.scene.control.Alert
- * @see IAlertBox
+ * @see ICuadroAlerta
  */
 
-public class AlertBox implements IAlertBox {
+public class CuadroAlerta implements ICuadroAlerta {
 
     /**
      * Muestra una alerta de información
