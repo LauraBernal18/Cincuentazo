@@ -143,4 +143,19 @@ public class AlertBox implements IAlertBox {
         return 0;
 
     }
+
+    public static void mostrarError(String titulo, String cabecera, String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(cabecera);
+        alerta.setContentText(mensaje);
+
+        DialogPane panel = alerta.getDialogPane();
+        panel.setStyle(
+                "-fx-background-color: #FFE6E6;" +
+                        "-fx-font-size: 14px;"
+        );
+
+        alerta.showAndWait();
+    }
 }

@@ -297,8 +297,15 @@ public class JuegoController {
         }
 
         if (!cartaValida && hayCartasValidas) {
-            alertBox.mostrarAdvertencia("Carta inválida", "Escoge una carta válida.");
-            return;
+            try {
+                throw new MovimientoException(
+                        "La carta seleccionada haría que la suma pase de " + sumaActual + " a " + nuevaSuma +
+                                ".\n\nTienes otras cartas en tu mano que puedes jugar sin pasarte de 50."
+                );
+            } catch (MovimientoException e) {
+                AlertBox.mostrarError("Movimiento Inválido", "No puedes jugar esa carta", e.getMessage());
+                return;
+            }
         } else if (!cartaValida && !hayCartasValidas) {
             juego.eliminarJugadorHumano(jugadorHumano, "No tienes cartas válidas para jugar, has sido eliminado.");
             juego.pasarAlSiguienteJugador();
