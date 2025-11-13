@@ -407,8 +407,11 @@ public class JuegoControlador {
                 actualizarLabelTurnos("turno de: " + jugadorHumano.getNombre());
             }
 <<<<<<< Updated upstream:src/main/java/cincuentazo/controladores/JuegoControlador.java
+<<<<<<< Updated upstream:src/main/java/cincuentazo/controladores/JuegoControlador.java
 
 
+=======
+>>>>>>> Stashed changes:src/main/java/cincuentazo/controllers/JuegoController.java
 =======
 >>>>>>> Stashed changes:src/main/java/cincuentazo/controllers/JuegoController.java
         });
