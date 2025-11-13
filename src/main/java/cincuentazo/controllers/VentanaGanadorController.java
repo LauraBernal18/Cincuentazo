@@ -13,10 +13,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controller class for the winner window of the Cincuentazo game.
+ * Clase controladora para la ventana del ganador del juego Cincuentazo.
  * <p>
- * This controller is responsible for displaying the winner’s name,
- * and managing the actions to either start a new game or exit the application.
+ * Este controlador se encarga de mostrar el nombre del ganador,
+ * y de gestionar las acciones para iniciar una nueva partida o salir de la aplicación.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -37,9 +37,9 @@ public class VentanaGanadorController {
 
 
     /**
-     * Displays the winner’s name and a congratulatory message on the label.
-     *
-     * @param nombre the name of the player who won the game.
+     * Muestra el nombre del ganador y un mensaje de felicitación en la etiqueta.
+     * @param nombre el nombre del jugador que ganó la partida.
+
      */
     public void mostrarGanador(String nombre) {
         lblGanador.setText("¡" + nombre + " ha ganado el Cincuentazo!");
@@ -48,17 +48,17 @@ public class VentanaGanadorController {
 
 
     /**
-     * Handles the event triggered when the user clicks the "New Game" button.
+     * Maneja el evento que se activa cuando el usuario hace clic en el botón "Nueva partida".
      * <p>
-     * Displays a confirmation alert asking whether the user wants to start a new game.
-     * If confirmed, it closes the current stage and opens the {@link InicioView}.
+     * Muestra una alerta de confirmación preguntando si el usuario desea comenzar una nueva partida.
+     * Si se confirma, cierra la etapa actual y abre la {@link InicioView}.
      * </p>
-     *
-     * @param event the action event triggered by clicking the "New Game" button.
-     * @throws IOException if there is an issue loading the {@link InicioView}.
+     * @param evento el evento de acción que se activa al hacer clic en el botón "Nueva partida".
+     * @throws IOException si hay un problema al cargar la {@link InicioView}.
+
      */
     @FXML
-    private void botonIniciarNuevoJuego(ActionEvent event) throws IOException {
+    private void botonIniciarNuevoJuego(ActionEvent evento) throws IOException {
         // Create the confirmation alert
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setTitle("Confirmar nuevo juego");
@@ -74,7 +74,7 @@ public class VentanaGanadorController {
             inicioView.show();
 
             //Close stage
-            Node fuente =(Node)event.getSource();
+            Node fuente =(Node)evento.getSource();
             Stage stage = (Stage)fuente.getScene().getWindow();
             stage.close();
 
@@ -82,12 +82,11 @@ public class VentanaGanadorController {
     }
 
     /**
-     * Handles the event triggered when the user clicks the "Exit" button.
+     * Maneja el evento que se activa cuando el usuario hace clic en el botón "Salir".
      * <p>
-     * Terminates the application completely using {@code System.exit(0)}.
+     * Finaliza la aplicación completamente usando {@code System.exit(0)}.
      * </p>
-     *
-     * @param evento the action event triggered by clicking the "Exit" button.
+     * @param evento el evento de acción que se activa al hacer clic en el botón "Salir".
      */
     @FXML
     private void botonSalir(ActionEvent evento) {

@@ -1,12 +1,12 @@
 package cincuentazo.models;
 
 /**
- * Custom exception class used to handle invalid or illegal move actions
- * within the Cincuentazo game logic.
+ * Clase de excepción personalizada utilizada para gestionar acciones de movimiento inválidas o ilegales
+ * dentro de la lógica del juego Cincuentazo.
  * <p>
- * This exception is thrown when a player attempts an invalid move,
- * such as playing a card that exceeds the allowed limit (over 50)
- * or performing an action that violates the game rules.
+ * Esta excepción se produce cuando un jugador intenta un movimiento inválido,
+ * como jugar una carta que supera el límite permitido (más de 50)
+ * o realizar una acción que infringe las reglas del juego.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -18,9 +18,9 @@ public class MovimientoException extends Exception {
 
 
     /**
-     * Constructs a new {@code MovimientoException} with the specified detail message.
+     * Crea una nueva {@code MovimientoException} con el mensaje de detalle especificado.
      *
-     * @param mensaje the detail message explaining the cause of the exception.
+     * @param mensaje el mensaje de detalle que explica la causa de la excepción.
      */
     public MovimientoException(String mensaje){
         super(mensaje);

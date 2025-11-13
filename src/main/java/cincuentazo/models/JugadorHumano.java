@@ -1,10 +1,10 @@
 package cincuentazo.models;
 
 /**
- * Represents a human player in the Cincuentazo card game.
+ * Representa a un jugador humano en el juego de cartas Cincuentazo.
  * <p>
- * This class extends {@link Jugador} and allows manual interaction with the player,
- * such as selecting cards and choosing the value of an Ace (A).
+ * Esta clase extiende {@link Jugador} y permite la interacción manual con el jugador,
+ * como seleccionar cartas y elegir el valor de un As (A).
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -18,9 +18,9 @@ public class JugadorHumano extends Jugador {
     private Carta cartaSeleccionada;
 
     /**
-     * Constructs a human player with the given name.
+     * Crea un jugador humano con el nombre dado.
      *
-     * @param nombre the name of the human player.
+     * @param nombre el nombre del jugador humano.
      */
     public JugadorHumano(String nombre) {
         super(nombre);
@@ -28,12 +28,12 @@ public class JugadorHumano extends Jugador {
 
 
     /**
-     * Manually selects a card from the player's hand.
+     * Selecciona manualmente una carta de la mano del jugador.
      * <p>
-     * This method is typically called when the user clicks a card in the GUI.
+     * Este método se llama normalmente cuando el usuario hace clic en una carta en la interfaz gráfica.
      * </p>
      *
-     * @param cartaSeleccionada the {@link Carta} chosen by the player.
+     * @param cartaSeleccionada la {@link Carta} elegida por el jugador.
      */
     public void seleccionarCartaManual(Carta cartaSeleccionada) {
         this.cartaSeleccionada = cartaSeleccionada;
@@ -41,13 +41,13 @@ public class JugadorHumano extends Jugador {
 
 
     /**
-     * Allows the player to choose the value of an Ace (A) card.
+     * Permite al jugador elegir el valor de un As (A).
      * <p>
-     * If the selected card is an Ace, its value can be set to 1 or 10 depending on
-     * the player's decision. This choice is stored inside the card itself.
+     * Si la carta seleccionada es un As, su valor puede establecerse en 1 o 10 según
+     la decisión del jugador. Esta elección se almacena en la propia carta.
      * </p>
      *
-     * @param valorElegido the value chosen for the Ace (must be {@code 1} or {@code 10}).
+     * @param valorElegido el valor elegido para el As (debe ser {@code 1} o {@code 10}).
      */
     //si la carta seleccionada es un AS y no es nula llama al metodo de la carta para guardar la elección
     public void elegirValorAs(int valorElegido) {
@@ -58,14 +58,14 @@ public class JugadorHumano extends Jugador {
 
 
     /**
-     * Returns the card currently selected by the player to play during their turn.
+     * Devuelve la carta que el jugador ha seleccionado para jugar durante su turno.
      * <p>
-     * This method overrides {@link Jugador#seleccionarCartaAJugar(int)} and simply
-     * returns the card that was manually chosen via the interface.
+     * Este metodo redefine {@link Jugador#seleccionarCartaAJugar(int)} y simplemente
+     * devuelve la carta que se seleccionó manualmente a través de la interfaz.
      * </p>
      *
-     * @param sumaMesa the current total value of the cards on the table (not used for human selection).
-     * @return the {@link Carta} selected by the human player, or {@code null} if no card is selected.
+     * @param sumaMesa el valor total actual de las cartas sobre la mesa (no se utiliza para la selección humana).
+     * @return la {@link Carta} seleccionada por el jugador, o {@code null} si no se ha seleccionado ninguna carta.
      */
     @Override
     public Carta seleccionarCartaAJugar(int sumaMesa) {

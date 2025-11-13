@@ -3,10 +3,10 @@ package cincuentazo.models;
 import java.util.ArrayList;
 
 /**
- * Represents an automated machine player in the Cincuentazo card game.
+ * Representa un jugador automático en el juego de cartas Cincuentazo.
  * <p>
- * This class extends {@link Jugador} and implements simple decision-making logic
- * to choose a valid card to play based on the current total on the table.
+ * Esta clase extiende {@link Jugador} e implementa una lógica de toma de decisiones simple
+ * para elegir una carta válida para jugar según el total actual en la mesa.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -20,12 +20,12 @@ public class JugadorMaquina extends Jugador {
     private static int contador = 1;
 
     /**
-     * Constructs a machine player with an automatically assigned name.
+     * Crea un jugador automático con un nombre asignado automáticamente.
      * <p>
-     * Example: "Máquina 1", "Máquina 2", etc.
+     * Ejemplo: "Máquina 1", "Máquina 2", etc.
      * </p>
      *
-     * @param nombre the name provided (ignored, as the machine name is auto-generated).
+     * @param nombre el nombre proporcionado (se ignora, ya que el nombre de la máquina se genera automáticamente).
      */
     public JugadorMaquina(String nombre) {
         super("Máquina " + contador);
@@ -34,10 +34,10 @@ public class JugadorMaquina extends Jugador {
 
 
     /**
-     * Simulates the machine's thinking delay before playing a card.
+     * Simula el tiempo de espera de la máquina antes de jugar una carta.
      * <p>
-     * The delay is randomly chosen between 2 and 4 seconds to make the
-     * machine's behavior appear more human-like.
+     * El tiempo de espera se elige aleatoriamente entre 2 y 4 segundos para que
+     el comportamiento de la máquina parezca más humano.
      * </p>
      */
     public void esperarJugador() {
@@ -51,16 +51,16 @@ public class JugadorMaquina extends Jugador {
 
 
     /**
-     * Selects a playable card based on the current total sum of the table.
+     * Selecciona una carta jugable según la suma total actual de la mesa.
      * <p>
-     * The machine evaluates all cards in its hand and adds to a list those that,
-     * when played, will not cause the table's sum to exceed 50.
-     * If multiple valid cards exist, one is chosen randomly.
+     * La máquina evalúa todas las cartas en su mano y añade a una lista aquellas que,
+     * al jugarse, no harán que la suma de la mesa supere 50.
+     * Si existen varias cartas válidas, se elige una al azar.
      * </p>
      *
-     * @param sumaMesa the current total value of the cards on the table.
-     * @return a valid {@link Carta} that does not exceed 50 when played,
-     *         or {@code null} if no valid card is found (the machine is eliminated).
+     * @param sumaMesa el valor total actual de las cartas en la mesa.
+     * @return una {@link Carta} válida que no supere 50 al jugarse,
+     *         o {@code null} si no se encuentra ninguna carta válida (la máquina se elimina).
      */
     @Override
     public Carta seleccionarCartaAJugar(int sumaMesa) {

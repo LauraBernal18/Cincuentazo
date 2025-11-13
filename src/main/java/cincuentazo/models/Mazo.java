@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Represents the deck of cards used in the "Cincuentazo" game.
+ * Representa la baraja de cartas utilizada en el juego del "Cincuentazo".
  * <p>
- * This class manages all card operations, including creating the deck,
- * shuffling, drawing cards, recycling cards from the table (mesa),
- * and adding cards back into the deck.
+ * Esta clase gestiona todas las operaciones con las cartas, incluyendo la creación de la baraja,
+ * barajar, robar cartas, reciclar cartas de la mesa,
+ * y añadir cartas de nuevo a la baraja.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -22,15 +22,15 @@ import java.util.Stack;
 public class Mazo {
     private ArrayList<Carta> cartasMazo;
 
-    /** Reference to the game table, used when recycling cards. */
+    /** Referencia a la tabla de juego, utilizada al reciclar cartas. */
     private Mesa mesa;
 
 
     /**
-     * Constructs a new {@code Mazo} instance linked to a specific {@link Mesa}.
-     * It automatically creates a standard deck of 52 cards and shuffles it.
+     * Crea una nueva instancia de {@code Mazo} vinculada a un {@link Mesa} específico.
+     * Crea automáticamente una baraja estándar de 52 cartas y la baraja.
      *
-     * @param mesa the {@link Mesa} object associated with this deck.
+     * @param mesa el objeto {@link Mesa} asociado a esta baraja.
      */
     public Mazo(Mesa mesa) {
         this.mesa = mesa;
@@ -41,9 +41,9 @@ public class Mazo {
 
 
     /**
-     * Creates the standard deck of 52 cards used in the game.
-     * <p>Includes all 13 values ("A" to "K") for each of the 4 suits:
-     * Trebol ("T"), Pica ("P"), Diamante ("D"), and Corazón ("C").</p>
+     * Crea la baraja estándar de 52 cartas utilizada en el juego.
+     * <p>Incluye los 13 valores ("A" a "K") de cada uno de los 4 palos:
+     * Trébol ("T"), Pica ("P"), Diamante ("D") y Corazón ("C").</p>
      */
     private void crearMazo() {
         String[] palos = {"T", "P", "D", "C"};
@@ -64,7 +64,7 @@ public class Mazo {
     }
 
     /**
-     * Randomly shuffles the deck using {@link Collections#shuffle(List)}.
+     * Baraja aleatoriamente la baraja usando {@link Collections#shuffle(List)}.
      */
     public void barajar() {
         Collections.shuffle(cartasMazo); // se puede hacer manualmente como el sudoku
@@ -72,12 +72,12 @@ public class Mazo {
 
 
     /**
-     * Draws (removes and returns) the top card from the deck.
+     * Extrae (retira y devuelve) la primera carta del mazo.
      * <p>
-     * If the deck is empty, it will attempt to recycle cards from the table (mesa).
+     * Si el mazo está vacío, intentará reciclar cartas de la mesa.
      * </p>
      *
-     * @return the drawn {@link Carta}, or {@code null} if there are no cards available.
+     * @return la {@link Carta} extraída, o {@code null} si no hay cartas disponibles.
      */
     public Carta tomarCarta() {
             if (cartasMazo.isEmpty()) {
@@ -93,9 +93,9 @@ public class Mazo {
 
 
     /**
-     * Refills the deck by taking cards from the table (mesa),
-     * leaving only the last played card visible.
-     * <p>Once cards are moved, the deck is reshuffled.</p>
+     * Repone la baraja tomando cartas de la mesa,
+     * dejando visible solo la última carta jugada.
+     * <p>Una vez movidas las cartas, la baraja se vuelve a barajar.</p>
      */
     private void reiniciarConCartasDeMesa() {
         Stack<Carta> cartasMesa = mesa.getCartasEnMesa();

@@ -9,15 +9,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Represents the main gameplay window of the Cincuentazo application.
+ * Representa la ventana principal de juego de la aplicación Cincuentazo.
  * <p>
- * This view loads the {@code juego-view.fxml} layout and connects it to
- * the {@link cincuentazo.controllers.JuegoController}. It initializes
- * the controller with the player's name and the selected number of AI opponents.
+ * Esta vista carga el diseño {@code juego-view.fxml} y lo conecta con
+ * el {@link cincuentazo.controllers.JuegoController}. Inicializa
+ * el controlador con el nombre del jugador y el número de oponentes de IA seleccionados.
  * </p>
  * <p>
- * The window is displayed maximized to provide a complete view of the board,
- * cards, and players’ actions during the match.
+ * La ventana se muestra maximizada para ofrecer una vista completa del tablero,
+ * las cartas y las acciones de los jugadores durante la partida.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -29,22 +29,22 @@ import java.io.IOException;
  */
 public class JuegoView extends Stage {
     /**
-     * Controller that manages all the gameplay logic and user interactions.
+     * Controlador que gestiona toda la lógica del juego y las interacciones del usuario.
      */
     private JuegoController juegoController;
 
 
     /**
-     * Creates and initializes the main game view for the Cincuentazo match.
+     * Crea e inicializa la vista principal del juego para la partida de Cincuentazo.
      * <p>
-     * This constructor loads the corresponding FXML file, connects it with
-     * its controller, and initializes the match with the player's name
-     * and the number of machine players selected.
+     * Este constructor carga el archivo FXML correspondiente, lo conecta con
+     * su controlador e inicializa la partida con el nombre del jugador
+     * y el número de jugadores IA seleccionados.
      * </p>
      *
-     * @param nombreJugador     the name of the human player starting the game.
-     * @param cantidadMaquinas  the number of AI opponents in the match.
-     * @throws IOException if the FXML file cannot be found or loaded.
+     * @param nombreJugador el nombre del jugador humano que inicia la partida.
+     * @param cantidadMaquinas el número de oponentes IA en la partida.
+     * @throws IOException si no se encuentra o no se puede cargar el archivo FXML.
      */
     public JuegoView(String nombreJugador, int cantidadMaquinas) throws IOException{
 

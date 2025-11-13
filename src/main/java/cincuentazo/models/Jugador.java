@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a generic player in the Cincuentazo card game.
+ * Representa a un jugador genérico en el juego de cartas Cincuentazo.
  * <p>
- * This abstract class provides the shared attributes and behaviors
- * for both human and computer-controlled players.
- * Each player has a name, a hand of cards, and an elimination status.
+ * Esta clase abstracta proporciona los atributos y comportamientos compartidos
+ * tanto para jugadores humanos como para jugadores controlados por computadora.
+ * Cada jugador tiene un nombre, una mano de cartas y un estado de eliminación.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -23,15 +23,15 @@ public abstract class Jugador {
     protected String nombre;
     protected ArrayList<Carta> mano;
 
-    /** Indicates whether the player has been eliminated from the game. */
+    /** Indica si el jugador ha sido eliminado del juego. */
     protected boolean eliminado;
 
 
     /**
-     * Constructs a new player with the given name.
-     * The hand starts empty, and the player is active (not eliminated).
+     * Crea un nuevo jugador con el nombre dado.
+     * La mano comienza vacía y el jugador está activo (no eliminado).
      *
-     * @param nombre the name assigned to the player.
+     * @param nombre el nombre asignado al jugador.
      */
     public Jugador(String nombre) {
         this.nombre = nombre;
@@ -40,27 +40,27 @@ public abstract class Jugador {
     }
 
     /**
-     * Returns the list of cards currently in the player's hand.
+     * Devuelve la lista de cartas que el jugador tiene actualmente en la mano.
      *
-     * @return a {@link List} containing the cards in hand.
+     * @return una {@link List} que contiene las cartas en la mano.
      */
     public ArrayList<Carta> getMano() {
         return mano;
     }
 
     /**
-     * Gets the player's name.
+     * Obtiene el nombre del jugador.
      *
-     * @return the name of the player as a {@link String}.
+     * @return el nombre del jugador como un {@link String}.
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Checks whether the player has been eliminated.
+     * Comprueba si el jugador ha sido eliminado.
      *
-     * @return {@code true} if the player is eliminated, {@code false} otherwise.
+     * @return {@code true} si el jugador ha sido eliminado, {@code false} en caso contrario.
      */
     public boolean esEliminado() {
         return eliminado;
@@ -68,19 +68,19 @@ public abstract class Jugador {
 
 
     /**
-     * Sets the elimination status of the player.
+     * Establece el estado de eliminación del jugador.
      *
-     * @param eliminado {@code true} if the player should be marked as eliminated,
-     *                  {@code false} otherwise.
+     * @param eliminado {@code true} si el jugador debe ser marcado como eliminado,
+     * {@code false} en caso contrario.
      */
     public void setEliminado(boolean eliminado) {
         this.eliminado = eliminado;
     }
 
     /**
-     * Updates the player's name.
+     * Actualiza el nombre del jugador.
      *
-     * @param nombre the new name to assign to the player.
+     * @param nombre el nuevo nombre que se asignará al jugador.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -88,18 +88,18 @@ public abstract class Jugador {
 
 
     /**
-     * Adds a new card to the player's hand.
+     * Agrega una nueva carta a la mano del jugador.
      *
-     * @param carta the {@link Carta} to be added to the hand.
+     * @param carta la {@link Carta} que se agregará a la mano.
      */
     public void recibirCarta(Carta carta) {
         mano.add(carta);
     }
 
     /**
-     * Removes all cards from the player's hand and marks them as eliminated.
+     * Retira todas las cartas de la mano del jugador y las marca como eliminadas.
      * <p>
-     * This method is typically called when the player can no longer continue in the game.
+     * Este método se suele llamar cuando el jugador ya no puede continuar en la partida.
      * </p>
      */
     public void limpiarMano() {
@@ -108,27 +108,27 @@ public abstract class Jugador {
     }
 
     /**
-     * Defines the logic for selecting a card to play during a turn.
+     * Define la lógica para seleccionar una carta para jugar durante un turno.
      * <p>
-     * Each subclass (human or AI) must implement its own selection logic
-     * based on the current table sum.
+     * Cada subclase (humana o IA) debe implementar su propia lógica de selección
+     * basada en la suma actual de la mesa.
      * </p>
      *
-     * @param sumaMesa the current total value of the cards on the table.
-     * @return the {@link Carta} selected to be played.
+     * @param sumaMesa el valor total actual de las cartas en la mesa.
+     * @return la {@link Carta} seleccionada para jugar.
      */
     public abstract Carta seleccionarCartaAJugar(int sumaMesa);
 
 
     /**
-     * Plays the specified card if it is in the player's hand.
+     * Juega la carta especificada si está en la mano del jugador.
      * <p>
-     * The card is removed from the hand. If the player runs out of cards,
-     * they are automatically marked as eliminated.
+     * La carta se retira de la mano. Si el jugador se queda sin cartas,
+     * se marcan automáticamente como eliminadas.
      * </p>
      *
-     * @param carta the {@link Carta} the player wishes to play.
-     * @return the same card if successfully played, or {@code null} if it was invalid.
+     * @param carta la {@link Carta} que el jugador desea jugar.
+     * @return la misma carta si se jugó correctamente, o {@code null} si no fue válida.
      */
     public Carta jugarCarta(Carta carta) {
         if (carta != null && mano.remove(carta)) {

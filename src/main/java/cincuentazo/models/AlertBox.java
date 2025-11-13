@@ -7,12 +7,12 @@ import javafx.scene.control.DialogPane;
 import java.util.Optional;
 
 /**
- * The {@code AlertBox} class provides different types of graphical alerts
- * for displaying information, warnings, and user choices within the Cincuentazo game.
- * It implements the {@link IAlertBox} interface.
+ * La clase {@code AlertBox} proporciona diferentes tipos de alertas gráficas
+ * para mostrar información, advertencias y opciones del usuario dentro del juego Cincuentazo.
+ * Implementa la interfaz {@link IAlertBox}.
  *
- * <p>This class uses JavaFX {@link Alert} dialogs to show customized messages
- * with specific visual styles for user interaction.</p>
+ * <p>Esta clase utiliza los diálogos {@link Alert} de JavaFX para mostrar mensajes personalizados
+ * con estilos visuales específicos para la interacción del usuario.</p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal.
  * @version 1.3
@@ -23,6 +23,10 @@ import java.util.Optional;
 
 public class AlertBox implements IAlertBox {
 
+    /**
+     * Muestra una alerta de información
+     * Usa un string de reglas ya definido para el cuerpo del mensaje.
+     */
     @Override
     public void mostrarReglas() {
         String reglas = """
@@ -75,10 +79,10 @@ public class AlertBox implements IAlertBox {
 
 
     /**
-     * Displays a warning alert with a custom title and message.
-     *
-     * @param titulo  the title of the alert window.
-     * @param mensaje the warning message to be displayed to the user.
+     * Muestra una alerta de advertencia con un título y un mensaje personalizados.
+
+     * @param titulo el título de la ventana de alerta.
+     * @param mensaje el mensaje de advertencia que se mostrará al usuario.
      */
     @Override
     public void mostrarAdvertencia(String titulo, String mensaje) {
@@ -98,15 +102,16 @@ public class AlertBox implements IAlertBox {
     }
 
     /**
-     * Displays a confirmation dialog allowing the user to choose
-     * the value of the Ace card (AS) when it appears in their hand.
+     * Muestra un cuadro de diálogo de confirmación que permite al usuario elegir
+     * el valor del As (AS) cuando aparece en su mano.
+
+     * <p>El usuario puede seleccionar entre jugar el As con valor {@code 1} o {@code 10},
+     * o cancelar la acción.</p>
      *
-     * <p>The user can select between playing the Ace as value {@code 1} or {@code 10},
-     * or cancel the action.</p>
-     *
-     * @return {@code 1} if the player chooses to play the Ace as 1,
-     *         {@code 10} if the player chooses to play it as 10,
-     *         or {@code 0} if the player cancels the action.
+     * @return {@code 1} si el jugador elige jugar el As como 1,
+     *         {@code 10} si el jugador elige jugarlo como 10,
+     *          o {@code 0} si el jugador cancela la acción.
+
      */
     @Override
     public int mostrarEleccionAS(){
@@ -143,7 +148,12 @@ public class AlertBox implements IAlertBox {
         return 0;
 
     }
+    /**
+     * Muestra una alerta de error con un título, cabecera y un mensaje personalizados.
 
+     * @param titulo el título de la ventana de alerta.
+     * @param mensaje el mensaje de error que se mostrará al usuario.
+     */
     public static void mostrarError(String titulo, String cabecera, String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle(titulo);

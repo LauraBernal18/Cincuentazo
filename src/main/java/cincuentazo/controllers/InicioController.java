@@ -12,12 +12,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controller class for the main menu view of the Cincuentazo game.
+ * Clase controladora para la vista del menú principal del juego Cincuentazo.
  * <p>
- * This class handles all user interactions within the start menu, such as
- * selecting the number of machine players, entering the player's name,
- * starting the game, and displaying the game rules.
+ * Esta clase gestiona todas las interacciones del usuario dentro del menú de inicio, como:
+ * seleccionar el número de jugadores de la máquina, introducir el nombre del jugador,
+ * iniciar el juego y mostrar las reglas del juego.
  * </p>
+
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
  * @version 2.3
@@ -52,14 +53,13 @@ public class InicioController {
 
 
     /**
-     * Handles the event triggered when the user clicks the "Play" button.
+     * Gestiona el evento que se activa cuando el usuario hace clic en el botón "Jugar".
      * <p>
-     * Validates the user’s configuration and starts a new game view.
+     * Valida la configuración del usuario e inicia una nueva vista de juego.
      * </p>
-     *
-     * @param event the action event triggered by the user.
-     * @throws MovimientoException if required fields (name or machine count) are missing.
-     * @throws IOException if there is an issue loading the {@link JuegoView}.
+     * @param event el evento de acción que activa el usuario.
+     * @throws MovimientoException si faltan campos obligatorios (nombre o número de máquinas).
+     * @throws IOException si hay un problema al cargar {@link JuegoView}.
      */
     @FXML
     void onActionJugar(ActionEvent event) {
@@ -82,9 +82,9 @@ public class InicioController {
 
 
     /**
-     * Validates that the player’s name and the number of machine players are provided.
-     *
-     * @throws MovimientoException if any configuration field is missing.
+     * Verifica que se hayan proporcionado el nombre del jugador y el número de jugadores de la máquina.
+
+     * @throws MovimientoException si falta algún campo de configuración.
      */
     private void validarConfiguracionJuego() throws MovimientoException {
         if (cantidadMaquinas == 0 && nombreJugador.isEmpty()) {
@@ -101,11 +101,10 @@ public class InicioController {
         }
     }
 
-
     /**
-     * Displays the official game rules using an alert box.
+     * Muestra las reglas oficiales del juego mediante un cuadro de alerta.
      *
-     * @param event the event triggered by clicking the “Rules” button.
+     * @param event el evento que se activa al hacer clic en el botón «Reglas».
      */
     @FXML
     void onActionMostrarReglas(ActionEvent event) {
@@ -114,9 +113,9 @@ public class InicioController {
 
 
     /**
-     * Selects the configuration for two machine players.
+     * Selecciona la configuración para dos jugadores de máquina.
      *
-     * @param event the action event triggered by the user.
+     * @param event el evento de acción activado por el usuario.
      */
     @FXML
     void onActionSeleccionarDosJugadores(ActionEvent event) {
@@ -126,9 +125,8 @@ public class InicioController {
 
 
     /**
-     * Selects the configuration for three machine players.
-     *
-     * @param event the action event triggered by the user.
+     * Selecciona la configuración para tres jugadores de máquina.
+     * @param event el evento de acción activado por el usuario.
      */
     @FXML
     void onActionSeleccionarTresJugadores(ActionEvent event) {
@@ -138,9 +136,9 @@ public class InicioController {
 
 
     /**
-     * Selects the configuration for one machine player.
+     * Selecciona la configuración para un reproductor de máquina.
      *
-     * @param event the action event triggered by the user.
+     * @param event el evento de acción activado por el usuario.
      */
     @FXML
     void onActionSeleccionarUnJugador(ActionEvent event) {
@@ -149,9 +147,9 @@ public class InicioController {
 
 
     /**
-     * Updates the visual style of the selection buttons, highlighting the selected one.
+     * Actualiza el estilo visual de los botones de selección, resaltando el seleccionado.
      *
-     * @param botonSeleccionado the button that was selected by the player.
+     * @param botonSeleccionado el botón seleccionado por el jugador.
      */
     private void actualizarBotonesSeleccion(Button botonSeleccionado) {
         // normal

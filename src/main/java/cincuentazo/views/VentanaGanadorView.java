@@ -9,15 +9,15 @@ import java.io.IOException;
 
 
 /**
- * Represents the winner announcement window of the Cincuentazo game.
+ * Representa la ventana de anuncio del ganador del juego Cincuentazo.
  * <p>
- * This view is displayed at the end of a match to show the name of the player who won.
- * It loads the {@code ventana-ganador-view.fxml} layout and interacts with its controller
- * {@link cincuentazo.controllers.VentanaGanadorController} to display the winner's name.
+ * Esta vista se muestra al final de una partida para mostrar el nombre del jugador ganador.
+ * Carga el diseño {@code ventana-ganador-view.fxml} e interactúa con su controlador
+ * {@link cincuentazo.controllers.VentanaGanadorController} para mostrar el nombre del ganador.
  * </p>
  * <p>
- * The window is automatically shown upon creation and ensures that only
- * one instance exists using a singleton pattern.
+ * La ventana se muestra automáticamente al crearse y garantiza que solo
+ * exista una instancia mediante el patrón singleton.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -28,21 +28,21 @@ import java.io.IOException;
  */
 public class VentanaGanadorView extends Stage {
     /**
-     * Controller responsible for managing the winner view and updating its UI elements.
+     * Controlador responsable de gestionar la vista del ganador y actualizar sus elementos de interfaz de usuario.
      */
     private VentanaGanadorController controller;
 
 
     /**
-     * Constructs and initializes the winner window.
+     * Crea e inicializa la ventana del ganador.
      * <p>
-     * Loads the FXML layout, links it to its controller, and sets the
-     * winner's name to be displayed on screen. The window is automatically
-     * shown after creation.
+     * Carga el diseño FXML, lo vincula a su controlador y establece
+     * el nombre del ganador para que se muestre en pantalla. La ventana se muestra automáticamente
+     * después de su creación.
      * </p>
      *
-     * @param nombreGanador the name of the player who won the game.
-     * @throws IOException if the FXML file cannot be found or loaded properly.
+     * @param nombreGanador el nombre del jugador que ganó la partida.
+     * @throws IOException si no se encuentra el archivo FXML o no se carga correctamente.
      */
     public VentanaGanadorView(String nombreGanador) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(
@@ -61,24 +61,24 @@ public class VentanaGanadorView extends Stage {
     }
 
     /**
-     * Gets the controller associated with this winner view.
+     * Obtiene el controlador asociado a esta vista ganadora.
      *
-     * @return the {@link VentanaGanadorController} instance managing this window.
+     * @return la instancia de {@link VentanaGanadorController} que gestiona esta ventana.
      */
     public VentanaGanadorController getController() {
         return this.controller;
     }
 
     /**
-     * Returns the singleton instance of {@code VentanaGanadorView}.
+     * Devuelve la instancia única de {@code VentanaGanadorView}.
      * <p>
-     * Ensures that only one instance of this window can be created at a time.
-     * If the instance does not exist, it is created with the provided winner name.
+     * Garantiza que solo se pueda crear una instancia de esta ventana a la vez.
+     * Si la instancia no existe, se crea con el nombre del ganador proporcionado.
      * </p>
      *
-     * @param nombreGanador the name of the winner to display.
-     * @return the single instance of {@code VentanaGanadorView}.
-     * @throws IOException if the FXML file cannot be loaded.
+     * @param nombreGanador el nombre del ganador que se mostrará.
+     * @return la única instancia de {@code VentanaGanadorView}.
+     * @throws IOException si no se puede cargar el archivo FXML.
      */
     public static VentanaGanadorView getInstance(String nombreGanador) throws IOException {
         if (VentanaGanadorHolder.INSTANCE == null) {
@@ -88,8 +88,8 @@ public class VentanaGanadorView extends Stage {
     }
 
     /**
-     * Inner static holder class for the singleton instance.
-     * Implements the lazy initialization holder idiom.
+     * Clase interna estática que contiene la instancia singleton.
+     * Implementa el patrón de inicialización diferida.
      */
     private static class VentanaGanadorHolder {
         private static VentanaGanadorView INSTANCE = null;

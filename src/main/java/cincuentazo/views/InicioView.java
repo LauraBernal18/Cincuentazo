@@ -9,12 +9,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Represents the initial window (main menu) of the Cincuentazo game.
+ * Representa la ventana inicial (menú principal) del juego Cincuentazo.
  * <p>
- * This view loads the FXML layout {@code inicio-view.fxml}, sets up
- * the stage with a custom icon and title, and prevents window resizing.
- * It follows a Singleton pattern to ensure only one instance of
- * {@code InicioView} exists during runtime.
+ * Esta vista carga el diseño FXML {@code inicio-view.fxml}, configura
+ * el escenario con un icono y un título personalizados, e impide el cambio de tamaño de la ventana.
+ * Sigue un patrón Singleton para garantizar que solo exista una instancia de
+ * {@code InicioView} durante la ejecución.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -27,10 +27,10 @@ public class InicioView extends Stage {
 
 
     /**
-     * Creates and initializes the main window of the game by loading
-     * the FXML file and setting the scene properties.
+     * Crea e inicializa la ventana principal del juego cargando
+     * el archivo FXML y configurando las propiedades de la escena.
      *
-     * @throws IOException if the FXML file cannot be loaded or is missing.
+     * @throws IOException si el archivo FXML no se puede cargar o no existe.
      */
     public InicioView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(
@@ -48,15 +48,15 @@ public class InicioView extends Stage {
 
 
     /**
-     * Returns a unique instance of {@code InicioView}, following
-     * the Singleton pattern.
+     * Devuelve una instancia única de {@code InicioView}, siguiendo
+     * el patrón Singleton.
      * <p>
-     * If no instance exists, it will be created the first time
-     * this method is called.
+     * Si no existe ninguna instancia, se creará la primera vez
+     * que se llame a este método.
      * </p>
      *
-     * @return the single instance of {@code InicioView}.
-     * @throws IOException if the FXML file cannot be loaded.
+     * @return la única instancia de {@code InicioView}.
+     * @throws IOException si no se puede cargar el archivo FXML.
      */
     public static InicioView getInstance() throws IOException {
         if (InicioViewHolder.INSTANCE == null) {
@@ -67,11 +67,11 @@ public class InicioView extends Stage {
 
 
     /**
-     * Inner static holder class that maintains the unique instance
-     * of {@code InicioView}.
+     * Clase interna estática que mantiene la instancia única
+     * de {@code InicioView}.
      * <p>
-     * This approach ensures thread-safe lazy initialization of the
-     * Singleton instance without requiring explicit synchronization.
+     * Este enfoque garantiza la inicialización diferida y segura para subprocesos de la
+     * instancia Singleton sin necesidad de sincronización explícita.
      * </p>
      */
     private static class InicioViewHolder {

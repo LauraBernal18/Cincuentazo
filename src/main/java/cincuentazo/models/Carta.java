@@ -1,15 +1,16 @@
 package cincuentazo.models;
 
 /**
- * The {@code Carta} class represents a single playing card used in the game "Cincuentazo".
- * Each card has a specific value and suit (palo), and its effect on the total game sum
- * depends on the game's rules.
+
+ * La clase {@code Carta} representa una carta individual utilizada en el juego "Cincuentazo".
+ * Cada carta tiene un valor y un palo específicos, y su efecto en la suma total del juego
+ * depende de las reglas del juego.
  *
- * <p>The card value may represent numbers ("2"–"10") or special ranks such as "A", "J", "Q", or "K".</p>
+ * <p>El valor de la carta puede representar números ("2"–"10") o rangos especiales como "A", "J", "Q" o "K".</p>
  * <ul>
- *   <li>Aces ("A") can count as either 1 or 10 points, depending on the player's choice.</li>
- *   <li>Face cards ("J", "Q", "K") subtract 10 points.</li>
- *   <li>The "9" card is neutral (adds 0).</li>
+ *      <li>Los ases ("A") pueden valer 1 o 10 puntos, según la elección del jugador.</li>
+ *      <li>Las figuras ("J", "Q", "K") restan 10 puntos.</li>
+ *      <li>La carta "9" es neutral (suma 0).</li>
  * </ul>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal.
@@ -23,10 +24,10 @@ public class Carta {
 
 
     /**
-     * Constructs a new {@code Carta} with the specified value and suit.
+     * Crea una nueva {@code Carta} con el valor y palo especificados.
      *
-     * @param valor the face value of the card (e.g., "A", "5", "K").
-     * @param palo  the suit of the card (e.g., "P" for Spades, "C" for Hearts, etc.).
+     * @param valor el valor de la carta (p. ej., "A", "5", "K").
+     * @param palo el palo de la carta (p. ej., "P" para Picas, "C" para Corazones, etc.).
      */
     public Carta(String valor, String palo) {
         this.valor = valor;
@@ -35,11 +36,11 @@ public class Carta {
 
 
     /**
-     * Sets the chosen value for an Ace card.
-     * <p>This method allows the player to decide whether the Ace counts as 1 or 10 points.
-     * Only applies if the card is an Ace ("A").</p>
+     * Establece el valor elegido para una carta de As.
+     * <p>Este metodo permite al jugador decidir si el As cuenta como 1 o 10 puntos.
+     * Solo se aplica si la carta es un As ("A").</p>
      *
-     * @param valorElegido the chosen value for the Ace; must be either 1 or 10.
+     * @param valorElegido el valor elegido para el As; debe ser 1 o 10.
      */
     //el valor del AS queda a elección del humano
     public void setValorAsElegido(int valorElegido) {
@@ -52,9 +53,8 @@ public class Carta {
 
 
     /**
-     * Returns the face value of the card.
-     *
-     * @return the card's face value (e.g., "A", "3", "Q").
+     * Devuelve el valor nominal de la carta.
+     * @return el valor nominal de la carta (p. ej., "A", "3", "Q").
      */
     public String getValor() {
         return valor;
@@ -62,9 +62,9 @@ public class Carta {
 
 
     /**
-     * Returns the suit of the card.
+     * Devuelve el palo de la carta.
      *
-     * @return the card's suit (e.g., "P", "C", "D", "T").
+     * @return el palo de la carta (p. ej., "P", "C", "D", "T").
      */
     public String getPalo() {
         return palo;
@@ -72,19 +72,19 @@ public class Carta {
 
 
     /**
-     * Determines the numerical value of the card based on the game's rules
-     * and the current sum on the table.
+     * Determina el valor numérico de la carta según las reglas del juego
+     * y la suma actual en la mesa.
      *
-     * <p>Rules applied:</p>
+     * <p>Reglas aplicadas:</p>
      * <ul>
-     *   <li>Ace ("A") → counts as 1 or 10 (depending on player choice or total sum).</li>
-     *   <li>Face cards ("J", "Q", "K") → subtract 10 points.</li>
-     *   <li>Card "9" → adds 0 points.</li>
-     *   <li>Other cards → add their numeric value.</li>
+     *      <li>As ("A") → cuenta como 1 o 10 (dependiendo de la elección del jugador o la suma total).</li>
+     *      <li>Figuras ("J", "Q", "K") → restan 10 puntos.</li>
+     *      <li>9" → suman 0 puntos.</li>
+     *      <li>Otras cartas → suman su valor numérico.</li>
      * </ul>
      *
-     * @param sumaMesa the current accumulated sum on the table before this card is played.
-     * @return the numeric value of the card according to game rules.
+     * @param sumaMesa la suma acumulada actual en la mesa antes de jugar esta carta.
+     * @return el valor numérico de la carta según las reglas del juego.
      */
     public int getValorSegunReglas(int sumaMesa) {
         //verificar que sea AS
@@ -125,9 +125,9 @@ public class Carta {
 
 
     /**
-     * Checks whether this card is an Ace.
+     * Comprueba si esta carta es un As.
      *
-     * @return {@code true} if the card value is "A", otherwise {@code false}.
+     * @return {@code true} si el valor de la carta es "A", {@code false} en caso contrario.
      */
     //retornar verdadero si el valor de la carta en la mano es "A"
     public boolean identificarAS(){

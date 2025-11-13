@@ -1,13 +1,13 @@
 package cincuentazo.models;
 
 /**
- * The {@code IAlertBox} interface defines the contract for displaying
- * different types of alert dialogs in the "Cincuentazo" game.
+ * La interfaz {@code IAlertBox} define el contrato para mostrar
+ * diferentes tipos de diálogos de alerta en el juego "Cincuentazo".
  * <p>
- * Implementations of this interface are responsible for showing
- * informational messages, warnings, and interactive dialogs
- * that allow the player to make in-game choices (such as deciding
- * the value of an Ace card).
+ * Las implementaciones de esta interfaz se encargan de mostrar
+ * mensajes informativos, advertencias y diálogos interactivos
+ * que permiten al jugador tomar decisiones dentro del juego (como decidir
+ * el valor de un As).
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -17,37 +17,38 @@ package cincuentazo.models;
 public interface IAlertBox {
 
     /**
-     * Displays the official game rules of "Cincuentazo" in an informational dialog box.
-     * <p>This method is typically called from the main menu or during gameplay
-     * when the player requests to see the rules.</p>
+     * Muestra las reglas oficiales del juego "Cincuentazo" en un cuadro de diálogo informativo.
+     * <p>Este método se suele llamar desde el menú principal o durante la partida
+     * cuando el jugador solicita ver las reglas.</p>
      */
     void mostrarReglas();
 
     /**
-     * Displays a warning message dialog with a custom title and message.
-     * <p>This method can be used to inform the user of invalid actions
-     * or important events that require attention.</p>
+     * Muestra un cuadro de diálogo de advertencia con un título y mensaje personalizados.
+     * <p>Este método puede usarse para informar al usuario sobre acciones no válidas
+     * o eventos importantes que requieren atención.</p>
      *
-     * @param titulo  the title of the warning dialog.
-     * @param mensaje the detailed warning message to display.
+     * @param titulo el título del cuadro de diálogo de advertencia.
+     * @param mensaje el mensaje de advertencia detallado que se mostrará.
      */
     void mostrarAdvertencia(String titulo, String mensaje);
 
 
     /**
-     * Displays a confirmation dialog that allows the player to select
-     * the desired value for an Ace card.
-     * <p>The dialog provides three options:
+     * Muestra un cuadro de diálogo de confirmación que permite al jugador seleccionar
+     * el valor deseado para una carta de As.
+     * <p>El cuadro de diálogo ofrece tres opciones:
      * <ul>
-     *   <li>Play Ace as 1</li>
-     *   <li>Play Ace as 10</li>
-     *   <li>Cancel (do not play Ace)</li>
+     *     <li>Jugar el As como 1</li>
+     *     <li>Jugar el As como 10</li>
+     *     <li>Cancelar (no jugar el As)</li>
      * </ul>
      * </p>
      *
-     * @return {@code 1} if the player chooses to play the Ace as 1,
-     *         {@code 10} if the player chooses to play it as 10,
-     *         or {@code 0} if the player cancels the selection.
+     * @return {@code 1} si el jugador elige jugar el As como 1,
+     *         {@code 10} si el jugador elige jugarlo como 10,
+     *         o {@code 0} si el jugador cancela la selección.
+
      */
     int mostrarEleccionAS();
 }

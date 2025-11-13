@@ -6,12 +6,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 /**
- * Entry point of the Cincuentazo application.
+
+ * Punto de entrada de la aplicación Cincuentazo.
  * <p>
- * This class initializes the JavaFX environment and launches the main
- * window of the game through {@link cincuentazo.views.InicioView}.
- * It serves as the starting point for the graphical user interface (GUI)
- * and handles the setup of the primary stage.
+ * Esta clase inicializa el entorno JavaFX y abre la ventana principal
+ * del juego mediante {@link cincuentazo.views.InicioView}.
+ * Sirve como punto de partida para la interfaz gráfica de usuario (GUI)
+ * y gestiona la configuración del escenario principal.
  * </p>
  *
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
@@ -23,15 +24,15 @@ import java.io.IOException;
 public class Main extends Application {
 
     /**
-     * Starts the JavaFX application and displays the main game menu.
+     * Inicia la aplicación JavaFX y muestra el menú principal del juego.
      * <p>
-     * This method is automatically called by the JavaFX runtime when
-     * the application is launched. It loads and shows the {@code InicioView}
-     * stage as the first window of the program.
+     * Este método se llama automáticamente por el entorno de ejecución de JavaFX cuando
+     * se inicia la aplicación. Carga y muestra la {@code InicioView}
+     * pantalla como la primera ventana del programa.
      * </p>
      *
-     * @param stage the primary stage provided by the JavaFX runtime.
-     * @throws IOException if the {@link InicioView} FXML resource cannot be loaded.
+     * @param stage la pantalla principal proporcionada por el entorno de ejecución de JavaFX.
+     * @throws IOException si no se puede cargar el recurso FXML {@link InicioView}.
      */
     @Override
     public void start(Stage stage) throws IOException {
