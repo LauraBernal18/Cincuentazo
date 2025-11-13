@@ -1,4 +1,4 @@
-package cincuentazo.models;
+package cincuentazo.modelos;
 
 /**
  * La interfaz {@code IAlertBox} define el contrato para mostrar

@@ -1,6 +1,6 @@
-package cincuentazo.views;
+package cincuentazo.vistas;
 
-import cincuentazo.controllers.JuegoController;
+import cincuentazo.controladores.JuegoControlador;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,8 +11,8 @@ import java.io.IOException;
 /**
  * Representa la ventana principal de juego de la aplicación Cincuentazo.
  * <p>
- * Esta vista carga el diseño {@code juego-view.fxml} y lo conecta con
- * el {@link cincuentazo.controllers.JuegoController}. Inicializa
+ * Esta vista carga el diseño {@code juego-vista.fxml} y lo conecta con
+ * el {@link JuegoControlador}. Inicializa
  * el controlador con el nombre del jugador y el número de oponentes de IA seleccionados.
  * </p>
  * <p>
@@ -23,15 +23,15 @@ import java.io.IOException;
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
  * @version 1.1
  * @since 2025
- * @see cincuentazo.controllers.JuegoController
+ * @see JuegoControlador
  * @see javafx.stage.Stage
  * @see javafx.fxml.FXMLLoader
  */
-public class JuegoView extends Stage {
+public class JuegoVista extends Stage {
     /**
      * Controlador que gestiona toda la lógica del juego y las interacciones del usuario.
      */
-    private JuegoController juegoController;
+    private JuegoControlador juegoControlador;
 
 
     /**
@@ -46,16 +46,16 @@ public class JuegoView extends Stage {
      * @param cantidadMaquinas el número de oponentes IA en la partida.
      * @throws IOException si no se encuentra o no se puede cargar el archivo FXML.
      */
-    public JuegoView(String nombreJugador, int cantidadMaquinas) throws IOException{
+    public JuegoVista(String nombreJugador, int cantidadMaquinas) throws IOException{
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/cincuentazo/fxml/juego-view.fxml")
+                getClass().getResource("/cincuentazo/fxml/juego-vista.fxml")
         );
 
         Parent root = fxmlLoader.load();
-        this.juegoController = fxmlLoader.getController();
-        juegoController.initialize(nombreJugador,cantidadMaquinas);
+        this.juegoControlador = fxmlLoader.getController();
+        juegoControlador.initialize(nombreJugador,cantidadMaquinas);
 
         Scene escena = new Scene(root);
         this.setScene(escena);

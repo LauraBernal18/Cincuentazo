@@ -1,8 +1,8 @@
-package cincuentazo.controllers;
+package cincuentazo.controladores;
 
-import cincuentazo.models.AlertBox;
-import cincuentazo.models.MovimientoException;
-import cincuentazo.views.JuegoView;
+import cincuentazo.modelos.AlertBox;
+import cincuentazo.modelos.MovimientoExcepcion;
+import cincuentazo.vistas.JuegoVista;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,11 +23,11 @@ import java.io.IOException;
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
  * @version 2.3
  * @since 2025
- * @see cincuentazo.views.JuegoView
- * @see cincuentazo.models.AlertBox
- * @see cincuentazo.models.MovimientoException
+ * @see JuegoVista
+ * @see cincuentazo.modelos.AlertBox
+ * @see MovimientoExcepcion
  */
-public class InicioController {
+public class InicioControlador {
 
     @FXML
     private Button btnDosJugadores;
@@ -58,8 +58,8 @@ public class InicioController {
      * Valida la configuración del usuario e inicia una nueva vista de juego.
      * </p>
      * @param event el evento de acción que activa el usuario.
-     * @throws MovimientoException si faltan campos obligatorios (nombre o número de máquinas).
-     * @throws IOException si hay un problema al cargar {@link JuegoView}.
+     * @throws MovimientoExcepcion si faltan campos obligatorios (nombre o número de máquinas).
+     * @throws IOException si hay un problema al cargar {@link JuegoVista}.
      */
     @FXML
     void onActionJugar(ActionEvent event) {
@@ -67,13 +67,13 @@ public class InicioController {
         try {
             validarConfiguracionJuego();
 
-            JuegoView vistaJuego = new JuegoView(nombreJugador, cantidadMaquinas);
+            JuegoVista vistaJuego = new JuegoVista(nombreJugador, cantidadMaquinas);
             vistaJuego.show();
 
             Stage ventanaInicio = (Stage) btnJugar.getScene().getWindow();
             ventanaInicio.close();
 
-        } catch (MovimientoException e) {
+        } catch (MovimientoExcepcion e) {
             alerta.mostrarAdvertencia("ESPERA!!", e.getMessage());
         } catch (IOException e) {
             alerta.mostrarAdvertencia("ERROR", "ocurrio un problema al iniciar el juego");
@@ -84,20 +84,20 @@ public class InicioController {
     /**
      * Verifica que se hayan proporcionado el nombre del jugador y el número de jugadores de la máquina.
 
-     * @throws MovimientoException si falta algún campo de configuración.
+     * @throws MovimientoExcepcion si falta algún campo de configuración.
      */
-    private void validarConfiguracionJuego() throws MovimientoException {
+    private void validarConfiguracionJuego() throws MovimientoExcepcion {
         if (cantidadMaquinas == 0 && nombreJugador.isEmpty()) {
-            throw new MovimientoException("No completaste los campos necesarios (Nombre y número de máquinas)" +
+            throw new MovimientoExcepcion("No completaste los campos necesarios (Nombre y número de máquinas)" +
                     ", el juego no empieza hasta que lo hagas ");
         }
 
         if (nombreJugador.isEmpty()) {
-            throw new MovimientoException("Debes rellenar el campo de nombre!!");
+            throw new MovimientoExcepcion("Debes rellenar el campo de nombre!!");
         }
 
         if (cantidadMaquinas == 0) {
-            throw new MovimientoException("Debes seleccionar la cantidad de jugadores maquina");
+            throw new MovimientoExcepcion("Debes seleccionar la cantidad de jugadores maquina");
         }
     }
 

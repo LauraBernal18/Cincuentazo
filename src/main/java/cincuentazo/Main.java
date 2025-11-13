@@ -1,6 +1,6 @@
 package cincuentazo;
 
-import cincuentazo.views.InicioView;
+import cincuentazo.vistas.InicioVista;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
  * Punto de entrada de la aplicación Cincuentazo.
  * <p>
  * Esta clase inicializa el entorno JavaFX y abre la ventana principal
- * del juego mediante {@link cincuentazo.views.InicioView}.
+ * del juego mediante {@link InicioVista}.
  * Sirve como punto de partida para la interfaz gráfica de usuario (GUI)
  * y gestiona la configuración del escenario principal.
  * </p>
@@ -19,7 +19,7 @@ import java.io.IOException;
  * @version 1.0
  * @since 2025
  * @see javafx.application.Application
- * @see cincuentazo.views.InicioView
+ * @see InicioVista
  */
 public class Main extends Application {
 
@@ -32,12 +32,12 @@ public class Main extends Application {
      * </p>
      *
      * @param stage la pantalla principal proporcionada por el entorno de ejecución de JavaFX.
-     * @throws IOException si no se puede cargar el recurso FXML {@link InicioView}.
+     * @throws IOException si no se puede cargar el recurso FXML {@link InicioVista}.
      */
     @Override
     public void start(Stage stage) throws IOException {
 
-        InicioView inicioView = InicioView.getInstance();
-        inicioView.show();
+        InicioVista inicioVista = InicioVista.getInstance();
+        inicioVista.show();
     }
 }

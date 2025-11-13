@@ -1,6 +1,6 @@
-package cincuentazo.controllers;
+package cincuentazo.controladores;
 
-import cincuentazo.views.InicioView;
+import cincuentazo.vistas.InicioVista;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -22,9 +22,9 @@ import java.io.IOException;
  * @author Hilary Herrera, Dana Gómez, Laura Bernal
  * @version 1.3
  * @since 2025
- * @see cincuentazo.views.InicioView
+ * @see InicioVista
  */
-public class VentanaGanadorController {
+public class VentanaGanadorControlador {
 
     @FXML
     private Label lblGanador;
@@ -51,10 +51,10 @@ public class VentanaGanadorController {
      * Maneja el evento que se activa cuando el usuario hace clic en el botón "Nueva partida".
      * <p>
      * Muestra una alerta de confirmación preguntando si el usuario desea comenzar una nueva partida.
-     * Si se confirma, cierra la etapa actual y abre la {@link InicioView}.
+     * Si se confirma, cierra la etapa actual y abre la {@link InicioVista}.
      * </p>
      * @param evento el evento de acción que se activa al hacer clic en el botón "Nueva partida".
-     * @throws IOException si hay un problema al cargar la {@link InicioView}.
+     * @throws IOException si hay un problema al cargar la {@link InicioVista}.
 
      */
     @FXML
@@ -70,8 +70,8 @@ public class VentanaGanadorController {
 
         // If the user presses ACCEPT, generate a new game
         if (respuesta == ButtonType.OK) {
-            InicioView inicioView = InicioView.getInstance();
-            inicioView.show();
+            InicioVista inicioVista = InicioVista.getInstance();
+            inicioVista.show();
 
             //Close stage
             Node fuente =(Node)evento.getSource();

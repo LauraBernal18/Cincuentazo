@@ -1,4 +1,4 @@
-package cincuentazo.models;
+package cincuentazo.modelos;
 
 import javafx.application.Platform;
 

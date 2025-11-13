@@ -1,4 +1,4 @@
-package cincuentazo.models;
+package cincuentazo.modelos;
 
 /**
  * Clase de excepción personalizada utilizada para gestionar acciones de movimiento inválidas o ilegales
@@ -14,7 +14,7 @@ package cincuentazo.models;
  * @since 2025
  * @see Exception
  */
-public class MovimientoException extends Exception {
+public class MovimientoExcepcion extends Exception {
 
 
     /**
@@ -22,7 +22,7 @@ public class MovimientoException extends Exception {
      *
      * @param mensaje el mensaje de detalle que explica la causa de la excepción.
      */
-    public MovimientoException(String mensaje){
+    public MovimientoExcepcion(String mensaje){
         super(mensaje);
     }
 }

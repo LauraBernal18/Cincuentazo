@@ -1,4 +1,4 @@
-package cincuentazo.models;
+package cincuentazo.modelos;
 
 /**
  * Representa a un jugador humano en el juego de cartas Cincuentazo.

@@ -1,17 +1,18 @@
-package cincuentazo.controllers;
-import cincuentazo.models.*;
+package cincuentazo.controladores;
+import cincuentazo.modelos.*;
+import cincuentazo.vistas.VentanaGanadorVista;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import cincuentazo.models.AlertBox;
+import cincuentazo.modelos.AlertBox;
 
 import java.io.IOException;
 import java.util.List;
 
-public class JuegoController {
+public class JuegoControlador {
 
     /*label de notificación sobre los procesos dentro del juego "maquina pensando, maquina colocando carta, jugador
     //colocó una carta"... etc*/
@@ -91,7 +92,7 @@ public class JuegoController {
         //imagen de reverso nueva en cada juego iniciado
         String[] palos = Mazo.getPalos(); // Acceder a los palos del Mazo
         String paloAleatorio = palos[(int)(Math.random() * palos.length)];
-        imagenReverso = new Image(getClass().getResourceAsStream("/cincuentazo/images/cartas/0-" + paloAleatorio
+        imagenReverso = new Image(getClass().getResourceAsStream("/cincuentazo/imagenes/cartas/0-" + paloAleatorio
                 + ".png"));
 
         // Poner una carta inicial en la mesa
@@ -193,7 +194,7 @@ public class JuegoController {
         // Mostrar carta visible de la mesa
         Carta cartaMesa = juego.getMesa().getUltimaCarta();
         if (cartaMesa != null) {
-            String ruta = "/cincuentazo/images/cartas/" + cartaMesa.getValor() + "-" + cartaMesa.getPalo() + ".png";
+            String ruta = "/cincuentazo/imagenes/cartas/" + cartaMesa.getValor() + "-" + cartaMesa.getPalo() + ".png";
             MazoConteoMesa.setImage(new Image(getClass().getResourceAsStream(ruta)));
             labelConteoActualMesa.setText(String.valueOf(juego.getMesa().getSumaActual()));
         }
@@ -206,7 +207,7 @@ public class JuegoController {
             for (int i = 0; i < vistas.length; i++) {
                 if (i < manoJugador.size()) {
                     Carta carta = manoJugador.get(i);
-                    String ruta = "/cincuentazo/images/cartas/" + carta.getValor() + "-" + carta.getPalo() + ".png";
+                    String ruta = "/cincuentazo/imagenes/cartas/" + carta.getValor() + "-" + carta.getPalo() + ".png";
                     vistas[i].setImage(new Image(getClass().getResourceAsStream(ruta)));
                     vistas[i].setVisible(true);
                 } else {
@@ -315,11 +316,11 @@ public class JuegoController {
 
         if (!cartaValida && hayCartasValidas) {
             try {
-                throw new MovimientoException(
+                throw new MovimientoExcepcion(
                         "La carta seleccionada haría que la suma pase de " + sumaActual + " a " + nuevaSuma +
                                 ".\n\nTienes otras cartas en tu mano que puedes jugar sin pasarte de 50."
                 );
-            } catch (MovimientoException e) {
+            } catch (MovimientoExcepcion e) {
                 AlertBox.mostrarError("Movimiento Inválido", "No puedes jugar esa carta", e.getMessage());
                 return;
             }
@@ -417,7 +418,7 @@ public class JuegoController {
         Platform.runLater(() -> {
         try {
             // Crear y mostrar la ventana del ganador
-            new cincuentazo.views.VentanaGanadorView(nombreGanador).show();
+            new VentanaGanadorVista(nombreGanador).show();
 
             // Cerrar la ventana del juego actual
             Stage ventanaActual = (Stage) labelConteoActualMesa.getScene().getWindow();

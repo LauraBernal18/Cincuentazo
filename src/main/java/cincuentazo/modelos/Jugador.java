@@ -1,4 +1,4 @@
-package cincuentazo.models;
+package cincuentazo.modelos;
 
 import java.util.ArrayList;
 import java.util.List;

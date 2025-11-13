@@ -9,27 +9,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="330" prefWidth="500" spacing="20" style="-fx-background-color: #42672a;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cincuentazo.controllers.VentanaGanadorController">
+<VBox alignment="CENTER" prefHeight="330" prefWidth="500" spacing="20" style="-fx-background-color: #42672a;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cincuentazo.controladores.VentanaGanadorControlador">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
    <ImageView fitHeight="115.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../images/ganador-texto.JPG" />
+         <Image url="@../imagenes/ganador-texto.JPG" />
       </image>
    </ImageView>
 
     <!-- Imagen superior -->
     <ImageView fx:id="imgGanador" fitHeight="181.0" fitWidth="185.0">
       <image>
-         <Image url="@../images/bellota.png" />
+         <Image url="@../imagenes/bellota.png" />
       </image></ImageView>
    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
       <children>
          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../images/bellota-fruta.png" />
+               <Image url="@../imagenes/bellota-fruta.png" />
             </image>
             <HBox.margin>
                <Insets right="15.0" />
@@ -44,7 +44,7 @@
          </Label>
          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" rotate="110.9">
             <image>
-               <Image url="@../images/bellota-fruta.png" />
+               <Image url="@../imagenes/bellota-fruta.png" />
             </image>
             <HBox.margin>
                <Insets left="15.0" />

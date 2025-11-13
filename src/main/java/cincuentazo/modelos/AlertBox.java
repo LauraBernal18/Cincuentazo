@@ -1,4 +1,4 @@
-package cincuentazo.models;
+package cincuentazo.modelos;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

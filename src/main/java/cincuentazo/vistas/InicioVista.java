@@ -1,4 +1,4 @@
-package cincuentazo.views;
+package cincuentazo.vistas;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Representa la ventana inicial (menú principal) del juego Cincuentazo.
  * <p>
- * Esta vista carga el diseño FXML {@code inicio-view.fxml}, configura
+ * Esta vista carga el diseño FXML {@code inicio-vista.fxml}, configura
  * el escenario con un icono y un título personalizados, e impide el cambio de tamaño de la ventana.
  * Sigue un patrón Singleton para garantizar que solo exista una instancia de
  * {@code InicioView} durante la ejecución.
@@ -23,7 +23,7 @@ import java.io.IOException;
  * @see javafx.stage.Stage
  * @see javafx.fxml.FXMLLoader
  */
-public class InicioView extends Stage {
+public class InicioVista extends Stage {
 
 
     /**
@@ -32,16 +32,16 @@ public class InicioView extends Stage {
      *
      * @throws IOException si el archivo FXML no se puede cargar o no existe.
      */
-    public InicioView() throws IOException {
+    public InicioVista() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/cincuentazo/fxml/inicio-view.fxml")
+                getClass().getResource("/cincuentazo/fxml/inicio-vista.fxml")
         );
         Parent root = fxmlLoader.load();
         Scene escena = new Scene(root);
         this.setScene(escena);
         this.setTitle("Inicio");
         this.getIcons().add(new Image(
-                getClass().getResourceAsStream("/cincuentazo/images/inicio/iconoburbuja.png")
+                getClass().getResourceAsStream("/cincuentazo/imagenes/inicio/iconoburbuja.png")
         ));
         this.setResizable(false);
     }
@@ -58,9 +58,9 @@ public class InicioView extends Stage {
      * @return la única instancia de {@code InicioView}.
      * @throws IOException si no se puede cargar el archivo FXML.
      */
-    public static InicioView getInstance() throws IOException {
+    public static InicioVista getInstance() throws IOException {
         if (InicioViewHolder.INSTANCE == null) {
-            InicioViewHolder.INSTANCE = new InicioView();
+            InicioViewHolder.INSTANCE = new InicioVista();
         }
         return InicioViewHolder.INSTANCE;
     }
@@ -75,6 +75,6 @@ public class InicioView extends Stage {
      * </p>
      */
     private static class InicioViewHolder {
-        private static InicioView INSTANCE = null;
+        private static InicioVista INSTANCE = null;
     }
 }
