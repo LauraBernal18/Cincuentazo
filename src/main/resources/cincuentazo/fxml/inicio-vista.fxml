@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="697.0" style="-fx-background-color: #D6E8FF; -fx-border-color: blue; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cincuentazo.controllers.InicioController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="697.0" style="-fx-background-color: #D6E8FF; -fx-border-color: blue; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cincuentazo.controladores.InicioControlador">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.20001220703125" minWidth="10.0" prefWidth="223.4000244140625" />
@@ -31,7 +31,7 @@
    <children>
       <ImageView fitHeight="112.0" fitWidth="552.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <image>
-            <Image url="@../images/inicio/titulo.png" />
+            <Image url="@../imagenes/inicio y final/titulo.png" />
          </image>
          <effect>
             <DropShadow height="73.06" radius="31.205" width="53.76">
@@ -53,7 +53,7 @@
       </ImageView>
       <ImageView fitHeight="129.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <image>
-            <Image url="@../images/inicio/burbujas.png" />
+            <Image url="@../imagenes/inicio y final/burbujas.png" />
          </image>
          <GridPane.margin>
             <Insets left="70.0" />
@@ -68,7 +68,7 @@
       </ImageView>
       <ImageView fitHeight="144.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <image>
-            <Image url="@../images/inicio/burbuja.png" />
+            <Image url="@../imagenes/inicio y final/burbuja.png" />
          </image>
          <GridPane.margin>
             <Insets right="50.0" />
@@ -137,7 +137,7 @@
       </Button>
       <ImageView fitHeight="92.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BASELINE">
          <image>
-            <Image url="@../images/inicio/estrella.png" />
+            <Image url="@../imagenes/inicio y final/estrella.png" />
          </image>
          <effect>
             <DropShadow height="92.35" radius="48.8925" width="105.22">
@@ -149,12 +149,12 @@
       </ImageView>
       <ImageView fitHeight="71.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <image>
-            <Image url="@../images/inicio/estrella.png" />
+            <Image url="@../imagenes/inicio y final/estrella.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="70.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <image>
-            <Image url="@../images/inicio/estrella.png" />
+            <Image url="@../imagenes/inicio y final/estrella.png" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" GridPane.valignment="CENTER">
