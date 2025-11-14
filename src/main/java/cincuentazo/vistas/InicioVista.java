@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Representa la ventana inicial (menú principal) del juego Cincuentazo.
  * <p>
- * Esta vista carga el diseño FXML {@code inicio-vista.fxml}, configura
+ * Esta vista carga el diseño FXML {@code inicio y final-vista.fxml}, configura
  * el escenario con un icono y un título personalizados, e impide el cambio de tamaño de la ventana.
  * Sigue un patrón Singleton para garantizar que solo exista una instancia de
  * {@code InicioView} durante la ejecución.
@@ -41,7 +41,7 @@ public class InicioVista extends Stage {
         this.setScene(escena);
         this.setTitle("Inicio");
         this.getIcons().add(new Image(
-                getClass().getResourceAsStream("/cincuentazo/imagenes/inicio/iconoburbuja.png")
+                getClass().getResourceAsStream("/cincuentazo/imagenes/inicio y final/iconoburbuja.png")
         ));
         this.setResizable(false);
     }

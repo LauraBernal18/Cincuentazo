@@ -12,6 +12,24 @@ import cincuentazo.modelos.CuadroAlerta;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controlador principal del juego "Cincuentazo" encargado de manejar la interacción entre
+ * la interfaz gráfica (JavaFX) y la lógica del juego.
+ * <p>
+ * Esta clase administra los eventos de los botones y cartas, actualiza las vistas de los jugadores y
+ * de las máquinas, verifica los turnos, controla la suma en la mesa y muestra las ventanas
+ * de ganador al final del juego.
+ * </p>
+ *
+ * @author Hilary Herrera, Dana Gómez, Laura Bernal
+ * @version 3.4
+ * @since 2025
+ * @see Juego
+ * @see Jugador
+ * @see JugadorHumano
+ * @see JugadorMaquina
+ * @see VentanaGanadorVista
+ */
 public class JuegoControlador {
 
     /*label de notificación sobre los procesos dentro del juego "maquina pensando, maquina colocando carta, jugador
@@ -71,6 +89,18 @@ public class JuegoControlador {
     //los bots no van a jugar si el humano no termina sus movimientos
     private boolean esperarMovimientoJugador = false;
 
+
+    /**
+     * Inicializa el juego, configurando jugadores, cartas, mazo y vista inicial.
+     * <p>
+     * Se crean los objetos de juego, se asigna el nombre al jugador humano, se coloca la carta
+     * inicial en la mesa si no existe y se configura la visibilidad de las cartas de las máquinas.
+     * También se registran los eventos de clic en las cartas del jugador y en el mazo.
+     * </p>
+     *
+     * @param nombreJugador Nombre del jugador humano que participará en la partida.
+     * @param cantidadMaquinas Número de máquinas que jugarán contra el humano.
+     */
     @FXML
     public void initialize(String nombreJugador, int cantidadMaquinas) {
         // Crear el modelo
@@ -113,6 +143,13 @@ public class JuegoControlador {
 
     }
 
+    /**
+     * Configura la visibilidad de los labels de turno y las cartas de las máquinas
+     * según la cantidad de bots seleccionados para la partida.
+     * <p>
+     * Oculta todos los elementos de máquinas no usados y muestra solo los que participan.
+     * </p>
+     */
     private void visibilidadDeMaquinas(){
         //array de elementos visuales
         Label[] labelsTurno = {labelTurnomaquina1,labelTurnoMaquina2,labelTurnoMaquina3};
@@ -154,6 +191,15 @@ public class JuegoControlador {
         }
     }
 
+
+    /**
+     * Actualiza temporalmente el label de estado del juego con un mensaje específico.
+     * <p>
+     * El mensaje desaparece automáticamente después de 30 segundos usando un hilo independiente.
+     * </p>
+     *
+     * @param mensaje Mensaje que se mostrará temporalmente en la interfaz.
+     */
     // Metodo para actualizar el texto del label estado juego con un mensaje temporal que desaparece luego de un tiempo
     private void actualizarLabelEstadoJuego(String mensaje) {
         // Usamos Platform.runLater para asegurarnos que la actualización del label se haga en el hilo de interfaz gráfica
@@ -182,10 +228,23 @@ public class JuegoControlador {
         hilo.start();
     }
 
+    /**
+     * Actualiza el label que indica el turno actual.
+     *
+     * @param texto Texto que se mostrará indicando de quién es el turno.
+     */
     private void actualizarLabelTurnos(String texto) {
         Platform.runLater(() -> labelTurnoActual.setText(texto));
     }
 
+
+    /**
+     * Actualiza la vista inicial del juego.
+     * <p>
+     * Se muestran las cartas del jugador humano y las máquinas, la carta visible de la mesa,
+     * y el reverso del mazo. Se manejan excepciones por índice fuera de rango o recursos no encontrados.
+     * </p>
+     */
     private void actualizarVistaInicial() {
         // Mostrar mazo boca abajo
         //Image imagenMazo = new Image(getClass().getResourceAsStream("/cincuentazo/images/cartas/0-C.png"));
@@ -246,6 +305,13 @@ public class JuegoControlador {
         }
     }
 
+
+    /**
+     * Configura los eventos de clic para cada carta del jugador humano.
+     * <p>
+     * Al hacer clic, la carta seleccionada se valida y se envía al juego para jugarla.
+     * </p>
+     */
     // ==== Asigna clics a las cartas del jugador humano ====
     private void configurarEventosCartasJugador() {
         ImageView[] cartasJugador = {cartaJugador1, cartaJugador2, cartaJugador3, cartaJugador4};
@@ -263,6 +329,17 @@ public class JuegoControlador {
         }
     }
 
+
+    /**
+     * Procesa la jugada del jugador humano al seleccionar una carta.
+     * <p>
+     * Valida que sea su turno, verifica si hay ganador, controla valores de AS, calcula suma
+     * y determina si la carta puede jugarse o debe mostrar error.
+     * </p>
+     *
+     * @param carta Carta seleccionada por el jugador humano para jugar.
+     * @throws MovimientoExcepcion Si la carta no puede jugarse por exceder 50 y hay otras cartas válidas.
+     */
     private void jugarCartaHumano (Carta carta){
         // Si ya jugó una carta en este turno
         if (esperarMovimientoJugador) {
@@ -374,6 +451,14 @@ public class JuegoControlador {
         }
     }
 
+
+    /**
+     * Continúa la partida luego de que el jugador humano toma una carta del mazo.
+     * <p>
+     * Actualiza la interfaz, pasa el turno a las máquinas y registra callbacks
+     * para refrescar la GUI después de cada jugada automática de las máquinas.
+     * </p>
+     */
     private void continuarLuegoDeTomarCarta() {
 
         if (juego.hayGanador()) {
@@ -413,6 +498,13 @@ public class JuegoControlador {
         juego.jugarTurnosMaquinas();
     }
 
+
+    /**
+     * Muestra la ventana de ganador y cierra la ventana de juego actual.
+     *
+     * @param nombreGanador Nombre del jugador que ganó la partida.
+     * @throws IOException Si ocurre un error al crear o mostrar la ventana del ganador.
+     */
     private void mostrarVentanaGanador(String nombreGanador) {
         Platform.runLater(() -> {
         try {
@@ -429,10 +521,23 @@ public class JuegoControlador {
         });
     }
 
+
+    /**
+     * Determina si es el turno del jugador humano.
+     *
+     * @return {@code true} si el turno actual es del jugador humano; {@code false} en caso contrario.
+     */
     private boolean esTurnoJugadorHumano() {
         return juego.getJugadores().get(juego.getTurnoActual()) == jugadorHumano;
     }
 
+
+    /**
+     * Evento que se ejecuta cuando el jugador hace clic en el mazo para tomar una carta.
+     * <p>
+     * Valida que sea el turno del humano y que pueda tomar carta (máximo 4 cartas en mano y debe haber jugado antes).
+     * </p>
+     */
     // ==== Evento: jugador toma carta (click en el mazo) ====
     @FXML
     private void onClickTomarCarta() {
@@ -471,6 +576,11 @@ public class JuegoControlador {
         }
     }
 
+
+    /**
+     * Deshabilita la interacción del jugador humano con las cartas y el mazo,
+     * impidiendo hacer clic mientras las máquinas juegan.
+     */
     private void deshabilitarInteraccionHumano() {
         cartaJugador1.setDisable(true);
         cartaJugador2.setDisable(true);
@@ -479,6 +589,11 @@ public class JuegoControlador {
         MazoBocaAbajo.setDisable(true);
     }
 
+
+    /**
+     * Habilita la interacción del jugador humano con las cartas y el mazo,
+     * permitiendo jugar su turno nuevamente.
+     */
     private void habilitarInteraccionHumano() {
         cartaJugador1.setDisable(false);
         cartaJugador2.setDisable(false);

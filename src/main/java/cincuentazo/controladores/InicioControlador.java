@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Clase controladora para la vista del menú principal del juego Cincuentazo.
  * <p>
- * Esta clase gestiona todas las interacciones del usuario dentro del menú de inicio, como:
+ * Esta clase gestiona todas las interacciones del usuario dentro del menú de inicio y final, como:
  * seleccionar el número de jugadores de la máquina, introducir el nombre del jugador,
  * iniciar el juego y mostrar las reglas del juego.
  * </p>

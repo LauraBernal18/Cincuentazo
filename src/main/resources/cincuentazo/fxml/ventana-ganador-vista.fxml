@@ -16,20 +16,20 @@
     </padding>
    <ImageView fitHeight="115.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../imagenes/ganador-texto.JPG" />
+         <Image url="@../imagenes/inicio y final/ganador-texto.JPG" />
       </image>
    </ImageView>
 
     <!-- Imagen superior -->
     <ImageView fx:id="imgGanador" fitHeight="181.0" fitWidth="185.0">
       <image>
-         <Image url="@../imagenes/bellota.png" />
+         <Image url="@../imagenes/inicio y final/bellota.png" />
       </image></ImageView>
    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
       <children>
          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../imagenes/bellota-fruta.png" />
+               <Image url="@../imagenes/inicio y final/bellota-fruta.png" />
             </image>
             <HBox.margin>
                <Insets right="15.0" />
@@ -44,7 +44,7 @@
          </Label>
          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" rotate="110.9">
             <image>
-               <Image url="@../imagenes/bellota-fruta.png" />
+               <Image url="@../imagenes/inicio y final/bellota-fruta.png" />
             </image>
             <HBox.margin>
                <Insets left="15.0" />
