@@ -22,8 +22,6 @@ public abstract class Jugador {
 
     protected String nombre;
     protected ArrayList<Carta> mano;
-
-    /** Indica si el jugador ha sido eliminado del juego. */
     protected boolean eliminado;
 
 

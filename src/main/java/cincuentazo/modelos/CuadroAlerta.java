@@ -30,33 +30,33 @@ public class CuadroAlerta implements ICuadroAlerta {
     @Override
     public void mostrarReglas() {
         String reglas = """
-            🎯 REGLAS DEL CINCUENTAZO 🎯
+            REGLAS DEL CINCUENTAZO
             
-            🏆 OBJETIVO:
+            OBJETIVO:
             Ser el ÚLTIMO JUGADOR en pie
             
-            🎮 PREPARACIÓN:
+            PREPARACIÓN:
             • 4 cartas para cada jugador
             • 1 carta inicial en la mesa
             • Mazo restante boca abajo
             
-            🃏 VALOR DE LAS CARTAS:
+            VALOR DE LAS CARTAS:
             • 2-8 y 10 → Suman su valor
             • 9 → No suma ni resta (0)
             • J, Q, K → Restan 10
             • A → Suma 1 o 10 (a elección)
             
-            🔄 TURNO DE JUEGO:
+            TURNO DE JUEGO:
             1. Juega 1 carta que NO haga superar 50
             2. Colócala boca arriba en la mesa
             3. Roba 1 carta del mazo
-            4. Si no puedes jugar → ¡ELIMINADO! ❌
+            4. Si no puedes jugar → ¡ELIMINADO! 
             
             ⚡ REGLAS ESPECIALES:
             • Jugador eliminado: Sus cartas van al final del mazo
             
-            🎊 FIN DEL JUEGO:
-            Cuando solo quede UN JUGADOR → ¡GANADOR! 🏅
+            FIN DEL JUEGO:
+            Cuando solo quede UN JUGADOR → ¡GANADOR! 
 
             """;
 
@@ -152,6 +152,7 @@ public class CuadroAlerta implements ICuadroAlerta {
      * Muestra una alerta de error con un título, cabecera y un mensaje personalizados.
 
      * @param titulo el título de la ventana de alerta.
+     * @param cabecera el título del error
      * @param mensaje el mensaje de error que se mostrará al usuario.
      */
     public static void mostrarError(String titulo, String cabecera, String mensaje) {

@@ -2,6 +2,7 @@ module cincuentazo {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires org.junit.jupiter.api;
 
 
     opens cincuentazo to javafx.fxml;

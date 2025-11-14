@@ -46,7 +46,7 @@ class JugadorMaquinaTest {
 
     /**
      * Verifica que el nombre del jugador máquina sea generado automáticamente
-     * siguiendo el formato esperado, que comienza con la palabra “Máquina ”.
+     * siguiendo el formato esperado, que comienza con la palabra "Máquina".
      */
     @Test
     void testNombreSeGeneraAutomaticamente() {

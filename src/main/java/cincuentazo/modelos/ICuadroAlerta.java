@@ -37,18 +37,18 @@ public interface ICuadroAlerta {
     /**
      * Muestra un cuadro de diálogo de confirmación que permite al jugador seleccionar
      * el valor deseado para una carta de As.
-     * <p>El cuadro de diálogo ofrece tres opciones:
+     *
+     * El cuadro de diálogo ofrece tres opciones:
      * <ul>
-     *     <li>Jugar el As como 1</li>
-     *     <li>Jugar el As como 10</li>
-     *     <li>Cancelar (no jugar el As)</li>
+     *    <li>Jugar el As como 1</li>
+     *    <li>Jugar el As como 10</li>
+     *    <li>Cancelar (no jugar el As)</li>
      * </ul>
-     * </p>
      *
      * @return {@code 1} si el jugador elige jugar el As como 1,
      *         {@code 10} si el jugador elige jugarlo como 10,
      *         o {@code 0} si el jugador cancela la selección.
-
      */
+
     int mostrarEleccionAS();
 }

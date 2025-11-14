@@ -282,41 +282,80 @@ public class Juego {
 
     // ======================= MÉTODOS DE APOYO =========================
 
-    /** Establece el callback que se ejecutará al cambiar el turno. */
+    /** Establece el callback que se ejecutará al cambiar el turno.
+     * @param onCambioDeTurno Runnable que se ejecutará al cambiar el turno.
+     */
     public void setOnCambioDeTurno(Runnable onCambioDeTurno) {
         this.onCambioDeTurno = onCambioDeTurno;
     }
 
-    /** Devuelve la mesa de juego. */
+    /**
+     * Devuelve la mesa de juego.
+     *
+     * @return la instancia de {@link Mesa} asociada a la partida.
+     */
     public Mesa getMesa() { return mesa; }
 
-    /** Devuelve la lista de jugadores. */
+    /**
+     * Devuelve la lista de jugadores participantes en la partida.
+     *
+     * @return una lista de {@link Jugador} con todos los jugadores activos y eliminados.
+     */
     public List<Jugador> getJugadores() { return jugadores; }
 
-    /** Devuelve el jugador cuyo turno está activo. */
+    /**
+     * Devuelve el jugador cuyo turno está actualmente activo.
+     *
+     * @return el {@link Jugador} que tiene el turno en este momento.
+     */
     public Jugador getJugadorActual() { return jugadores.get(turnoActual); }
 
-    /** Indica si la partida terminó. */
+    /**
+     * Indica si la partida ha terminado.
+     *
+     * @return {@code true} si la partida terminó, {@code false} en caso contrario.
+     */
     public boolean esTerminado() { return terminado; }
 
-    /** Devuelve el mazo de la partida. */
+    /**
+     * Devuelve el mazo de cartas de la partida.
+     *
+     * @return la instancia de {@link Mazo} utilizada en la partida.
+     */
     public Mazo getMazo() { return mazo; }
 
-    /** Indica si hay un ganador (partida terminada). */
+    /**
+     * Indica si hay un ganador de la partida.
+     *
+     * @return {@code true} si la partida ha terminado y hay un ganador, {@code false} de lo contrario.
+     */
     public boolean hayGanador() { return terminado; }
 
-    /** Devuelve el jugador ganador, si existe. */
+    /**
+     * Devuelve el jugador ganador de la partida, si existe.
+     *
+     * @return el {@link Jugador} ganador, o {@code null} si aún no hay ganador.
+     */
     public Jugador getGanador() {
         for (Jugador j : jugadores) if (!j.esEliminado()) return j;
         return null;
     }
 
-    /** Devuelve el índice del turno actual. */
+    /**
+     * Devuelve el índice del turno actual dentro de la lista de jugadores.
+     *
+     * @return un entero que representa la posición del jugador que tiene el turno activo.
+     */
     public int getTurnoActual() {
         return turnoActual;
     }
 
-    /** Actualiza el label de la interfaz con el turno o mensaje actual. */
+
+    /**
+     * Actualiza el {@link Label} de la interfaz de usuario con el turno o mensaje actual.
+     *
+     * @param texto el mensaje o nombre del jugador que se mostrará en la interfaz.
+     */
     private void actualizarLabelTurnos(String texto) {
         Platform.runLater(() -> labelTurnoActual.setText(texto));
     }
