@@ -67,7 +67,7 @@ public class CuadroAlerta implements ICuadroAlerta {
 
         DialogPane panel = alerta.getDialogPane();
         panel.setStyle(
-                "-fx-background-color: #edade1;" +   // fondo rosa
+                "-fx-background-color: #afaded;" +   // fondo rosa
                         "-fx-font-size: 14px;" +
                         "-fx-font-weight: bold;"
         );
@@ -94,8 +94,9 @@ public class CuadroAlerta implements ICuadroAlerta {
 
         DialogPane panel = alerta.getDialogPane();
         panel.setStyle(
-                "-fx-background-color: #FFF3CD;" +
-                "-fx-font-size: 14px;"
+                "-fx-background-color: rgba(178,189,245,0.84);" +
+                "-fx-font-size: 15px;" + "-fx-font-family: FreeMono;" +
+                "-fx-font-weight: bold;"
         );
 
         alerta.showAndWait();
@@ -128,8 +129,8 @@ public class CuadroAlerta implements ICuadroAlerta {
 
         DialogPane panel = alerta.getDialogPane();
         panel.setStyle(
-                "-fx-background-color:  #f5e8f5;" +
-                        "-fx-font-size: 14px;"
+                "-fx-background-color:  #dc9ab4;" +
+                        "-fx-font-size: 14px;" + "-fx-font-family: FreeMono;" + "-fx-font-weight: bold"
         );
 
         //mostrar la alerta y esperar respuesta del usuario
@@ -163,8 +164,9 @@ public class CuadroAlerta implements ICuadroAlerta {
 
         DialogPane panel = alerta.getDialogPane();
         panel.setStyle(
-                "-fx-background-color: #FFE6E6;" +
-                        "-fx-font-size: 14px;"
+                "-fx-background-color: #fab9cd;" +
+                        "-fx-font-size: 15px;" + "" +
+                        "-fx-font-family: FreeMono;" + "-fx-font-weight: bold;"
         );
 
         alerta.showAndWait();
