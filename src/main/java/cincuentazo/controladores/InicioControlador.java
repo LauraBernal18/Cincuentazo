@@ -155,13 +155,13 @@ public class InicioControlador {
         // normal
         String estiloNormal = "-fx-background-color: #000993; -fx-text-fill: white;"
                 + "-fx-background-radius: 5;"
-                + "-fx-font-family: 'Comic Sans MS'; -fx-font-size: 17;"
+                + "-fx-font-family: FreeMono; -fx-font-size: 17;"
                 + "-fx-border-color: transparent;";
 
         // seleccionado
         String estiloSeleccionado = "-fx-background-color: #787fe7; -fx-text-fill: white;"
                 + "-fx-background-radius: 5;"
-                + "-fx-font-family: 'Comic Sans MS'; -fx-font-size: 17;"
+                + "-fx-font-family: FreeMono; -fx-font-size: 17;"
                 + "-fx-border-color: transparent;";
 
         // restablecer estilos de los botones

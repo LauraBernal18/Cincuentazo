@@ -116,7 +116,7 @@ public class JuegoControlador {
 
         // Mostrar nombre en etiqueta
         LabelNombreJugador.setText(nombreJugador);
-        labelEstadoJuego.setText("Tú empiezas :)");
+        labelEstadoJuego.setText("Juega tu carta");
         labelTurnoActual.setText(" ");
 
         //imagen de reverso nueva en cada juego iniciado
@@ -156,35 +156,45 @@ public class JuegoControlador {
         ImageView[][] cartasMaquina = {
                 {carta01, carta02, carta03, carta04}, //maquina 1
                 {carta11, carta12, carta13, carta14}, //maquina 2
-                {carta21, carta22, carta23, carta24} //maquina 4
+                {carta21, carta22, carta23, carta24} //maquina 3
         };
 
-        //ocultar todo al iniciar
-        for (int i = 0; i<3; i++){
-            if (labelsTurno[i] != null){
-                labelsTurno[i].setVisible(false);  //ocultar el label
-                labelsTurno[i].setText(""); //borrar texto por defecto
-            }
+        for (int i = 0; i < 3; i++){
+            if (i + 1 < jugadores.size()) { //i +1 salta la posición 0 es decir al jugador Humano
+                Jugador maquina = jugadores.get(i + 1);
 
-            for (ImageView carta : cartasMaquina[i]){
-                if(carta != null){
-                    carta.setVisible(false); //ocultar las cartas
-                }
-            }
-        }
+                if (labelsTurno[i] != null) {
+                    if (!maquina.esEliminado()) {
+                        labelsTurno[i].setText(maquina.getNombre()); //nombre: maquina 1, maquina 2...
+                        labelsTurno[i].setVisible(true);
 
-        for (int i = 0; i<this.cantidadMaquinas; i++){
-            if(i + 1 < jugadores.size()){ //i +1 salta la posición 0 es decir al jugador Humano
-                JugadorMaquina maquina = (JugadorMaquina) jugadores.get(i+1); //obtiene la maquina desde el modelo
-
-                if(labelsTurno[i] != null){
-                    labelsTurno[i].setText(maquina.getNombre()); //nombre: maquina 1, maquina 2...
-                    labelsTurno[i].setVisible(true); //ahora el label se muestra
+                        // cambiar color en turnos de maquinas
+                        if (juego.getJugadorActual() == maquina) {
+                            // borde y texto cambian de color
+                            labelsTurno[i].setStyle("-fx-background-color: #ec1c1c; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2; -fx-text-fill: rgba(255,255,255,0.89);");
+                        } else {
+                            // Cuando no es su turno conservan configuracion inicial
+                            labelsTurno[i].setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2; -fx-text-fill: #000000;");
+                        }
+                    } else {
+                        labelsTurno[i].setVisible(false); //ocultar label si está eliminada
+                    }
                 }
 
                 for (ImageView carta : cartasMaquina[i]){
                     if(carta != null){
-                        carta.setVisible(true); //muestra las cartas de la maquina
+                        carta.setVisible(!maquina.esEliminado()); //mostrar/ocultar según estado
+                    }
+                }
+
+            } else {
+                // Si la máquina no existe, ocultar todo
+                if (labelsTurno[i] != null){
+                    labelsTurno[i].setVisible(false);
+                }
+                for (ImageView carta : cartasMaquina[i]){
+                    if(carta != null){
+                        carta.setVisible(false);
                     }
                 }
             }
@@ -193,39 +203,16 @@ public class JuegoControlador {
 
 
     /**
-     * Actualiza temporalmente el label de estado del juego con un mensaje específico.
+     * Actualiza el label de estado del juego con un mensaje específico.
      * <p>
-     * El mensaje desaparece automáticamente después de 30 segundos usando un hilo independiente.
+     * El mensaje permanecerá visible hasta que sea reemplazado por otro mensaje.
      * </p>
      *
-     * @param mensaje Mensaje que se mostrará temporalmente en la interfaz.
+     * @param mensaje Mensaje que se mostrará en la interfaz.
      */
-    // Metodo para actualizar el texto del label estado juego con un mensaje temporal que desaparece luego de un tiempo
     private void actualizarLabelEstadoJuego(String mensaje) {
-        // Usamos Platform.runLater para asegurarnos que la actualización del label se haga en el hilo de interfaz gráfica
-        // Esto es obligatorio porque solo este hilo puede modificar elementos gráficos.
+        // Simplemente actualiza el label con el nuevo mensaje
         Platform.runLater(() -> labelEstadoJuego.setText(mensaje));
-
-        // Creamos un nuevo hilo independiente para no bloquear el hilo principal.
-        // Este hilo tendrá como función esperar un tiempo y luego borrar el mensaje del label.
-        Thread hilo = new Thread(() -> {
-            try {
-                // Aquí hacemos que el hilo "duerma" 10 segs
-                // Esto es para que el mensaje se muestre al usuario durante ese periodo antes de desaparecer.
-                Thread.sleep(30000);
-            } catch (InterruptedException e) {
-                // Si el hilo es interrumpido, marcaremos el estado de la interrupción para respetar la cancelación.
-                Thread.currentThread().interrupt();
-            }
-            // Una vez pasado el tiempo, volvemos a usar Platform.runLater porque vamos a borrar texto del label
-            Platform.runLater(() -> labelEstadoJuego.setText(""));
-        });
-
-        // Marcamos el hilo como daemon para que no impida que la aplicación JavaFX cierre si todavía está esperando.
-        hilo.setDaemon(true);
-
-        // Iniciamos la ejecución del hilo, que correrá paralelamente al hilo UI.
-        hilo.start();
     }
 
     /**
@@ -403,6 +390,7 @@ public class JuegoControlador {
             }
         } else if (!cartaValida && !hayCartasValidas) {
             juego.eliminarJugadorHumano(jugadorHumano, "No tienes cartas válidas para jugar, has sido eliminado.");
+            actualizarLabelEstadoJuego("Estás eliminado");
             juego.pasarAlSiguienteJugador();
             actualizarVistaInicial();
 
@@ -480,6 +468,7 @@ public class JuegoControlador {
         juego.setOnCambioDeTurno(() -> {
             actualizarVistaInicial();
             labelConteoActualMesa.setText(String.valueOf(juego.getMesa().getSumaActual()));
+            visibilidadDeMaquinas();
 
             if (juego.hayGanador()) {
                 mostrarVentanaGanador(juego.getGanador().getNombre());
@@ -488,7 +477,7 @@ public class JuegoControlador {
 
             if (juego.getJugadorActual() instanceof JugadorHumano) {
                 habilitarInteraccionHumano();
-                actualizarLabelEstadoJuego("Tu turno nuevamente :)");
+                actualizarLabelEstadoJuego("Juega tu carta");
                 actualizarLabelTurnos("turno de: " + jugadorHumano.getNombre());
             }
 
