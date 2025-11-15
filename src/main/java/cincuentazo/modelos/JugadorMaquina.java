@@ -86,4 +86,9 @@ public class JugadorMaquina extends Jugador {
         this.setEliminado(true);
         return null; // No hay carta para jugar
     }
+
+    //evitar problemas de tipo maquina 4, maquina 5, maquina 6...
+    public static void reiniciarContador() {
+        contador = 1;
+    }
 }
