@@ -105,6 +105,7 @@ public class JuegoControlador {
     public void initialize(String nombreJugador, int cantidadMaquinas) {
         // Crear el modelo
         //guardar el parametro para que se pueda usar sin problema dentro de esta clase
+        JugadorMaquina.reiniciarContador();
         this.cantidadMaquinas = cantidadMaquinas;
         juego = new Juego(nombreJugador, cantidadMaquinas, labelTurnoActual);
         juego.jugarTurnosMaquinas();
@@ -160,41 +161,37 @@ public class JuegoControlador {
         };
 
         for (int i = 0; i < 3; i++){
+            if (labelsTurno[i] != null){
+                labelsTurno[i].setVisible(false);
+            }
+            for (ImageView carta : cartasMaquina[i]){
+                if(carta != null){
+                    carta.setVisible(false);
+                }
+            }
+        }
+
+        for (int i = 0; i < this.cantidadMaquinas; i++){
             if (i + 1 < jugadores.size()) { //i +1 salta la posición 0 es decir al jugador Humano
                 Jugador maquina = jugadores.get(i + 1);
 
-                if (labelsTurno[i] != null) {
-                    if (!maquina.esEliminado()) {
-                        labelsTurno[i].setText(maquina.getNombre()); //nombre: maquina 1, maquina 2...
-                        labelsTurno[i].setVisible(true);
+                if (labelsTurno[i] != null && !maquina.esEliminado()) {
+                    labelsTurno[i].setText(maquina.getNombre()); //nombre: maquina 1, maquina 2...
+                    labelsTurno[i].setVisible(true);
 
-                        // cambiar color en turnos de maquinas
-                        if (juego.getJugadorActual() == maquina) {
-                            // borde y texto cambian de color
-                            labelsTurno[i].setStyle("-fx-background-color: #ec1c1c; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2; -fx-text-fill: rgba(255,255,255,0.89);");
-                        } else {
-                            // Cuando no es su turno conservan configuracion inicial
-                            labelsTurno[i].setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2; -fx-text-fill: #000000;");
-                        }
+                    // cambiar color en turnos de maquinas
+                    if (juego.getTurnoActual() == i + 1) {
+                        // borde y texto cambian de color
+                        labelsTurno[i].setStyle("-fx-background-color: #dc3b3b; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2; -fx-text-fill: rgba(255,255,255,0.89);");
                     } else {
-                        labelsTurno[i].setVisible(false); //ocultar label si está eliminada
+                        // Cuando no es su turno conservan configuracion inicial
+                        labelsTurno[i].setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2; -fx-text-fill: #000000;");
                     }
                 }
 
                 for (ImageView carta : cartasMaquina[i]){
-                    if(carta != null){
-                        carta.setVisible(!maquina.esEliminado()); //mostrar/ocultar según estado
-                    }
-                }
-
-            } else {
-                // Si la máquina no existe, ocultar todo
-                if (labelsTurno[i] != null){
-                    labelsTurno[i].setVisible(false);
-                }
-                for (ImageView carta : cartasMaquina[i]){
-                    if(carta != null){
-                        carta.setVisible(false);
+                    if(carta != null && !maquina.esEliminado()){
+                        carta.setVisible(true);
                     }
                 }
             }

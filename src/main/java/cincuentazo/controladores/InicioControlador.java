@@ -63,6 +63,9 @@ public class InicioControlador {
      */
     @FXML
     void onActionJugar(ActionEvent event) {
+        // Cambiar el color del botón
+        btnJugar.setStyle("-fx-background-color: #89a2f5; -fx-background-radius: 50%;");
+
         nombreJugador = textFieldNombre.getText();
         try {
             validarConfiguracionJuego();
@@ -73,10 +76,13 @@ public class InicioControlador {
             Stage ventanaInicio = (Stage) btnJugar.getScene().getWindow();
             ventanaInicio.close();
 
+            //volver al color original cuando hay campos faltantes
         } catch (MovimientoExcepcion e) {
             alerta.mostrarAdvertencia("ESPERA!!", e.getMessage());
+            btnJugar.setStyle("-fx-background-color: #000993; -fx-background-radius: 50%;");
         } catch (IOException e) {
             alerta.mostrarAdvertencia("ERROR", "ocurrio un problema al iniciar el juego");
+            btnJugar.setStyle("-fx-background-color: #000993; -fx-background-radius: 50%;");
         }
     }
 
@@ -108,7 +114,15 @@ public class InicioControlador {
      */
     @FXML
     void onActionMostrarReglas(ActionEvent event) {
-        alerta.mostrarReglas();
+        // Cambiar el color del botón al hacer clic
+        btnReglas.setStyle("-fx-background-color: #89a2f5;");
+
+        try {
+            alerta.mostrarReglas();
+        } finally {
+            //restaurar original
+            btnReglas.setStyle("-fx-background-color: #000993;");
+        }
     }
 
 

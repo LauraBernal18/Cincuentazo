@@ -59,21 +59,21 @@ public class VentanaGanadorControlador {
      */
     @FXML
     private void botonIniciarNuevoJuego(ActionEvent evento) throws IOException {
-        // Create the confirmation alert
+        // Crear alerta de confirmación
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setTitle("Confirmar nuevo juego");
         confirmacion.setHeaderText(null);
         confirmacion.setContentText("¿Deseas comenzar una nueva partida?");
 
-        // Show the alert and save the pressed button
+        // Mostrar la alerta y guardar la elección
         ButtonType respuesta = confirmacion.showAndWait().orElse(ButtonType.CANCEL);
 
-        // If the user presses ACCEPT, generate a new game
+        // si el usuario presiona OK se genera un nuevo juego
         if (respuesta == ButtonType.OK) {
             InicioVista inicioVista = InicioVista.getInstance();
             inicioVista.show();
 
-            //Close stage
+            //Cerrar ventana
             Node fuente =(Node)evento.getSource();
             Stage stage = (Stage)fuente.getScene().getWindow();
             stage.close();

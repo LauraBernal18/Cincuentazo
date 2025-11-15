@@ -172,7 +172,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <font>
-                  <Font name="FreeMono" size="14.0" />
+                  <Font name="FreeMono Bold" size="14.0" />
                </font>
                <effect>
                   <DropShadow height="54.92" radius="27.8375" width="58.43">

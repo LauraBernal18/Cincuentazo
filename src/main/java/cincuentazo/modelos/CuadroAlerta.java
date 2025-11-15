@@ -129,7 +129,7 @@ public class CuadroAlerta implements ICuadroAlerta {
 
         DialogPane panel = alerta.getDialogPane();
         panel.setStyle(
-                "-fx-background-color:  #fd95bd;" +
+                "-fx-background-color:  #dc9ab4;" +
                         "-fx-font-size: 14px;" + "-fx-font-family: FreeMono;" + "-fx-font-weight: bold"
         );
 
@@ -164,9 +164,9 @@ public class CuadroAlerta implements ICuadroAlerta {
 
         DialogPane panel = alerta.getDialogPane();
         panel.setStyle(
-                "-fx-background-color: #c6fab9;" +
-                        "-fx-font-size: 14px;" + "" +
-                        "-fx-font-family: FreeMono;"
+                "-fx-background-color: #fab9cd;" +
+                        "-fx-font-size: 15px;" + "" +
+                        "-fx-font-family: FreeMono;" + "-fx-font-weight: bold;"
         );
 
         alerta.showAndWait();
